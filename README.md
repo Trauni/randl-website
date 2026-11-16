@@ -13,3 +13,10 @@ den Verlauf.
 **Nicht im Repo:** `system/` (Basic-Auth-Bereich mit Laufzeitdaten und `.htpasswd`), `private/`, `.env`, Backups.
 
 Aufgaben: OpenProject, Projekt `website` (https://projects.randlweb.de).
+
+## Sync Server → Repo
+
+`tools/sync-to-github.sh` spiegelt den Webroot (ohne `system/`, `private/`, `.env`, Backups) in dieses
+Repo und pusht nach GitHub. Läuft als root auf dem Server, Git-Zugriff über einen Deploy-Key
+(`~kpssh/.ssh/randl-website-deploy`). Erst Trockenlauf, dann `--apply`; bricht ab, wenn mehr als
+15 Dateien gelöscht würden. Details im Kopf des Skripts.
