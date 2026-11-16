@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projektstatus – SEO Randl Group</title>
+<style>
+  :root{
+    --bg:#0a0c10; --panel:#12151c; --panel-2:#161a23; --border:#232838;
+    --text:#e8eaf0; --text-dim:#8b93a7; --text-dim2:#5b6478;
+    --blue:#4f8cff; --red:#ef4444; --orange:#f5a623; --green:#22c55e; --gray:#6b7280;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:40px 20px 80px; background:var(--bg); color:var(--text);
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif; line-height:1.55;
+  }
+  .wrap{max-width:880px; margin:0 auto;}
+  .eyebrow{color:var(--blue); font-size:13px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; margin-bottom:10px;}
+  h1{font-size:34px; margin:0 0 10px; letter-spacing:-.01em;}
+  .meta{color:var(--text-dim); font-size:14px; margin-bottom:28px;}
+  .meta b{color:var(--text);}
+  .navcards{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-bottom:24px;}
+  .navcard{background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:16px 18px; text-decoration:none; color:var(--text); display:block; transition:.15s;}
+  .navcard:hover{border-color:var(--blue);}
+  .navcard.active{border-color:var(--blue); background:linear-gradient(180deg,rgba(79,140,255,.10),rgba(79,140,255,.02));}
+  .navcard .t{font-weight:600; font-size:15px; margin-bottom:4px;}
+  .navcard .d{color:var(--text-dim); font-size:13px;}
+  .infobox{background:var(--panel-2); border:1px solid var(--border); border-left:3px solid var(--blue); border-radius:8px; padding:12px 16px; font-size:13.5px; color:var(--text-dim); margin-bottom:32px;}
+  .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-bottom:36px;}
+  .stat{background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:20px;}
+  .stat .n{font-size:30px; font-weight:700; color:var(--blue);}
+  .stat.crit .n{color:var(--red);}
+  .stat .l{font-size:13px; color:var(--text-dim); margin-top:4px;}
+  h2{font-size:20px; margin:44px 0 6px; border-top:1px solid var(--border); padding-top:32px;}
+  h2:first-of-type{border-top:none; padding-top:0;}
+  .sub{color:var(--text-dim); font-size:14px; margin-bottom:18px;}
+  .sub a{color:var(--blue); text-decoration:none;}
+  .findings{list-style:none; margin:0 0 8px; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .findings li{background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; gap:10px; align-items:flex-start; font-size:14.5px;}
+  .badge{flex:0 0 auto; font-size:11px; font-weight:700; letter-spacing:.03em; padding:3px 8px; border-radius:6px; text-transform:uppercase; white-space:nowrap;}
+  .b-krit{background:rgba(239,68,68,.15); color:var(--red);}
+  .b-warn{background:rgba(245,166,35,.15); color:var(--orange);}
+  .b-hin{background:rgba(79,140,255,.15); color:var(--blue);}
+  .b-ok{background:rgba(34,197,94,.15); color:var(--green);}
+  .b-off{background:rgba(107,114,128,.2); color:var(--text-dim);}
+  .phase{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:22px 24px; margin-bottom:20px;}
+  .phase h3{margin:0 0 2px; font-size:17px;}
+  .phase .ptag{color:var(--text-dim2); font-size:12.5px; margin-bottom:16px;}
+  .task{display:flex; gap:10px; align-items:flex-start; padding:9px 0; border-top:1px solid var(--border); font-size:14.5px;}
+  .task:first-of-type{border-top:none;}
+  .task .badge{margin-top:1px;}
+  table{width:100%; border-collapse:collapse; margin:14px 0 8px; font-size:14px;}
+  th,td{text-align:left; padding:9px 10px; border-bottom:1px solid var(--border);}
+  th{color:var(--text-dim); font-weight:600; font-size:12.5px; text-transform:uppercase; letter-spacing:.03em;}
+  .changelog{display:flex; flex-direction:column; gap:2px;}
+  .clentry{display:flex; gap:14px; padding:12px 0; border-top:1px solid var(--border);}
+  .clentry:first-child{border-top:none;}
+  .cldate{flex:0 0 64px; color:var(--text-dim2); font-size:13px; padding-top:2px;}
+  .clbody b{display:block; font-size:14.5px; margin-bottom:2px;}
+  .clbody span{color:var(--text-dim); font-size:13.5px;}
+  .cltag{display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.03em; color:var(--blue); background:rgba(79,140,255,.15); padding:2px 6px; border-radius:5px; margin-right:6px; vertical-align:middle;}
+  footer{margin-top:56px; padding-top:24px; border-top:1px solid var(--border); text-align:center; color:var(--text-dim2); font-size:13px;}
+  footer b{color:var(--text-dim);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Projektstatus &amp; Fortschritt</div>
+  <h1>Randl Group</h1>
+  <div class="meta"><b>randl.group</b> · Letztes Update: 15.07.2026 · Kunde: Dominik Randl</div>
+
+  <div class="navcards">
+    <div class="navcard active">
+      <div class="t">📋 Projektstatus (diese Seite)</div>
+      <div class="d">Was haben wir gefunden, was tun wir gerade</div>
+    </div>
+    <a class="navcard" href="redirects-status.html">
+      <div class="t">✅ Domain-Redirects</div>
+      <div class="d">Nachweis der Umsetzung →</div>
+    </a>
+    <a class="navcard" href="seo-audit.html">
+      <div class="t">📊 SEO Audit</div>
+      <div class="d">Vollständige Analyse &amp; Business-Profile-Entscheidung →</div>
+    </a>
+    <a class="navcard" href="gbp-zelt-checklist.html">
+      <div class="t">🎪 GBP Zelt-Profil</div>
+      <div class="d">Checkliste Überarbeitung →</div>
+    </a>
+    <a class="navcard" href="gbp-metall-checklist.html">
+      <div class="t">⚙️ GBP Metall-Profil</div>
+      <div class="d">Checkliste Neuanlage →</div>
+    </a>
+    <a class="navcard" href="gbp-gas-checklist.html">
+      <div class="t">🔥 GBP Gas-Profil</div>
+      <div class="d">Checkliste Neuanlage →</div>
+    </a>
+  </div>
+
+  <div class="infobox">ℹ️ Diese Seite wird laufend aktualisiert und zeigt den aktuellen Bearbeitungsstand des SEO-Projekts. Einfach Lesezeichen setzen und bei Bedarf erneut aufrufen.</div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">2 / 3</div><div class="l">Projektphase · Domain-Konsolidierung abgeschlossen, GBP-Rollout läuft</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">Kritische Punkte offen</div></div>
+    <div class="stat"><div class="n">19 / 26</div><div class="l">Erledigte Aufgaben projektweit</div></div>
+    <div class="stat"><div class="n">Metall/Gas</div><div class="l">Nächster Meilenstein</div></div>
+  </div>
+
+  <h2>Was haben wir – Ausgangslage</h2>
+  <div class="sub">Zusammenfassung der aktuellen Prüfung (14.07.2026). Details siehe <a href="seo-audit.html">Audit-Report →</a></div>
+  <ul class="findings">
+    <li><span class="badge b-ok">Erledigt</span> randl-cnctechnik.de → randl.group/metall und chiemgaugase.de → randl.group/gas sind technisch korrekt als 301-Redirect umgesetzt, Live-Check bestätigt</li>
+    <li><span class="badge b-krit">Kritisch</span> Google Business Profil „Dominik Randl Gashandel und Zeltverleih" verlinkt weiterhin auf randl-partyzelte.de statt randl.group – Standort-Verifizierung laut Kunde mehrfach gescheitert</li>
+    <li><span class="badge b-ok">Erledigt</span> randl-partyzelte.de → randl.group/zelt: 301-Redirect unabhängig verifiziert (15.07.2026) – Domain-Konsolidierung mit allen drei Altdomains vollständig abgeschlossen.</li>
+    <li><span class="badge b-warn">Warnung</span> Keine eigenen Google Business Profile für CNC/Metall und separat für Gashandel vorhanden</li>
+    <li><span class="badge b-warn">Warnung</span> Google zeigt randl-cnctechnik.de trotz korrektem Redirect weiterhin eigenständig in den Suchergebnissen – Google-Cache hat noch nicht aktualisiert</li>
+    <li><span class="badge b-ok">Erledigt</span> Google Search Console Property für randl.group existiert bereits und funktioniert (Domain-Property, über vorhandenen TXT-Eintrag verifiziert) – entgegen ursprünglicher Annahme keine Neuanlage nötig, Sitemap ist eingereicht, aber seit 24.05.2026 nicht neu gelesen</li>
+    <li><span class="badge b-ok">Erledigt</span> Impressum-Meta-Description korrigiert: zeigt jetzt „Grünweg 1, 83370 Seeon" statt der alten falschen Adresse „Prien am Chiemsee" – zusätzlich Firmenbezeichnung im Impressum auf den vollständigen rechtlichen Namen „Firma Dominik Randl" vereinheitlicht (14.07.2026)</li>
+    <li><span class="badge b-ok">Erledigt</span> Footer-Defekt auf 6 Seiten (Zelt, Metall, Gas, Fotobox, Kontakt, Datenschutz) behoben – Ursache waren drei unabhängige JS-/CSS-Syntaxfehler nach einem Footer-Update des Kunden, nicht Cache oder Hosting; Footer jetzt einheitlich wie auf der Landingpage, passt sich Hell/Dunkel automatisch an (14.07.2026)</li>
+    <li><span class="badge b-ok">Erledigt</span> Echter 301-Redirect www.randl.group → randl.group via Cloudflare Redirect Rule: unabhängig per curl bestätigt (16.07.2026, sauberer HTTP/2 301 mit korrektem location-Header über Cloudflare)</li>
+    <li><span class="badge b-ok">Erledigt</span> OG-Bild der Landingpage war kaputt (og-image.jpg existierte nicht mehr auf dem Server, 404) und Zelt/Metall/Gas/Fotobox hatten trotz gegenteiliger Doku gar keine OG-/Twitter-Tags – alle vier Seiten jetzt mit eigenem Title/Description versorgt, neues og-image.png (1200×630, 157 KB) sitesweit eingebunden (14.07.2026)</li>
+  </ul>
+
+  <h2>Was machen wir – Maßnahmenplan &amp; Fortschritt</h2>
+
+  <div class="phase">
+    <h3>Phase 1 · Sofort</h3>
+    <div class="ptag">Domain-Konsolidierung &amp; technische Basis · diese Woche / laufend</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> randl-cnctechnik.de → 301 auf randl.group/metall eingerichtet, Live-Check bestätigt Redirect + korrektes Canonical (14.07.2026)</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> chiemgaugase.de → 301 auf randl.group/gas eingerichtet, Live-Check bestätigt (14.07.2026)</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> randl-partyzelte.de → 301 auf randl.group/zelt eingerichtet, unabhängig verifiziert (15.07.2026)</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> Defekten internen Link auf randl-partyzelte.de (verwies auf „chiemgaugas.de") hat sich mit dem aktiven Redirect automatisch erledigt</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> Cloudflare Proxy auf A-Record randl.group reaktivieren, SSL/TLS auf Full (strict) gesetzt, Live-Check bestätigt (14.07.2026)</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> www.randl.group &amp; shop.randl.group ebenfalls proxied geschaltet – DNS-Zone-Export bestätigt cf-proxied:true auf allen drei A-Records (14.07.2026)</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> Google Search Console Property für randl.group geprüft: existiert bereits, ist verifiziert und aktiv – Korrektur zur ursprünglichen Annahme, keine Neuanlage nötig</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> Sitemap erneut eingereicht &amp; randl.group/metall/, /gas/ und /zelt/ über die URL-Prüfung zur Indexierung beantragt (14.07.2026)</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> Footer-Defekt auf Zelt/Metall/Gas/Fotobox/Kontakt/Datenschutz behoben (drei unabhängige JS-/CSS-Bugs identifiziert &amp; gefixt) und Footer-Design vereinheitlicht (14.07.2026)</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> Sitemap korrigiert: /zelt/, /metall/, /gas/ und /fotobox/ fehlten komplett (nur die /formular/-Unterseiten waren drin) – ergänzt, jetzt 11 statt 7 URLs, live verifiziert (14.07.2026)</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> Google Analytics 4 eingebunden auf allen 11 Seiten (Measurement-ID G-0521LCB2SC), Echtzeit-Tracking live bestätigt (14.07.2026)</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> Neue Sitemap in der Search Console erneut eingereicht, 11 Seiten bestätigt (14.07.2026)</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> OG-Bild-Bug behoben (kaputtes og-image.jpg → neues og-image.png) &amp; vollständige OG-/Twitter-Tags auf Zelt/Metall/Gas/Fotobox ergänzt, Bild auf 1200×630/157 KB optimiert (14.07.2026)</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> Cloudflare Redirect Rule www→apex eingerichtet, unabhängig per curl bestätigt (16.07.2026)</div>
+  </div>
+
+  <div class="phase">
+    <h3>Phase 2 · Kurzfristig</h3>
+    <div class="ptag">Google-Sichtbarkeit · 2–4 Wochen</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> Google Business Profile Strategie entschieden &amp; Zelt-Profil komplett überarbeitet, Google-Verifizierung erfolgreich (15.07.2026)</div>
+    <div class="task"><span class="badge b-warn">In Prüfung</span> Google Business Profile für CNC/Metall angelegt (16.07.2026) – Google-Verifizierung läuft (bis zu 5 Tage)</div>
+    <div class="task"><span class="badge b-off">Offen</span> Google Business Profile für Gashandel überarbeiten – bestehendes Profil vorhanden, muss komplett aktualisiert werden (Checkliste bereit: gbp-gas-checklist.html), wartet auf aktuelle Daten vom Kunden</div>
+    <div class="task"><span class="badge b-off">Offen</span> Nach Sitemap-Recrawl: Ranking-Entwicklung für randl.group/metall &amp; /gas in der Search-Console-Leistung beobachten</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> Impressum-Meta-Description korrigiert (Grünweg 1, 83370 Seeon) &amp; Firmenname im Impressum auf „Firma Dominik Randl" vereinheitlicht (14.07.2026)</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> Individuelle OG-Images für Zelt/Metall/Gas/Fotobox aus bestehenden Hero-Bildern erstellt &amp; eingebunden, live verifiziert (16.07.2026)</div>
+    <div class="task"><span class="badge b-ok">Erledigt</span> Landingpage-Content ausgebaut: Über-uns-Sektion, FAQ (5 Fragen + FAQPage-Schema.org), Google-Maps-Einbindung, Hero-Highlight-Kachel für Fotobox mit Verlinkung zu /fotobox/ (16.07.2026)</div>
+  </div>
+
+  <div class="phase">
+    <h3>Phase 3 · Mittelfristig</h3>
+    <div class="ptag">Content &amp; Rankings · 1–3 Monate</div>
+    <div class="task"><span class="badge b-off">Offen</span> Re-Indexierung beobachten – alle drei Altdomain-Redirects seit 16.07.2026 aktiv &amp; unabhängig bestätigt, Ziel: randl.group rankt für alle drei Marken statt der Altdomains</div>
+    <div class="task"><span class="badge b-off">Offen</span> Blog/News-Bereich für lokale SEO-Artikel</div>
+    <div class="task"><span class="badge b-off">Offen</span> Bewertungen/Rezensionen je Business Profile einholen</div>
+    <div class="task"><span class="badge b-off">Offen</span> Core Web Vitals messen (PageSpeed Insights)</div>
+  </div>
+
+  <h2>Changelog</h2>
+  <div class="changelog">
+    <div class="clentry">
+      <div class="cldate">16.07.26</div>
+      <div class="clbody"><b><span class="cltag">SETUP</span>Landingpage-Content ausgebaut: Über uns, FAQ, Standort, Fotobox-Highlight</b><span>randl.group war bisher sehr bild-/animationslastig mit wenig Fließtext für Google. Ergänzt: Über-uns-Sektion mit Firmentext, FAQ-Sektion mit 5 Fragen inkl. FAQPage-Schema.org für mögliche Featured Snippets, Google-Maps-Einbindung des Firmensitzes, sowie eine Hero-Kachel „Neu: Fotobox im Verleih" mit Bild, verlinkt zu randl.group/fotobox/.</span></div>
+    </div>
+
+    <div class="clentry">
+      <div class="cldate">16.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>Favicon-Link-Varianten auf allen 11 Seiten vereinheitlicht</b><span>Audit zeigte: nur die Startseite hatte alle drei gängigen Favicon-Tags (icon/shortcut icon/apple-touch-icon), 7 Seiten fehlten zwei davon, und zwei Formular-Seiten hatten sogar ein dupliziertes icon-Tag. Jetzt einheitlich auf allen Seiten.</span></div>
+    </div>
+
+    <div class="clentry">
+      <div class="cldate">16.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>Zelt-CSS umformatiert (wartungstechnisch)</b><span>Das CSS auf der Zeltverleih-Seite war nach dem Footer-Bugfix-Marathon deutlich unordentlicher als bei Metall/Gas/Fotobox. Auf den gleichen kompakten Stil gebracht (381 → 138 Zeilen), Struktur vorab auf Äquivalenz geprüft. Kein optischer Unterschied für Besucher.</span></div>
+    </div>
+
+    <div class="clentry">
+      <div class="cldate">16.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>Impressum-Footer an einheitliches Design angeglichen</b><span>Beim großen Footer-Update war Impressum durchgerutscht und nutzte noch die alten CSS-Klassen. Auf den aktuellen theme-fähigen Footer-Stil umgestellt, tote CSS-Regel entfernt.</span></div>
+    </div>
+
+    <div class="clentry">
+      <div class="cldate">16.07.26</div>
+      <div class="clbody"><b><span class="cltag">SETUP</span>Google Business Profile: Metall-Profil neu angelegt</b><span>Adresse Rankhamer Weg 15, Bad Endorf (Lager/Werkstatt), Website-Link randl.group/metall/, Öffnungs- und Abholzeiten hinterlegt. Google-Verifizierung läuft (laut Google bis zu 5 Tage).</span></div>
+    </div>
+
+    <div class="clentry">
+      <div class="cldate">16.07.26</div>
+      <div class="clbody"><b><span class="cltag">SETUP</span>GBP-Website-Links: randl.group statt Altdomains</b><span>Entschieden, in allen Google-Business-Profilen randl.group/{abteilung} statt der alten, mittlerweile weitergeleiteten Domains zu verwenden – spart einen Redirect-Hop und stärkt die NAP-Konsistenz. Gilt auch für künftige Print-Materialien (per QR-Code).</span></div>
+    </div>
+
+    <div class="clentry">
+      <div class="cldate">16.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>Individuelle OG-Bilder für Zelt/Metall/Gas/Fotobox</b><span>Statt eines separaten Generator-Tools wurden die bestehenden Hero-Bilder der vier Sparten als OG-Bild-Basis zugeschnitten (1200×630) und eingebunden. Jede Sparte hat jetzt eine passende eigene Vorschau bei Facebook/WhatsApp/Twitter statt eines generischen Bildes.</span></div>
+    </div>
+
+    <div class="clentry">
+      <div class="cldate">16.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>JSON-LD Schema.org auf 7 Seiten ergänzt</b><span>Zelt/Metall/Gas/Fotobox/Kontakt/Impressum/Datenschutz hatten kein strukturiertes Daten-Markup für Google. Ergänzt (LocalBusiness/Service/Organization je nach Seite). Ein Duplikat-Bug beim ersten Deploy-Versuch wurde erkannt und bereinigt.</span></div>
+    </div>
+
+    <div class="clentry">
+      <div class="cldate">16.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>www→apex-Redirect unabhängig per curl bestätigt</b><span>Unser eigenes Fetch-Tool zeigte tagelang fälschlich keinen Redirect (vermutlich Cloudflare-Bot-Erkennung behandelt automatisierte Anfragen anders). Ein curl-Test direkt vom Server des Kunden zeigt einen sauberen HTTP/2 301 mit korrektem location-Header auf https://randl.group/ über Cloudflare (cf-ray bestätigt Edge-Verarbeitung). Damit ist auch dieser letzte offene Punkt der technischen Basis abgeschlossen.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">15.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>randl-partyzelte.de: Redirect unabhängig verifiziert – Domain-Konsolidierung 3/3 abgeschlossen</b><span>Unabhängiger Live-Check zeigt jetzt die korrekte Weiterleitung auf randl.group/zelt. Damit leiten alle drei Altdomains (randl-cnctechnik.de, chiemgaugase.de, randl-partyzelte.de) korrekt auf randl.group um.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">15.07.26</div>
+      <div class="clbody"><b><span class="cltag">SETUP</span>Google Business Profile: Zelt-Profil überarbeitet &amp; verifiziert</b><span>Name, Beschreibung, Kategorien (Primär: Vermietung von Festzelten), Öffnungszeiten, Fotos und Ausstattung überarbeitet, Produkt „Fotobox mieten" ergänzt. Google-Verifizierung (Video/Anruf) erfolgreich – Profil zeigt das blaue Verifizierungs-Badge. Checklisten für Metall- und Gas-Profil-Neuanlage vorbereitet.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">15.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>Cloudflare Redirect Rule www→apex eingerichtet</b><span>Echter 301-Redirect für www.randl.group → randl.group über eine Cloudflare Redirect Rule (Platzhaltermuster) angelegt. Schließt die letzte offene Duplicate-Content-Baustelle, die bisher nur über den Canonical-Tag abgefangen wurde. Kunde bestätigt per Browser-DevTools-Network-Tab einen sauberen 307→301→200-Redirect-Chain. Unabhängiger Live-Check von uns zeigt noch keine Weiterleitung (vermutlich Edge-Propagierung), wird zeitnah erneut geprüft.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">15.07.26</div>
+      <div class="clbody"><b><span class="cltag">STATUS</span>randl-partyzelte.de: Hoster meldet Redirect aktiviert, Verifizierung läuft</b><span>Kunde berichtet, dass der externe Hoster den 301-Redirect auf randl.group/zelt aktiviert hat und er lokal bereits funktioniert. Unabhängiger Live-Check von uns zeigt zum jetzigen Zeitpunkt noch die alte WordPress-Seite ohne Weiterleitung – klassisches Bild einer noch nicht vollständig durchgezogenen DNS-Propagierung (kann je nach TTL einige Stunden bis ~48h dauern). Wird in Kürze erneut geprüft, dann als vollständig erledigt markiert.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>OG-Bild &amp; OG/Twitter-Tags: großer Fund &amp; behoben</b><span>Landingpage referenzierte og-image.jpg, die Datei existierte aber gar nicht mehr auf dem Server (404) – Vorschaubild bei Facebook/WhatsApp/Twitter war seit Deploy kaputt. Zusätzlich hatten Zelt/Metall/Gas/Fotobox trotz gegenteiliger ursprünglicher Doku überhaupt keine og:image/twitter:image-Tags. Fix: neues og-image.png eingebunden (Kunde hat es bereitgestellt, von 2400×1260/1,1 MB auf 1200×630/157 KB optimiert), vollständige OG-/Twitter-Blöcke mit individuellem Title/Description auf allen vier Sparten-Seiten ergänzt.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">SETUP</span>Google Analytics 4 eingebunden</b><span>GA4-Property „Randl Group" angelegt, gtag.js auf allen 11 Seiten eingebunden. Measurement-ID G-0521LCB2SC. Echtzeit-Bericht bestätigt aktiven Nutzer beim Testaufruf.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>Sitemap: fehlende Sparten-Hauptseiten ergänzt</b><span>Fund: sitemap.xml enthielt seit Deploy nur die /formular/-Unterseiten von Zelt/Metall/Gas, nicht aber die eigentlichen Sparten-Landingpages selbst – und auch nicht /fotobox/. Ergänzt, jetzt 11 statt 7 URLs, live verifiziert.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>Footer-Defekt auf 6 Seiten: Root Cause gefunden &amp; behoben</b><span>Nach einem Footer-Bulk-Edit des Kunden waren mehrere Seiten sichtbar kaputt. Diagnose per Browser-Konsole &amp; Live-Quellcode ergab drei unabhängige, vorbestehende Bugs statt eines Cache-Problems: (1) JS-Crash durch eine getElementById('year')-Zeile, die auf ein durch den neuen Footer entferntes Element zeigte – legte auf allen vier Sparten-Seiten Theme-Toggle, Hero-Bild, Galerie und Scroll-Animationen lahm. (2)+(3) zwei unabhängige CSS-Syntaxfehler ausschließlich auf der Zelt-Seite, die das gesamte Stylesheet-Parsing korrumpierten. Zusätzlich: Duplicate-ID-Konflikt beim Toggle-Button auf Kontakt/Datenschutz. Alle Bugs behoben, Footer auf allen 6 Seiten jetzt einheitlich im Look der Landingpage, passt sich automatisch Hell/Dunkel an.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>Impressum-Meta-Description &amp; Firmenname korrigiert (bestätigt)</b><span>Adresse auf „Grünweg 1, 83370 Seeon" korrigiert. Firmenbezeichnung im Impressum-Text auf den vollständigen rechtlichen Namen „Firma Dominik Randl" vereinheitlicht – relevant für NAP-Konsistenz im Hinblick auf die Google-Business-Profile-Entscheidung.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">ANALYSE</span>On-Page-Check: Titel/Meta gute, zwei Funde</b><span>Stichprobe aller Hauptseiten (Start, Zelt, Metall, Gas, Kontakt, Impressum, Datenschutz): Titel und Meta-Descriptions sind je Seite unterschiedlich und keyword-sinnvoll – kein umfassendes Title-Tag-Projekt nötig. Zwei Funde: (1) Impressum-Meta-Description zeigt noch die falsche Adresse „Prien am Chiemsee" statt Grünweg 1, 83370 Seeon. (2) www.randl.group / http:// / URLs ohne Trailing Slash liefern direkt Content mit Canonical-Tag statt einem echten 301-Redirect – erklärt vermutlich die gemischte GSC-Klassifizierung der Nicht-indexiert-Gründe.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>Sitemap neu eingereicht &amp; Ziel-URLs zur Indexierung beantragt</b><span>Sitemap randl.group/sitemap.xml erneut in der Search Console eingereicht, um den veralteten Read-Stand vom 24.05.2026 zu aktualisieren. randl.group/metall/, /gas/ und /zelt/ zusätzlich einzeln über die URL-Prüfung zur Indexierung beantragt, um den Recrawl nach der Domain-Konsolidierung zu beschleunigen.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">ANALYSE</span>Google Search Console geprüft: Property existiert bereits &amp; funktioniert</b><span>Domain-Property randl.group ist aktiv und über den vorhandenen TXT-Eintrag verifiziert – entgegen der ursprünglichen Annahme keine Neuanlage nötig. Sitemap eingereicht (06.05.2026), Status „Erfolgreich", 7 erkannte Seiten, zuletzt gelesen 24.05.2026. Performance letzte 3 Monate: 14 Klicks, 294 Impressionen, Ø Position 8,1. Indexierung: 7 indexiert, 10 nicht indexiert (6× wegen Weiterleitung, 4× wegen alternativem korrektem Canonical – beides unkritisch). DNS-Zone-Export bestätigt zusätzlich: www.randl.group und shop.randl.group laufen jetzt ebenfalls proxied über Cloudflare.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>Cloudflare Proxy auf randl.group reaktiviert</b><span>A-Record von „Nur DNS" auf „Mit Proxy" umgestellt, SSL/TLS-Modus Full (strict) bestätigt. Live-Check zeigt `server: cloudflare` und Cloudflare-Edge-IPs statt Ursprungs-IP. Fund: www.randl.group und shop.randl.group laufen noch unproxied – gleiche Ursprungs-IP dadurch teilweise sichtbar, optional nachziehen. Zusätzlich gefunden: TXT-Eintrag `google-site-verification=...` existiert bereits in der DNS-Zone – relevant für die anstehende GSC-Neuanlage.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">STATUS</span>randl-partyzelte.de: Redirect bei externem Hoster angefragt</b><span>Domain liegt nicht auf dem HestiaCP-Server von randl.group, sondern bei einem anderen Hoster. Kunde hat diesen per E-Mail gebeten, den 301-Redirect auf randl.group/zelt zu aktivieren. Antwort/Umsetzung steht noch aus.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>301-Redirects live geschaltet</b><span>randl-cnctechnik.de → randl.group/metall und chiemgaugase.de → randl.group/gas, beide per Live-Check bestätigt.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">ANALYSE</span>randl-partyzelte.de geprüft</b><span>Läuft weiterhin als eigenständige alte WordPress-Seite, kein Redirect aktiv. Interne Navigation verlinkt auf randl-cnctechnik.de und die Tippfehler-Domain „chiemgaugas.de".</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">ANALYSE</span>Google Business Profile geprüft</b><span>„Dominik Randl Gashandel und Zeltverleih", Standort Grünweg 1, 83370 Seeon-Seebruck, Website-Link zeigt auf randl-partyzelte.de statt randl.group. Standort-Verifizierung laut Kunde mehrfach gescheitert.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">ANALYSE</span>Google-Suche „randl cnc" geprüft</b><span>randl-cnctechnik.de rankt weiterhin vor randl.group/metall – Kannibalisierung, Google hat den neuen Redirect noch nicht neu gecrawlt.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">SETUP</span>Projektstatus-, Redirect-Nachweis- und Audit-Seite eingerichtet</b><span>Dieses Tracking-Dashboard erstellt, verlinkt mit Redirect-Nachweis und Audit-Report.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">06.05.26</div>
+      <div class="clbody"><b><span class="cltag">SETUP</span>SEO-Grundausstattung deployed</b><span>Meta-Tags, OpenGraph, Schema.org LocalBusiness, robots.txt, sitemap.xml auf randl.group.</span></div>
+    </div>
+  </div>
+
+  <footer>
+    Erstellt für <b>Dominik Randl · Randl Group</b> · randl.group<br>
+    Projektstatus · Wird laufend aktualisiert · Vertraulich
+  </footer>
+</div>
+</body>
+</html>

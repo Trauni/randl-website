@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gashandel Bayern – Dominik Randl | Flaschengase & Lieferung im Chiemgau</title>
+  <meta name="description" content="Flaschengase aller Art – wöchentliche Lieferung in LK Rosenheim, Ebersberg, München, Traunstein, BGL und mehr. Propan, Campinggas, Technische Gase. Firma Dominik Randl." />
+  <link rel="canonical" href="https://randl.group/gas/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:title" content="Gashandel Bayern – Dominik Randl | Flaschengase & Lieferung im Chiemgau" />
+  <meta property="og:description" content="Flaschengase aller Art – wöchentliche Lieferung in LK Rosenheim, Ebersberg, München, Traunstein, BGL und mehr. Propan, Campinggas, Technische Gase. Firma Dominik Randl." />
+  <meta property="og:url" content="https://randl.group/gas/" />
+  <meta property="og:image" content="https://randl.group/gas/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Dominik Randl" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gashandel Bayern – Dominik Randl | Flaschengase & Lieferung im Chiemgau" />
+  <meta name="twitter:description" content="Flaschengase aller Art – wöchentliche Lieferung in LK Rosenheim, Ebersberg, München, Traunstein, BGL und mehr. Propan, Campinggas, Technische Gase. Firma Dominik Randl." />
+  <meta name="twitter:image" content="https://randl.group/gas/og-image.jpg" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Gashandel & Lieferung",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Firma Dominik Randl",
+    "telephone": "+4901714585063",
+    "email": "info@randl.group",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Grünweg 1",
+      "postalCode": "83370",
+      "addressLocality": "Seeon",
+      "addressRegion": "Bayern",
+      "addressCountry": "DE"
+    }
+  },
+  "areaServed": { "@type": "State", "name": "Bayern" },
+  "description": "Flaschengase aller Art – wöchentliche Lieferung in LK Rosenheim, Ebersberg, München, Traunstein, BGL und mehr. Propan, Campinggas, Technische Gase.",
+  "url": "https://randl.group/gas/"
+}
+</script>
+  <link rel="stylesheet" href="/fonts.css" />
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="shortcut icon" href="/logo.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+
+  <style>
+    :root {
+      --spark: #cc0000; --spark-light: #a83020; --spark-dark: #a83020;
+      --spark-glow: rgba(204,0,0,0.15); --spark-muted: rgba(204,0,0,0.08);
+      --bg: #f5f5f0; --bg-alt: #edecea; --panel: #ffffff; --panel-light: #f0eeea; --panel-border: #e0ddd8;
+      --text-1: rgba(0,0,0,0.85); --text-2: rgba(0,0,0,0.55); --text-3: rgba(0,0,0,0.35);
+      --topbar-bg: #0d0f14; --topbar-txt: rgba(255,255,255,0.75);
+    }
+    [data-theme="dark"] {
+      --spark: #ff0000; --spark-light: #C33E2F; --spark-dark: #C33E2F;
+      --spark-glow: rgba(255,0,0,0.2); --spark-muted: rgba(195,62,47,0.12);
+      --bg: #09090c; --bg-alt: #0d0f14; --panel: #111520; --panel-light: #181e2e; --panel-border: #222840;
+      --text-1: rgba(255,255,255,0.92); --text-2: rgba(255,255,255,0.50); --text-3: rgba(255,255,255,0.28);
+      --topbar-bg: #060709; --topbar-txt: rgba(255,255,255,0.65);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-1); line-height: 1.6; transition: background 0.3s, color 0.3s; }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)} }
+    .anim-up { animation: fadeUp 0.65s cubic-bezier(0.22,1,0.36,1) both; }
+    .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.38s}
+
+    /* TOPBAR */
+    .topbar { background:var(--topbar-bg); color:var(--topbar-txt); font-size:.75rem; letter-spacing:.04em; position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(255,255,255,.06); }
+    .topbar-inner { max-width:1200px; margin:0 auto; padding:0 1.5rem; height:44px; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+    .topbar-contact { display:flex; align-items:center; gap:1.2rem; }
+    .topbar-contact a { display:flex; align-items:center; gap:.35rem; color:var(--topbar-txt); transition:color .2s; white-space:nowrap; }
+    .topbar-contact a:hover { color:#fff; }
+    .topbar-contact svg { width:12px; height:12px; opacity:.7; flex-shrink:0; }
+    .topbar-divider { width:1px; height:14px; background:rgba(255,255,255,.15); }
+    .topbar-right { display:flex; align-items:center; gap:.25rem; }
+    .topbar-nav { display:flex; align-items:center; gap:.2rem; }
+    .topbar-nav a { color:var(--topbar-txt); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; padding:.25rem .65rem; border-radius:4px; transition:color .2s,background .2s; }
+    .topbar-nav a:hover { color:#fff; background:rgba(255,255,255,.06); }
+    .topbar-nav a.active { color:var(--spark); background:rgba(255,0,0,.08); }
+    .topbar-nav .sep { color:rgba(255,255,255,.2); font-size:.7rem; padding:0 .1rem; }
+    .theme-toggle { background:none; border:1px solid rgba(255,255,255,.12); border-radius:6px; color:var(--topbar-txt); cursor:pointer; padding:.25rem .45rem; display:flex; align-items:center; transition:border-color .2s,color .2s; margin-left:.5rem; }
+    .theme-toggle:hover { border-color:rgba(255,255,255,.3); color:#fff; }
+    .theme-toggle svg { width:13px; height:13px; }
+    .icon-sun { display:none; }
+    [data-theme="dark"] .icon-moon { display:none; }
+    [data-theme="dark"] .icon-sun { display:block; }
+
+    /* HERO */
+    .hero { position:relative; min-height:80vh; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; background:linear-gradient(135deg,#080c12 0%,#0d1520 50%,#080c12 100%); }
+    .hero-bg::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 55% 55% at 65% 35%,rgba(20,60,160,.18) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 30% 70%,rgba(180,30,20,.12) 0%,transparent 60%); }
+    .hero-img { position:absolute; inset:0; object-fit:cover; opacity:.32; width:100%; height:100%; display:none; }
+    .hero-img.loaded { display:block; }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.3) 50%,rgba(0,0,0,.1) 100%); }
+    .hero-content { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:4rem 1.5rem 5rem; width:100%; }
+    .hero-badge { display:inline-flex; align-items:center; gap:.5rem; font-family:'Barlow Condensed',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--spark); border:1px solid rgba(255,80,50,.35); background:rgba(255,50,30,.1); padding:.22rem .75rem; border-radius:4px; margin-bottom:1.1rem; }
+    .hero-title { font-family:'Barlow Condensed',sans-serif; font-size:clamp(2.8rem,7vw,5.5rem); font-weight:900; line-height:.95; text-transform:uppercase; color:#fff; margin-bottom:1.2rem; max-width:700px; }
+    .hero-title em { font-style:normal; color:var(--spark); }
+    .hero-sub { font-size:1.05rem; color:rgba(255,255,255,.65); max-width:500px; margin-bottom:2rem; font-weight:300; line-height:1.65; }
+    .hero-cta { display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; }
+    .btn-primary { display:inline-flex; align-items:center; gap:.5rem; padding:.85rem 1.8rem; border-radius:10px; background:linear-gradient(135deg,#a83020,#C33E2F); color:#fff; font-family:'DM Sans',sans-serif; font-size:.9rem; font-weight:600; border:none; cursor:pointer; text-decoration:none; transition:opacity .2s,transform .15s,box-shadow .2s; }
+    .btn-primary:hover { opacity:.92; transform:translateY(-2px); box-shadow:0 8px 24px rgba(180,40,30,.4); }
+    .btn-outline { display:inline-flex; align-items:center; gap:.5rem; padding:.85rem 1.6rem; border-radius:10px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18); color:rgba(255,255,255,.85); font-size:.9rem; font-weight:500; text-decoration:none; transition:background .2s,border-color .2s; backdrop-filter:blur(8px); }
+    .btn-outline:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.3); }
+    .btn-svg { width:16px; height:16px; }
+    .hero-stats { position:relative; z-index:2; background:rgba(0,0,0,.55); backdrop-filter:blur(12px); border-top:1px solid rgba(255,255,255,.06); }
+    .hero-stats-inner { max-width:1200px; margin:0 auto; padding:0 1.5rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); }
+    .stat-item { padding:1.1rem 1rem; border-right:1px solid rgba(255,255,255,.06); text-align:center; }
+    .stat-item:last-child { border-right:none; }
+    .stat-num { font-family:'Barlow Condensed',sans-serif; font-size:1.8rem; font-weight:800; color:var(--spark); line-height:1; }
+    .stat-label { font-size:.7rem; color:rgba(255,255,255,.45); letter-spacing:.08em; text-transform:uppercase; margin-top:.2rem; }
+
+    /* SECTIONS */
+    .section { padding:5rem 1.5rem; }
+    .section-alt { background:var(--bg-alt); }
+    .container { max-width:1200px; margin:0 auto; }
+    .section-label { font-family:'Barlow Condensed',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--spark); margin-bottom:.6rem; }
+    .section-title { font-family:'Barlow Condensed',sans-serif; font-size:clamp(1.9rem,4vw,3rem); font-weight:800; text-transform:uppercase; color:var(--text-1); line-height:1.05; margin-bottom:.6rem; }
+    .section-sub { font-size:.97rem; color:var(--text-2); max-width:560px; font-weight:300; line-height:1.7; }
+    .section-header { margin-bottom:3rem; }
+    .section-header.center { text-align:center; }
+    .section-header.center .section-sub { margin:0 auto; }
+
+    /* GAS CATEGORIES */
+    .gas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.25rem; }
+    .gas-card { background:var(--panel); border:1px solid var(--panel-border); border-radius:16px; padding:1.75rem; transition:border-color .2s,box-shadow .2s,transform .2s; }
+    .gas-card:hover { border-color:rgba(180,40,30,.3); box-shadow:0 8px 32px rgba(0,0,0,.08); transform:translateY(-3px); }
+    .gas-icon { width:48px; height:48px; border-radius:12px; background:var(--spark-muted); border:1px solid rgba(180,40,30,.2); display:flex; align-items:center; justify-content:center; color:var(--spark); margin-bottom:1.1rem; }
+    .gas-icon svg { width:22px; height:22px; }
+    .gas-title { font-family:'Barlow Condensed',sans-serif; font-size:1.2rem; font-weight:800; text-transform:uppercase; color:var(--text-1); margin-bottom:.5rem; }
+    .gas-desc { font-size:.85rem; color:var(--text-2); line-height:1.65; font-weight:300; margin-bottom:1rem; }
+    .gas-tags { display:flex; flex-wrap:wrap; gap:.35rem; }
+    .gas-tag { font-size:.72rem; font-weight:500; background:var(--panel-light); border:1px solid var(--panel-border); color:var(--text-2); padding:.2rem .6rem; border-radius:20px; }
+
+    /* LIEFERGEBIET */
+    .lk-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:.75rem; }
+    .lk-card { background:var(--panel); border:1px solid var(--panel-border); border-radius:12px; padding:1.1rem 1rem; display:flex; align-items:center; gap:.65rem; transition:border-color .2s; }
+    .lk-card:hover { border-color:rgba(180,40,30,.3); }
+    .lk-dot { width:8px; height:8px; border-radius:50%; background:var(--spark); flex-shrink:0; }
+    .lk-name { font-size:.88rem; font-weight:500; color:var(--text-1); }
+    .lk-sub { font-size:.72rem; color:var(--text-3); margin-top:.1rem; }
+
+    /* PARTNER */
+    .partner-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+    .partner-card { background:var(--panel); border:1px solid var(--panel-border); border-radius:14px; padding:1.5rem; text-align:center; transition:border-color .2s,transform .2s; }
+    .partner-card:hover { border-color:rgba(180,40,30,.3); transform:translateY(-2px); }
+    .partner-name { font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:800; text-transform:uppercase; color:var(--text-1); margin-bottom:.4rem; }
+    .partner-desc { font-size:.82rem; color:var(--text-2); font-weight:300; line-height:1.55; }
+    .partner-link { display:inline-flex; align-items:center; gap:.3rem; margin-top:.75rem; font-size:.78rem; color:var(--spark); font-weight:500; }
+    .partner-link svg { width:12px; height:12px; }
+
+    /* USP */
+    .usp-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+    .usp-item { display:flex; gap:1rem; align-items:flex-start; }
+    .usp-icon { width:40px; height:40px; border-radius:10px; background:var(--spark-muted); border:1px solid rgba(180,40,30,.2); display:flex; align-items:center; justify-content:center; color:var(--spark); flex-shrink:0; margin-top:.1rem; }
+    .usp-icon svg { width:18px; height:18px; }
+    .usp-title { font-family:'Barlow Condensed',sans-serif; font-size:1rem; font-weight:700; text-transform:uppercase; color:var(--text-1); margin-bottom:.25rem; }
+    .usp-desc { font-size:.83rem; color:var(--text-2); line-height:1.6; font-weight:300; }
+
+    /* CTA */
+    .cta-band { padding:5rem 1.5rem; background:#0a0b0f; text-align:center; position:relative; overflow:hidden; }
+    .cta-band::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 70% at 50% 120%,rgba(180,30,20,.25) 0%,transparent 65%); pointer-events:none; }
+    .cta-band-content { position:relative; z-index:1; }
+    .cta-band-label { font-family:'Barlow Condensed',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--spark); margin-bottom:.75rem; }
+    .cta-band-title { font-family:'Barlow Condensed',sans-serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:900; text-transform:uppercase; color:#fff; line-height:1.05; margin-bottom:.75rem; }
+    .cta-band-sub { font-size:.97rem; color:rgba(255,255,255,.5); margin-bottom:2rem; font-weight:300; }
+    .cta-band-actions { display:flex; flex-wrap:wrap; gap:.75rem; justify-content:center; }
+    .btn-tel { display:inline-flex; align-items:center; gap:.5rem; padding:.85rem 1.6rem; border-radius:10px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.8); font-size:.9rem; font-weight:500; text-decoration:none; transition:background .2s,border-color .2s; }
+    .btn-tel:hover { background:rgba(255,255,255,.11); border-color:rgba(255,255,255,.25); }
+
+    /* FOOTER */
+    .footer { background:#06070a; padding:2rem 1.5rem; border-top:1px solid rgba(255,255,255,.05); }
+    .footer-inner { max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; }
+    .footer-copy { font-size:.78rem; color:rgba(255,255,255,.3); }
+    footer { border-top:1px solid var(--panel-border, rgba(0,0,0,.12)); padding:2rem clamp(1.5rem,4vw,4rem); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .footer-brand { font-family:'Barlow Condensed',sans-serif; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-3, rgba(0,0,0,.45)); }
+    .footer-links { display:flex; gap:2rem; flex-wrap:wrap; align-items:center; }
+    .footer-links a { font-size:.75rem; color:var(--text-3, rgba(0,0,0,.45)); text-decoration:none; letter-spacing:.06em; transition:color .2s; }
+    .footer-links a:hover { color:var(--text-1, rgba(0,0,0,.85)); }
+
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    @media(max-width:768px){ .section{padding:3.5rem 1.25rem;} .hero-content{padding:3rem 1.25rem 4rem;} .topbar-contact .topbar-mail{display:none;} }
+    @media(max-width:480px){ .topbar-nav a{font-size:.65rem;padding:.2rem .4rem;} }
+  </style>
+  <script>
+    /* Google Analytics erst nach Einwilligung (Event cc:consent aus cookie-consent.js) */
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.addEventListener('cc:consent', function (e) {
+      var ok = e.detail && e.detail.analytics;
+      window['ga-disable-G-0521LCB2SC'] = !ok;
+      if (!ok) {
+        ['_ga', '_ga_0521LCB2SC', '_gid', '_gat'].forEach(function (n) {
+          document.cookie = n + '=; Max-Age=0; path=/';
+          document.cookie = n + '=; Max-Age=0; path=/; domain=' + location.hostname;
+          document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname.replace(/^www\./, '');
+        });
+        return;
+      }
+      if (window.__gaLoaded) return;
+      window.__gaLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0521LCB2SC';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-0521LCB2SC', { anonymize_ip: true });
+    });
+  </script>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-contact">
+        <a href="tel:+4901714585063">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +49 (0) 171 45 850 63
+        </a>
+        <div class="topbar-divider"></div>
+        <a href="mailto:info@randl.group" class="topbar-mail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          info@randl.group
+        </a>
+      </div>
+      <div class="topbar-right">
+        <nav class="topbar-nav">
+          <a href="/zelt/">Zeltverleih</a>
+          <span class="sep">·</span>
+          <a href="/metall/">CNC Metallarbeiten</a>
+          <span class="sep">·</span>
+          <a href="/gas/" class="active">Gashandel</a>
+        </nav>
+        <button class="theme-toggle" id="themeBtn" aria-label="Theme wechseln">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <img class="hero-img" id="hero-img" src="" alt="Gashandel Dominik Randl" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge anim-up d1">
+        <svg style="width:10px;height:10px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Firma Dominik Randl · Gashandel
+      </div>
+      <h1 class="hero-title anim-up d2">
+        <em>Flaschengase</em><br>aller Art.<br>Zuverlässig & schnell.
+      </h1>
+      <p class="hero-sub anim-up d3">
+        Wöchentliche Lieferung im Chiemgau und Großraum München. Propangas, Campinggas, Gastro- und technische Gase – alles aus einer Hand.
+      </p>
+      <div class="hero-cta anim-up d4">
+        <a href="https://randl.group/gas/formular/" class="btn-primary">
+          <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Jetzt bestellen
+        </a>
+        <a href="#liefergebiet" class="btn-outline">
+          <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+          Liefergebiet ansehen
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stats-inner" id="stats-container"></div>
+    </div>
+  </section>
+
+  <!-- GAS SORTIMENT -->
+  <section class="section" id="sortiment">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Unser Sortiment</div>
+        <h2 class="section-title">Die komplette<br>Gaspalette</h2>
+        <p class="section-sub">Von Propangas für Camper und Gastronomie bis zu technischen Gasen für Industrie und Handwerk – wir liefern alles.</p>
+      </div>
+      <div class="gas-grid" id="gas-grid"></div>
+    </div>
+  </section>
+
+  <!-- LIEFERGEBIET -->
+  <section class="section section-alt" id="liefergebiet">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Liefergebiet</div>
+        <h2 class="section-title">Wöchentliche Lieferung<br>in Ihrer Region</h2>
+        <p class="section-sub">Wir beliefern regelmäßig einen großen Radius rund um den Chiemgau – zuverlässig, pünktlich, persönlich.</p>
+      </div>
+      <div class="lk-grid" id="lk-grid"></div>
+    </div>
+  </section>
+
+  <!-- USPs -->
+  <section class="section" id="vorteile">
+    <div class="container">
+      <div class="section-header center reveal">
+        <div class="section-label">Ihre Vorteile</div>
+        <h2 class="section-title">Warum Randl Gashandel?</h2>
+        <p class="section-sub">Persönlicher Service, faire Preise und ein Partner, dem Sie vertrauen können.</p>
+      </div>
+      <div class="usp-grid" id="usp-grid"></div>
+    </div>
+  </section>
+
+  <!-- PARTNER -->
+  <section class="section section-alt" id="partner">
+    <div class="container">
+      <div class="section-header center reveal">
+        <div class="section-label">Unsere Partner</div>
+        <h2 class="section-title">Starke Marken,<br>starker Service</h2>
+        <p class="section-sub">Wir arbeiten mit führenden Gasherstellern zusammen – für höchste Qualität und Versorgungssicherheit.</p>
+      </div>
+      <div class="partner-grid" id="partner-grid"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="cta-band-content container">
+      <div class="cta-band-label">Jetzt bestellen</div>
+      <h2 class="cta-band-title">Gas bestellen –<br>wir liefern zu Ihnen.</h2>
+      <p class="cta-band-sub">Einfach anfragen. Wir prüfen Ihren Lieferort und melden uns umgehend.</p>
+      <div class="cta-band-actions">
+        <a href="https://randl.group/gas/formular/" class="btn-primary">
+          <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Bestellanfrage stellen
+        </a>
+        <a href="tel:+4901714585063" class="btn-tel">
+          <svg style="width:15px;height:15px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +49 (0) 171 45 850 63
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+<footer>
+  <span class="footer-brand">© 2026 Firma Dominik Randl · Alle Rechte vorbehalten</span>
+  <nav class="footer-links">
+    <a href="/kontakt">Kontakt</a>
+    <a href="/impressum">Impressum</a>
+    <a href="/datenschutz">Datenschutz</a>
+    <a href="#" onclick="window.RandlCookieConsent&&window.RandlCookieConsent.openSettings();return false;">Cookie-Einstellungen</a>
+  </nav>
+</footer>
+
+  <script>
+  // ════════════ CMS CONTENT ════════════
+  const CONTENT = {
+    stats: [
+      { num: "9",      label: "Landkreise beliefert" },
+      { num: "wöch.",  label: "Lieferrhythmus"       },
+      { num: "3",      label: "Markenpartner"         },
+      { num: "∞",      label: "Gasarten verfügbar"   }
+    ],
+    gasCategories: [
+      {
+        icon: "flame",
+        title: "Propangas & Heizgas",
+        desc: "Für Camper, Eigenheim, Heizung und Kochen. ALU-Flaschen und Stahlflaschen in allen gängigen Größen.",
+        tags: ["Propan", "Butan", "Camping", "ALU-Flaschen", "Stahlflaschen"]
+      },
+      {
+        icon: "beer",
+        title: "Gastro & Schankanlagen",
+        desc: "CO₂ und Stickstoff für Schankanlagen und Biermischung. Rote Flaschen für die Gastronomie. Zuverlässige Versorgung.",
+        tags: ["CO₂", "Stickstoff", "Biermischung", "Rote Flaschen", "Gastronomie"]
+      },
+      {
+        icon: "campingaz",
+        title: "CampingGaz",
+        desc: "Das Original für unterwegs. Alle gängigen CampingGaz-Kartuschen und Flaschen für Camping, Outdoor und Freizeit.",
+        tags: ["CampingGaz", "Kartuschen", "Outdoor", "Trekking"]
+      },
+      {
+        icon: "tool",
+        title: "Technische Gase",
+        desc: "Die komplette Palette für Handwerk, Metallbau und Industrie. Wir erschließen neue Kunden im Bereich technische Gase.",
+        tags: ["Argon", "Arcox", "Sauerstoff", "Stickstoff", "Schweißgas"]
+      }
+    ],
+    liefergebiete: [
+      { short: "RO",  name: "Landkreis Rosenheim",   sub: "inkl. Stadt Rosenheim" },
+      { short: "EBE", name: "Landkreis Ebersberg",   sub: "Südostbayern"          },
+      { short: "MÜ",  name: "Landkreis Mühldorf",    sub: "Inn-Region"            },
+      { short: "TS",  name: "Landkreis Traunstein",  sub: "Chiemgau"              },
+      { short: "BGL", name: "Berchtesgadener Land",  sub: "Alpenvorland"          },
+      { short: "MB",  name: "Landkreis Miesbach",    sub: "Tegernsee & Schliersee"},
+      { short: "AÖ",  name: "Landkreis Altötting",   sub: "Inn-Salzach"           },
+    ],
+    usps: [
+      { icon: "truck",  title: "Wöchentliche Lieferung",  desc: "Zuverlässige Tour-Planung mit festen Liefertagen in Ihrer Region. Nie wieder ohne Gas dastehen." },
+      { icon: "phone",  title: "Persönlicher Kontakt",    desc: "Sie sprechen immer mit Dominik Randl persönlich – kein Callcenter, kein Weitervermitteln." },
+      { icon: "shield", title: "Markenqualität",          desc: "Nur zertifizierte Gase von geprüften Partnern: Widmann Gase, Tyczka und CampingGaz." },
+      { icon: "list",   title: "Komplettanbieter",        desc: "Von der kleinen Campingkartusche bis zum Großgebinde für die Industrie – alles aus einer Hand." }
+    ],
+    partners: [
+      { name: "Widmann Gase",  image: "partner-widmann.webp",   desc: "Regionaler Spezialist für Industrie- und Spezialgase seit Jahrzehnten.", url: "https://www.widmann-gase.de/" },
+      { name: "Tyczka Energy", image: "partner-tyczka.webp",    desc: "Führender Anbieter für Flüssiggas und Propan-Lösungen in Deutschland.",  url: "https://tyczka-energy.de/"    },
+      { name: "CampingGaz",   image: "partner-campingaz.webp",  desc: "Die europaweit bekannte Marke für Campinggas-Lösungen und Outdoorbedarf.",url: "https://www.campingaz.de/"    }
+    ]
+  };
+
+  // ICONS
+  const I = {
+    flame:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 01-7 7 7 7 0 01-7-7c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg>`,
+    beer:      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11h1a3 3 0 010 6h-1"/><path d="M9 12v6"/><path d="M13 12v6"/><path d="M14 7.5c-1 0-1.44.5-3 .5s-2-.5-3-.5-1.44.5-3 .5"/><path d="M5 8l1 12h10L17 8"/><path d="M5 8H3m19 0h-2M5 4h14"/></svg>`,
+    campingaz: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+    tool:      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
+    truck:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
+    phone:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>`,
+    shield:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    list:      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>`,
+    link:      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`
+  };
+
+  // RENDER
+  const sc = document.getElementById('stats-container');
+  CONTENT.stats.forEach(s => { sc.innerHTML += `<div class="stat-item"><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`; });
+
+  const gg = document.getElementById('gas-grid');
+  CONTENT.gasCategories.forEach(g => {
+    gg.innerHTML += `
+    <div class="gas-card">
+      <div class="gas-icon">${I[g.icon]||I.flame}</div>
+      <div class="gas-title">${g.title}</div>
+      <p class="gas-desc">${g.desc}</p>
+      <div class="gas-tags">${g.tags.map(t=>`<span class="gas-tag">${t}</span>`).join('')}</div>
+    </div>`;
+  });
+
+  const lg = document.getElementById('lk-grid');
+  CONTENT.liefergebiete.forEach(l => {
+    lg.innerHTML += `
+    <div class="lk-card">
+      <div class="lk-dot"></div>
+      <div><div class="lk-name"><strong>${l.short}</strong> · ${l.name}</div><div class="lk-sub">${l.sub}</div></div>
+    </div>`;
+  });
+
+  const ug = document.getElementById('usp-grid');
+  CONTENT.usps.forEach(u => {
+    ug.innerHTML += `
+    <div class="usp-item">
+      <div class="usp-icon">${I[u.icon]||I.shield}</div>
+      <div><div class="usp-title">${u.title}</div><p class="usp-desc">${u.desc}</p></div>
+    </div>`;
+  });
+
+  const partg = document.getElementById('partner-grid');
+  CONTENT.partners.forEach(p => {
+    partg.innerHTML += `
+    <div class="partner-card">
+      ${p.image ? '<div style="height:64px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;background:var(--panel-light);border-radius:8px;padding:0.5rem;"><img src="' + p.image + '" alt="' + p.name + ' Logo" style="max-height:52px;max-width:148px;object-fit:contain;" onerror="this.parentNode.style.display=\'none\'"></div>' : ''}
+      <div class="partner-name">${p.name}</div>
+      <p class="partner-desc">${p.desc}</p>
+          </div>`;
+  });
+
+
+  // Theme
+  const html = document.documentElement;
+  html.setAttribute('data-theme', localStorage.getItem('randl-theme') || 'light');
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('randl-theme', next);
+  });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  
+  /* ── HERO-LOADER ───────────────────────────────────────────── */
+  (function(){
+    var img = document.getElementById('hero-img');
+    img.addEventListener('load',  function(){ img.classList.add('loaded'); });
+    img.addEventListener('error', function(){});
+    img.src = 'hero.webp';
+  })();
+</script>
+<script src="/cookie-consent.js"></script>
+</body>
+</html>

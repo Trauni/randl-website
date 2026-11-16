@@ -1,0 +1,498 @@
+/* ═══════════════════════════════════════════════════════════════════
+   RANDL GROUP — Universales Formular CSS
+   Gilt für: Metall-Formular · Zelt-Formular · Gas-Formular
+   Theme: Industrial Spark / Dark Steel
+   Schrift: Barlow Condensed (Headlines) + DM Sans (Body)
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Hauptfarben ─────────────────────────────────────────────── */
+  --spark:        #ff0000;
+  --spark-light:  #C33E2F;
+  --spark-dark:   #C33E2F;
+--spark-glow:   rgba(255,0,0,0.2);
+--spark-muted:  rgba(195,62,47,0.12);
+
+  /* ── Panels / Struktur ───────────────────────────────────────── */
+  --bg:           #09090c;
+  --panel:        #111520;
+  --panel-light:  #181e2e;
+  --panel-border: #222840;
+
+  /* ── Texte ───────────────────────────────────────────────────── */
+  --text-1:  rgba(255,255,255,0.92);
+  --text-2:  rgba(255,255,255,0.50);
+  --text-3:  rgba(255,255,255,0.28);
+
+  /* ── Inputs ──────────────────────────────────────────────────── */
+  --input-bg:    #0d1020;
+  --input-bdr:   rgba(255,255,255,0.09);
+--input-focus:  rgba(195,62,47,0.5);
+
+  /* ── Fehler ──────────────────────────────────────────────────── */
+  --err-bg:  rgba(239,68,68,0.08);
+  --err-bdr: rgba(239,68,68,0.35);
+  --err-txt: #f87171;
+  --dot-fg:   rgba(255,255,255,.025);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   THEME — Dark (Default)
+   ══════════════════════════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --spark:        #ff0000;
+  --spark-light:  #C33E2F;
+  --spark-dark:   #C33E2F;
+  --spark-glow:   rgba(255,0,0,0.2);
+  --spark-muted:  rgba(195,62,47,0.12);
+
+  --bg:           #09090c;
+  --panel:        #111520;
+  --panel-light:  #181e2e;
+  --panel-border: #222840;
+
+  --text-1:  rgba(255,255,255,0.92);
+  --text-2:  rgba(255,255,255,0.50);
+  --text-3:  rgba(255,255,255,0.28);
+
+  --input-bg:    #0d1020;
+  --input-bdr:   rgba(255,255,255,0.09);
+  --input-focus: rgba(195,62,47,0.5);
+
+  --err-bg:  rgba(239,68,68,0.08);
+  --err-bdr: rgba(239,68,68,0.35);
+  --err-txt: #f87171;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   THEME — Light
+   ══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] {
+  --spark:        #cc0000;
+  --spark-light:  #a83020;
+  --spark-dark:   #a83020;
+  --spark-glow:   rgba(204,0,0,0.15);
+  --spark-muted:  rgba(204,0,0,0.08);
+
+  --bg:           #f5f5f0;
+  --panel:        #ffffff;
+  --panel-light:  #f0eeea;
+  --panel-border: #e0ddd8;
+
+  --text-1:  rgba(0,0,0,0.85);
+  --text-2:  rgba(0,0,0,0.55);
+  --text-3:  rgba(0,0,0,0.35);
+
+  --input-bg:    #ffffff;
+  --input-bdr:   rgba(0,0,0,0.12);
+  --input-focus: rgba(168,48,32,0.4);
+
+  --err-bg:  rgba(239,68,68,0.06);
+  --err-bdr: rgba(239,68,68,0.30);
+  --err-txt: #dc2626;
+  --dot-fg:   rgba(0,0,0,.045);
+}
+
+/* Light Mode: Calendar-Picker Icon anpassen */
+[data-theme="light"] input[type="date"].field-input::-webkit-calendar-picker-indicator {
+  filter: invert(0.2) sepia(1) saturate(4) hue-rotate(330deg);
+}
+
+/* ── Reset / Base ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text-1);
+}
+
+/* ── Animations ────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes stepEnterRight {
+  from { opacity: 0; transform: translateX(26px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes stepEnterLeft {
+  from { opacity: 0; transform: translateX(-26px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes drawCircle {
+  from { stroke-dashoffset: 166; } to { stroke-dashoffset: 0; }
+}
+@keyframes drawCheck {
+  from { stroke-dashoffset: 50; } to { stroke-dashoffset: 0; }
+}
+
+.anim-fade-up {
+  animation: fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) both;
+  animation-delay: var(--delay, 0s);
+}
+.anim-fade-in {
+  animation: fadeIn 0.4s ease both;
+  animation-delay: var(--delay, 0s);
+}
+.step-enter-right { animation: stepEnterRight 0.35s cubic-bezier(0.22,1,0.36,1) both; }
+.step-enter-left  { animation: stepEnterLeft  0.35s cubic-bezier(0.22,1,0.36,1) both; }
+
+/* ── Step Header ───────────────────────────────────────────────────── */
+.step-badge {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--spark);
+  border: 1px solid rgba(195,62,47,0.3);
+  background: var(--spark-muted);
+  padding: 0.18rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 0.65rem;
+}
+
+.step-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-1);
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+
+.step-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-2);
+  font-weight: 300;
+}
+
+/* ── Field Components ──────────────────────────────────────────────── */
+.field-group { display: flex; flex-direction: column; }
+
+.field-label {
+  font-size: 0.73rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-bottom: 0.5rem;
+}
+
+.req-star { color: var(--spark); margin-left: 1px; }
+
+.optional-tag {
+  color: var(--text-3);
+  font-weight: 300;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.7rem;
+}
+
+.field-input {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--input-bdr);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.91rem;
+  color: var(--text-1);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.field-input::placeholder { color: var(--text-3); }
+.field-input:focus {
+  border-color: var(--input-focus);
+  background: rgba(195,62,47,0.03);
+  box-shadow: 0 0 0 3px var(--spark-glow);
+}
+.field-input.is-error,
+.field-input.is-invalid {
+  border-color: var(--err-bdr);
+  background: var(--err-bg);
+}
+
+/* Select */
+select.field-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ff0000' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+select.field-input option { background: var(--panel); color: var(--text-1); }
+
+/* Date */
+input[type="date"].field-input::-webkit-calendar-picker-indicator {
+  filter: invert(0.6) sepia(1) saturate(3) hue-rotate(10deg);
+  cursor: pointer; opacity: 0.7;
+}
+
+/* Number */
+input[type="number"].field-input::-webkit-inner-spin-button,
+input[type="number"].field-input::-webkit-outer-spin-button { opacity: 0.4; }
+
+.field-error {
+  font-size: 0.73rem;
+  color: var(--err-txt);
+  margin-top: 0.35rem;
+  display: none;
+}
+.field-error.visible,
+.field-error.is-visible { display: block; }
+
+/* ── Service Tiles ─────────────────────────────────────────────────── */
+.service-tile {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--panel-border);
+  background: var(--input-bg);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  user-select: none;
+}
+.service-tile:hover {
+  border-color: rgba(195,62,47,0.35);
+  background: rgba(195,62,47,0.03);
+}
+.service-tile.is-selected {
+  border-color: rgba(195,62,47,0.7);
+  background: rgba(195,62,47,0.08);
+  box-shadow: 0 0 0 1px rgba(195,62,47,0.25);
+}
+
+.service-icon-wrap {
+  width: 38px; height: 38px;
+  border-radius: 9px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(195,62,47,0.1);
+  border: 1px solid rgba(195,62,47,0.2);
+  color: var(--spark);
+  transition: background 0.2s, border-color 0.2s;
+}
+.service-icon-wrap svg { width: 17px; height: 17px; }
+.service-tile.is-selected .service-icon-wrap {
+  background: rgba(195,62,47,0.2);
+  border-color: rgba(195,62,47,0.45);
+}
+
+.service-name {
+  font-size: 0.88rem; font-weight: 500;
+  color: var(--text-1); line-height: 1.25;
+}
+.service-desc {
+  font-size: 0.73rem; color: var(--text-3);
+  margin-top: 0.15rem; line-height: 1.35;
+}
+
+.service-check-icon {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--panel-border);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: transparent;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  margin-left: auto;
+}
+.service-check-icon svg { width: 10px; height: 10px; }
+.service-tile.is-selected .service-check-icon {
+  border-color: var(--spark);
+  background: var(--spark);
+  color: #000;
+}
+
+/* ── Radio Tiles ───────────────────────────────────────────────────── */
+.radio-tile {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--panel-border);
+  background: var(--input-bg);
+  cursor: pointer;
+  font-size: 0.88rem;
+  color: var(--text-2);
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  user-select: none;
+}
+.radio-tile:hover { border-color: rgba(195,62,47,0.3); color: var(--text-1); }
+.radio-tile:has(input:checked) {
+  border-color: rgba(195,62,47,0.65);
+  background: rgba(195,62,47,0.07);
+  color: var(--text-1);
+}
+.radio-dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid var(--panel-border);
+  flex-shrink: 0; position: relative;
+  transition: border-color 0.2s;
+}
+.radio-dot::after {
+  content: '';
+  position: absolute; inset: 3px;
+  border-radius: 50%;
+  background: var(--spark);
+  transform: scale(0);
+  transition: transform 0.2s cubic-bezier(0.22,1,0.36,1);
+}
+.radio-tile:has(input:checked) .radio-dot { border-color: var(--spark); }
+.radio-tile:has(input:checked) .radio-dot::after { transform: scale(1); }
+
+/* ── Consent Checkbox ──────────────────────────────────────────────── */
+.consent-checkbox {
+  width: 18px; height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid var(--panel-border);
+  background: var(--input-bg);
+  appearance: none; -webkit-appearance: none;
+  cursor: pointer; position: relative;
+  transition: border-color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.consent-checkbox:checked { background: var(--spark); border-color: var(--spark); }
+.consent-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 4px; top: 1.5px;
+  width: 6px; height: 10px;
+  border: 2px solid #000;
+  border-top: none; border-left: none;
+  transform: rotate(45deg);
+}
+.consent-checkbox:focus { box-shadow: 0 0 0 3px var(--spark-glow); outline: none; }
+
+/* ── Progress Dots ─────────────────────────────────────────────────── */
+.pdot {
+  display: flex; align-items: center; gap: 0.5rem;
+  flex: 1;
+  position: relative;
+}
+.pdot:not(:last-child)::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--panel-border);
+  margin: 0 0.3rem;
+}
+
+.pdot-circle {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--panel-border);
+  background: var(--panel);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--text-3);
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+.pdot.active .pdot-circle {
+  border-color: var(--spark);
+  background: rgba(195,62,47,0.1);
+  color: var(--spark);
+  box-shadow: 0 0 0 3px rgba(195,62,47,0.15);
+}
+.pdot.done .pdot-circle {
+  border-color: var(--spark);
+  background: var(--spark);
+  color: #000;
+}
+
+.pdot-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  transition: color 0.3s;
+  white-space: nowrap;
+  display: none;
+}
+@media (min-width: 480px) { .pdot-label { display: block; } }
+.pdot.active .pdot-label { color: var(--spark); }
+.pdot.done   .pdot-label { color: var(--text-2); }
+
+/* ── Buttons ───────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex; align-items: center;
+  padding: 0.7rem 1.6rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--spark-dark), var(--spark-light));
+  color: #000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem; font-weight: 600;
+  border: none; cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  white-space: nowrap; gap: 0.4rem;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(195,62,47,0.3);
+}
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-2);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem; font-weight: 500;
+  border: 1px solid var(--panel-border); cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.btn-secondary:hover {
+  border-color: rgba(195,62,47,0.4);
+  color: var(--text-1);
+  background: rgba(195,62,47,0.05);
+}
+
+/* ── Spinner ───────────────────────────────────────────────────────── */
+.spinner { animation: spin 0.8s linear infinite; }
+
+/* ── Success Ring ──────────────────────────────────────────────────── */
+.success-ring { width: 72px; height: 72px; }
+.success-circle {
+  stroke-dasharray: 166; stroke-dashoffset: 166;
+  animation: drawCircle 0.6s ease forwards 0.1s;
+}
+.success-check {
+  stroke-dasharray: 50; stroke-dashoffset: 50;
+  animation: drawCheck 0.4s ease forwards 0.7s;
+}
+/* Legacy check-path support for existing Zelt form */
+.check-path {
+  stroke-dasharray: 50; stroke-dashoffset: 50;
+  animation: drawCheck 0.4s ease forwards 0.6s;
+}
+
+/* ── Form Step ─────────────────────────────────────────────────────── */
+.form-step.hidden { display: none; }
+
+/* ── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(195,62,47,0.35); border-radius: 2px; }

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('randl-theme')||'light');</script>
+  <meta charset="UTF-8" />
+  <!-- SEO: Basis -->
+  <title>Flaschengase & Gashandel – Dominik Randl</title>
+  <meta name="description" content="Propangas, CO₂, Argon und mehr – für Gastronomie, Industrie und Handwerk in der Region Bayern." />
+  <meta name="keywords" content="Flaschengase Bayern, Propangas kaufen Chiemgau, CO2 Gastronomie Rosenheim, Argon Schweißgas Bayern, Dominik Randl" />
+  <link rel="canonical" href="https://randl.group/gas/formular/" />
+
+  <!-- SEO: Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:title" content="Flaschengase & Gashandel – Dominik Randl" />
+  <meta property="og:description" content="Propangas, CO₂, Argon und mehr – für Gastronomie, Industrie und Handwerk in der Region Bayern." />
+  <meta property="og:url" content="https://randl.group/gas/formular/" />
+  <meta property="og:image" content="https://randl.group/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Dominik Randl" />
+
+  <!-- SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Flaschengase & Gashandel – Dominik Randl" />
+  <meta name="twitter:description" content="Propangas, CO₂, Argon und mehr – für Gastronomie, Industrie und Handwerk in der Region Bayern." />
+  <meta name="twitter:image" content="https://randl.group/og-image.jpg" />
+
+  <!-- SEO: Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Gashandel & Flaschengas",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Dominik Randl",
+    "telephone": "+4901714585063",
+    "email": "info@randl.group",
+    "address": {
+      "@type": "PostalAddress",
+        "addressLocality": "Seeon-Seebruck",
+      "addressRegion": "Bayern",
+      "addressCountry": "DE"
+    }
+  },
+  "areaServed": {
+    "@type": "State",
+    "name": "Bayern"
+  },
+  "description": "Flaschengase: Propangas, CO2, Argon und mehr für Gastronomie, Industrie und Handwerk in Bayern.",
+  "url": "https://randl.group/gas/formular/"
+}
+</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gashandel Anfrage – Dominik Randl</title>
+  <meta name="description" content="Anfrage, Neukundenanmeldung und Bestellung für Flaschengase – Dominik Randl Gashandel." />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="shortcut icon" href="/logo.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="stylesheet" href="/fonts.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { display:['"Barlow Condensed"','sans-serif'], body:['"DM Sans"','system-ui','sans-serif'] },
+        colors: { ink:{DEFAULT:'#09090c'}, spark:{DEFAULT:'#ff0000',light:'#C33E2F',dark:'#C33E2F'}, panel:{DEFAULT:'#111520',light:'#181e2e',border:'#222840'} },
+      }},
+    };
+  </script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Topbar */
+    #topbar{background:var(--panel);border-bottom:1px solid var(--panel-border);padding:.55rem clamp(1rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-size:.73rem;position:sticky;top:0;z-index:200}
+    .topbar-left{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+    .topbar-left a{color:var(--text-2);text-decoration:none;display:flex;align-items:center;gap:.45rem;transition:color .2s}
+    .topbar-left a:hover{color:var(--spark)}
+    .topbar-left svg{width:13px;height:13px;color:var(--spark);flex-shrink:0}
+    .topbar-right{display:flex;align-items:center;gap:.5rem;font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+    .topbar-right a{color:var(--text-2);text-decoration:none;transition:color .2s;white-space:nowrap}
+    .topbar-right a:hover{color:var(--spark)}
+    .topbar-right a.active{color:var(--text-1)}
+    .topbar-sep{color:var(--text-3);font-size:.55rem}
+    /* Switcher */
+    #form-switcher{background:var(--panel);border-bottom:1px solid var(--panel-border);padding:.6rem clamp(1rem,4vw,3rem);display:flex;align-items:center;gap:.5rem;overflow-x:auto;scrollbar-width:none}
+    #form-switcher::-webkit-scrollbar{display:none}
+    .switcher-label{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-3);white-space:nowrap;margin-right:.5rem}
+    .switcher-tab{display:inline-flex;align-items:center;gap:.4rem;padding:.38rem .9rem;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;border:1px solid transparent;color:var(--text-2);transition:all .2s}
+    .switcher-tab:hover{color:var(--text-1);border-color:var(--panel-border);background:rgba(0,0,0,.04)}
+    .switcher-tab.active{color:var(--spark);border-color:rgba(195,62,47,.35);background:rgba(195,62,47,.08)}
+    .switcher-tab svg{width:12px;height:12px;flex-shrink:0}
+    /* Mode Switch */
+    .mode-switcher{display:flex;background:var(--panel);border:1px solid var(--panel-border);border-radius:10px;padding:3px;gap:2px}
+    .mode-btn{flex:1;padding:.5rem .75rem;border-radius:7px;border:none;background:transparent;color:var(--text-2);font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .mode-btn:hover{color:var(--text-1);background:rgba(0,0,0,.06)}
+    .mode-btn.mode-active{background:linear-gradient(135deg,#C33E2F,#C33E2F);color:#000;font-weight:700}
+    /* Address toggle */
+    .toggle-row{display:flex;align-items:center;gap:.75rem;padding:.65rem 0;cursor:pointer}
+    .toggle-label{font-size:.82rem;color:var(--text-2);font-weight:500}
+    .toggle-switch{width:36px;height:20px;background:var(--panel-border);border-radius:100px;position:relative;transition:background .2s;flex-shrink:0}
+    .toggle-switch::after{content:'';position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s}
+    input[type="checkbox"].toggle-input:checked ~ .toggle-switch{background:#ff0000}
+    input[type="checkbox"].toggle-input:checked ~ .toggle-switch::after{transform:translateX(16px)}
+    input[type="checkbox"].toggle-input{display:none}
+    /* Radio tile */
+    .radio-tile{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;border-radius:9px;border:1px solid var(--panel-border);background:transparent;cursor:pointer;transition:all .2s}
+    .radio-tile:hover{border-color:rgba(195,62,47,.3);background:rgba(195,62,47,.04)}
+    .radio-tile.is-selected{border-color:rgba(245,160,32,.5);background:rgba(195,62,47,.08)}
+    .radio-dot{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--panel-border);background:transparent;flex-shrink:0;position:relative;transition:border-color .2s}
+    .radio-tile.is-selected .radio-dot{border-color:#ff0000}
+    .radio-tile.is-selected .radio-dot::after{content:'';position:absolute;top:3px;left:3px;width:8px;height:8px;border-radius:50%;background:#ff0000}
+    /* Footer */
+    #page-footer{border-top:1px solid var(--panel-border);padding:1.5rem clamp(1rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.72rem;margin-top:2rem}
+    .footer-copy{color:var(--text-3)}
+    .footer-nav{display:flex;gap:1.5rem;flex-wrap:wrap}
+    .footer-nav a{color:var(--text-2);text-decoration:none;transition:color .2s}
+    .footer-nav a:hover{color:var(--spark)}
+    /* Subheading */
+    .sub-section-label{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text-3);margin-bottom:.5rem;margin-top:1.25rem;display:block}
+  
+    body { background: var(--bg); color: var(--text-1); }
+  </style>
+  <script>
+    /* Google Analytics erst nach Einwilligung (Event cc:consent aus cookie-consent.js) */
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.addEventListener('cc:consent', function (e) {
+      var ok = e.detail && e.detail.analytics;
+      window['ga-disable-G-0521LCB2SC'] = !ok;
+      if (!ok) {
+        ['_ga', '_ga_0521LCB2SC', '_gid', '_gat'].forEach(function (n) {
+          document.cookie = n + '=; Max-Age=0; path=/';
+          document.cookie = n + '=; Max-Age=0; path=/; domain=' + location.hostname;
+          document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname.replace(/^www\./, '');
+        });
+        return;
+      }
+      if (window.__gaLoaded) return;
+      window.__gaLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0521LCB2SC';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-0521LCB2SC', { anonymize_ip: true });
+    });
+  </script>
+</head>
+<body class="font-body min-h-screen flex flex-col">
+
+  <!-- Topbar -->
+  <div id="topbar">
+    <div class="topbar-left">
+      <a href="tel:+4901714585063"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.25 1.16 2 2 0 012.24 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.28-.55a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+49 (0) 171 45 850 63</a>
+      <a href="mailto:info@randl.group"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@randl.group</a>
+    </div>
+    <div class="topbar-right">
+      <a href="https://randl-partyzelte.de/"  target="blank">Zeltverleih</a>
+      <span class="topbar-sep">•</span>
+      <a href="https://randl-cnctechnik.de/"  target="blank">CNC Metallarbeiten</a>
+      <span class="topbar-sep">•</span>
+      <a href="https://chiemgaugase.de/" class="active" target="blank">Gashandel</a>
+      <button id="theme-toggle-btn" aria-label="Theme wechseln" style="background:none;border:none;cursor:pointer;color:var(--text-2);display:flex;align-items:center;padding:.3rem .35rem;border-radius:6px;transition:color .2s;margin-left:.25rem;"></button>
+    </div>
+  </div>
+
+  <!-- Form Switcher -->
+  <div id="form-switcher">
+    <span class="switcher-label">Anfrage für:</span>
+    <a href="/zelt/formular" class="switcher-tab"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg>Zeltverleih</a>
+    <a href="/metall/formular" class="switcher-tab"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Metallarbeiten</a>
+    <a href="/gas/formular" class="switcher-tab active"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"/></svg>Gashandel</a>
+  </div>
+
+  <!-- Main -->
+  <div class="flex-1 flex items-center justify-center py-10 px-4 relative">
+    <div class="fixed inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-48 -left-48 w-[700px] h-[700px] rounded-full" style="background:radial-gradient(circle,rgba(255,0,0,0.055) 0%,transparent 70%)"></div>
+      <div class="absolute bottom-0 -right-24 w-[500px] h-[500px] rounded-full" style="background:radial-gradient(circle,rgba(58,123,213,0.05) 0%,transparent 70%)"></div>
+      <div class="absolute inset-0" style="background-image:radial-gradient(var(--dot-fg,rgba(255,255,255,.025)) 1px,transparent 1px);background-size:28px 28px"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-2xl flex flex-col items-center gap-8">
+
+      <!-- Header -->
+      <header class="text-center w-full anim-fade-up" style="--delay:.05s">
+        <div class="inline-flex items-center gap-3 mb-6">
+          <div class="w-11 h-11 rounded-full overflow-hidden flex-shrink-0" style="border:2px solid rgba(245,160,32,0.35)">
+            <img src="/logo.png" alt="Logo" class="w-full h-full object-cover" />
+          </div>
+          <span class="font-display text-base tracking-widest uppercase" style="color:var(--text-1)">Dominik Randl – Gashandel</span>
+        </div>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-wide uppercase">
+          Gas<span class="text-spark-light">anfrage</span>
+        </h1>
+        <p class="mt-3 text-base sm:text-lg font-light max-w-lg mx-auto" style="color:var(--text-2)">
+          Flaschengase aller Art – wir melden uns innerhalb von 24 Stunden.
+        </p>
+      </header>
+
+      <!-- Form Card -->
+      <div id="form-card" class="w-full anim-fade-up" style="--delay:.15s">
+        <div class="rounded-2xl overflow-hidden" style="background:var(--panel);border:1px solid var(--panel-border);box-shadow:0 8px 60px rgba(0,0,0,0.4)">
+
+          <!-- Modus-Schalter -->
+          <div class="px-8 pt-6 pb-5" style="border-bottom:1px solid var(--panel-border)">
+            <p class="text-xs uppercase tracking-widest mb-3" style="color:var(--text-3);font-family:'Barlow Condensed',sans-serif;letter-spacing:.15em">Was möchten Sie?</p>
+            <div class="mode-switcher">
+              <button class="mode-btn mode-active" data-mode="neukunde">Neukunde</button>
+              <button class="mode-btn" data-mode="bestellung">Bestellung</button>
+            </div>
+          </div>
+
+          <!-- Progress -->
+          <div id="progress-area" class="px-8 pt-6 pb-5" style="border-bottom:1px solid var(--panel-border)">
+            <div id="step-dots" class="flex items-center justify-between mb-4" role="list"></div>
+            <div class="h-1 rounded-full overflow-hidden" style="background:var(--panel-border)">
+              <div id="progress-bar" class="h-full rounded-full transition-all duration-500" style="width:33%;background:linear-gradient(90deg,#C33E2F,#C33E2F)"></div>
+            </div>
+          </div>
+
+          <form id="inquiry-form" novalidate autocomplete="on">
+
+            <!-- ══════════════════════════════════════════════════════ -->
+            <!--  MODUS: ANFRAGE                                        -->
+            <!-- ══════════════════════════════════════════════════════ -->
+
+            
+            
+            
+            <!-- ══════════════════════════════════════════════════════ -->
+            <!--  MODUS: NEUKUNDE                                       -->
+            <!-- ══════════════════════════════════════════════════════ -->
+
+            <!-- Neukunde: Schritt 1 – Kontakt -->
+            <section class="form-step px-8 py-8 hidden" data-mode="neukunde" data-step="1">
+              <div class="mb-6"><span class="step-badge">01</span><h2 class="step-title">Kontaktdaten</h2><p class="step-subtitle">Ihre Kontaktinformationen</p></div>
+              <div class="space-y-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div class="field-group"><label class="field-label">Vorname <span class="req-star">*</span></label><input type="text" id="n-vorname" name="n-vorname" class="field-input" placeholder="Max" required /><span class="field-error" id="error-n-vorname"></span></div>
+                  <div class="field-group"><label class="field-label">Nachname <span class="req-star">*</span></label><input type="text" id="n-nachname" name="n-nachname" class="field-input" placeholder="Mustermann" required /><span class="field-error" id="error-n-nachname"></span></div>
+                </div>
+                <div class="field-group"><label class="field-label">E-Mail <span class="req-star">*</span></label><input type="email" id="n-email" name="n-email" class="field-input" placeholder="max@beispiel.de" required /><span class="field-error" id="error-n-email"></span></div>
+                <div class="field-group"><label class="field-label">Telefon <span class="req-star">*</span></label><input type="tel" id="n-telefon" name="n-telefon" class="field-input" placeholder="+49 123 456789" required /><span class="field-error" id="error-n-telefon"></span></div>
+                <div class="field-group"><label class="field-label">Firma <span class="optional-tag">(optional)</span></label><input type="text" id="n-firma" name="n-firma" class="field-input" placeholder="Mustermann GmbH" /></div>
+              </div>
+            </section>
+
+            <!-- Neukunde: Schritt 2 – Adressen -->
+            <section class="form-step px-8 py-8 hidden" data-mode="neukunde" data-step="2">
+              <div class="mb-6"><span class="step-badge">02</span><h2 class="step-title">Adressen</h2><p class="step-subtitle">Rechnungs- und Lieferadresse</p></div>
+              <div class="space-y-5">
+                <span class="sub-section-label">Hauptadresse</span>
+                <div class="field-group"><label class="field-label">Straße & Hausnummer <span class="req-star">*</span></label><input type="text" id="n-strasse" name="n-strasse" class="field-input" placeholder="Musterstraße 12" required /><span class="field-error" id="error-n-strasse"></span></div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                  <div class="field-group"><label class="field-label">PLZ <span class="req-star">*</span></label><input type="text" id="n-plz" name="n-plz" class="field-input" placeholder="12345" required maxlength="10" /><span class="field-error" id="error-n-plz"></span></div>
+                  <div class="field-group sm:col-span-2"><label class="field-label">Ort <span class="req-star">*</span></label><input type="text" id="n-ort" name="n-ort" class="field-input" placeholder="München" required /><span class="field-error" id="error-n-ort"></span></div>
+                </div>
+                <div class="field-group"><label class="field-label">Land <span class="optional-tag">(optional)</span></label><select id="n-land" name="n-land" class="field-input"><option value="Deutschland" selected>Deutschland</option><option value="Österreich">Österreich</option><option value="Schweiz">Schweiz</option><option value="Sonstiges">Sonstiges</option></select></div>
+
+                <!-- Lieferanschrift abweichend -->
+                <label class="toggle-row">
+                  <input type="checkbox" id="lief-abweichend" class="toggle-input sr-only" />
+                  <span class="toggle-switch"></span>
+                  <span class="toggle-label">Lieferanschrift abweichend</span>
+                </label>
+                <div id="lief-fields" class="hidden space-y-4 pl-4" style="border-left:2px solid rgba(195,62,47,.25)">
+                  <div class="field-group"><label class="field-label">Lieferstraße <span class="req-star">*</span></label><input type="text" id="n-lief-strasse" class="field-input" placeholder="Lieferstraße 1" /><span class="field-error" id="error-n-lief-strasse"></span></div>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="field-group"><label class="field-label">PLZ <span class="req-star">*</span></label><input type="text" id="n-lief-plz" class="field-input" placeholder="12345" maxlength="10" /><span class="field-error" id="error-n-lief-plz"></span></div>
+                    <div class="field-group sm:col-span-2"><label class="field-label">Ort <span class="req-star">*</span></label><input type="text" id="n-lief-ort" class="field-input" placeholder="München" /><span class="field-error" id="error-n-lief-ort"></span></div>
+                  </div>
+                </div>
+
+                <!-- Rechnungsanschrift abweichend -->
+                <label class="toggle-row">
+                  <input type="checkbox" id="rech-abweichend" class="toggle-input sr-only" />
+                  <span class="toggle-switch"></span>
+                  <span class="toggle-label">Rechnungsanschrift abweichend</span>
+                </label>
+                <div id="rech-fields" class="hidden space-y-4 pl-4" style="border-left:2px solid rgba(195,62,47,.25)">
+                  <div class="field-group"><label class="field-label">Rechnungsstraße</label><input type="text" id="n-rech-strasse" class="field-input" placeholder="Rechnungsstraße 1" /></div>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="field-group"><label class="field-label">PLZ</label><input type="text" id="n-rech-plz" class="field-input" placeholder="12345" maxlength="10" /></div>
+                    <div class="field-group sm:col-span-2"><label class="field-label">Ort</label><input type="text" id="n-rech-ort" class="field-input" placeholder="München" /></div>
+                  </div>
+                  <div id="rechnung-email-field" class="field-group">
+                    <label class="field-label">Rechnungs-E-Mail <span class="optional-tag">(falls abweichend)</span></label>
+                    <input type="email" id="n-rechnung-email" class="field-input" placeholder="rechnung@beispiel.de" />
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Neukunde: Schritt 3 – Gasprofile -->
+            <section class="form-step px-8 py-8 hidden" data-mode="neukunde" data-step="3">
+              <div class="mb-6"><span class="step-badge">03</span><h2 class="step-title">Gasprofile</h2><p class="step-subtitle">Kundentyp und benötigte Gase</p></div>
+              <div class="space-y-5">
+                <!-- Kundentyp -->
+                <div>
+                  <span class="sub-section-label">Kundentyp <span class="req-star">*</span></span>
+                  <div class="grid grid-cols-2 gap-3">
+                    <label class="radio-tile"><input type="radio" name="n-kundentyp" value="Privat" class="sr-only" /><div class="radio-dot"></div><span class="text-sm">Privatkunde</span></label>
+                    <label class="radio-tile"><input type="radio" name="n-kundentyp" value="Gewerbe" class="sr-only" /><div class="radio-dot"></div><span class="text-sm">Gewerblich</span></label>
+                  </div>
+                  <span class="field-error" id="error-n-kundentyp"></span>
+                </div>
+
+                <!-- Gastypen -->
+                <div>
+                  <span class="sub-section-label">Welche Gasarten benötigen Sie? <span class="req-star">*</span></span>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <label class="service-tile"><input type="checkbox" name="n-gastypen" value="Gastronomisch (Propan, CO₂, Biergas)" class="sr-only" /><div class="service-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"/></svg></div><div class="flex-1"><div class="service-name">Gastronomisch</div><div class="service-desc">Propan, CO₂, Biergas, Heizgas</div></div><div class="service-check-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l4 4 6-6"/></svg></div></label>
+                    <label class="service-tile"><input type="checkbox" name="n-gastypen" value="Technisch (Argon, Arcox, Sauerstoff, Acetylen)" class="sr-only" /><div class="service-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="flex-1"><div class="service-name">Technisch</div><div class="service-desc">Argon, Arcox, Sauerstoff, Acetylen</div></div><div class="service-check-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l4 4 6-6"/></svg></div></label>
+                    <label class="service-tile"><input type="checkbox" name="n-gastypen" value="Staplergas" class="sr-only" /><div class="service-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div><div class="flex-1"><div class="service-name">Staplergas</div><div class="service-desc">Flüssiggas für Gabelstapler</div></div><div class="service-check-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l4 4 6-6"/></svg></div></label>
+                    <label class="service-tile"><input type="checkbox" name="n-gastypen" value="Sonstiges" class="sr-only" /><div class="service-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="flex-1"><div class="service-name">Sonstiges</div><div class="service-desc">Anderes / Spezialgas</div></div><div class="service-check-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l4 4 6-6"/></svg></div></label>
+                  </div>
+                  <span class="field-error" id="error-n-gastypen"></span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Neukunde: Schritt 4 – Lieferung + Abschluss -->
+            <section class="form-step px-8 py-8 hidden" data-mode="neukunde" data-step="4">
+              <div class="mb-6"><span class="step-badge">04</span><h2 class="step-title">Lieferung</h2><p class="step-subtitle">Wie oft soll geliefert werden?</p></div>
+              <div class="space-y-5">
+                <div>
+                  <span class="sub-section-label">Lieferintervall <span class="req-star">*</span></span>
+                  <div class="space-y-2">
+                    <label class="radio-tile"><input type="radio" name="n-lieferintervall" value="Wöchentlich" class="sr-only" /><div class="radio-dot"></div><span class="text-sm">Wöchentlich</span></label>
+                    <label class="radio-tile"><input type="radio" name="n-lieferintervall" value="14-täglich" class="sr-only" /><div class="radio-dot"></div><span class="text-sm">Alle 2 Wochen</span></label>
+                    <label class="radio-tile"><input type="radio" name="n-lieferintervall" value="Monatlich" class="sr-only" /><div class="radio-dot"></div><span class="text-sm">Monatlich</span></label>
+                    <label class="radio-tile"><input type="radio" name="n-lieferintervall" value="Auf Bestellung" class="sr-only" /><div class="radio-dot"></div><span class="text-sm">Auf Bestellung / nach Bedarf</span></label>
+                  </div>
+                  <span class="field-error" id="error-n-lieferintervall"></span>
+                </div>
+                <div class="field-group">
+                  <label class="field-label">Anmerkungen <span class="optional-tag">(optional)</span></label>
+                  <textarea id="n-anmerkungen" name="n-anmerkungen" class="field-input resize-none" rows="3" placeholder="Weitere Informationen zu Ihrer Bedarfssituation …" maxlength="1000" data-counter="n-counter" data-max="1000"></textarea>
+                  <div class="flex justify-end mt-1"><span id="n-counter" class="text-xs" style="color:var(--text-3)">0 / 1000</span></div>
+                </div>
+                <div id="captcha-container-n"></div>
+                <div class="field-group">
+                  <label class="flex items-start gap-3 cursor-pointer select-none">
+                    <input type="checkbox" id="n-datenschutz" name="n-datenschutz" class="consent-checkbox mt-0.5 shrink-0" required />
+                    <span class="text-sm leading-relaxed" style="color:var(--text-2)">Ich habe die <a href="/datenschutz" class="text-spark-light underline underline-offset-2">Datenschutzerklärung</a> gelesen und stimme zu.*</span>
+                  </label>
+                  <span class="field-error" id="error-n-datenschutz"></span>
+                </div>
+              </div>
+            </section>
+
+            <!-- ══════════════════════════════════════════════════════ -->
+            <!--  MODUS: BESTELLUNG                                     -->
+            <!-- ══════════════════════════════════════════════════════ -->
+
+            <!-- Bestellung: Schritt 1 – Identifikation -->
+            <section class="form-step px-8 py-8 hidden" data-mode="bestellung" data-step="1">
+              <div class="mb-6"><span class="step-badge">01</span><h2 class="step-title">Identifikation</h2><p class="step-subtitle">Kundennummer (wenn bekannt) oder Name</p></div>
+              <div class="space-y-5">
+                <div class="field-group">
+                  <label class="field-label">Kundennummer <span class="optional-tag">(falls bekannt)</span></label>
+                  <input type="text" id="b-kundennummer" name="b-kundennummer" class="field-input" placeholder="z.B. KD-12345" />
+                </div>
+                <div class="field-group">
+                  <label class="field-label">Name <span class="req-star">*</span></label>
+                  <input type="text" id="b-name" name="b-name" class="field-input" placeholder="Ihr Name oder Firmenname" required />
+                  <span class="field-error" id="error-b-name"></span>
+                </div>
+                <div class="field-group">
+                  <label class="field-label">E-Mail <span class="optional-tag">(optional)</span></label>
+                  <input type="email" id="b-email" name="b-email" class="field-input" placeholder="für Auftragsbestätigung" />
+                </div>
+                <div class="field-group">
+                  <label class="field-label">Telefon <span class="optional-tag">(optional)</span></label>
+                  <input type="tel" id="b-telefon" name="b-telefon" class="field-input" placeholder="+49 123 456789" />
+                </div>
+              </div>
+            </section>
+
+            <!-- Bestellung: Schritt 2 – Freitext -->
+            <section class="form-step px-8 py-8 hidden" data-mode="bestellung" data-step="2">
+              <div class="mb-6"><span class="step-badge">02</span><h2 class="step-title">Bestellung</h2><p class="step-subtitle">Was möchten Sie bestellen?</p></div>
+              <div class="space-y-5">
+                <div class="field-group">
+                  <label class="field-label">Ihre Bestellung <span class="req-star">*</span></label>
+                  <textarea id="b-freitext" name="b-freitext" class="field-input resize-none" rows="7" required minlength="10"
+                    placeholder="Beispiel:&#10;2x Propangas 11kg&#10;1x CO₂ Flasche 6kg&#10;&#10;Bitte bis Freitag liefern." maxlength="3000" data-counter="b-counter" data-max="3000"></textarea>
+                  <div class="flex justify-between items-center mt-1">
+                    <span class="field-error" id="error-b-freitext"></span>
+                    <span id="b-counter" class="text-xs ml-auto" style="color:var(--text-3)">0 / 3000</span>
+                  </div>
+                </div>
+                <div id="captcha-container-b"></div>
+                <div style="background:rgba(245,160,32,.06);border:1px solid rgba(245,160,32,.2);border-radius:8px;padding:.75rem 1rem;font-size:.78rem;color:var(--text-2);line-height:1.6">
+                  Ihre Bestellung wird direkt an <span style="color:var(--text-1);font-weight:600">bestellung@randl.group</span> gesendet. Bald können Sie auch direkt über unseren Online-Gasshop bestellen.
+                </div>
+                <div class="field-group">
+                  <label class="flex items-start gap-3 cursor-pointer select-none">
+                    <input type="checkbox" id="b-datenschutz" name="b-datenschutz" class="consent-checkbox mt-0.5 shrink-0" required />
+                    <span class="text-sm leading-relaxed" style="color:var(--text-2)">Ich habe die <a href="/datenschutz" class="text-spark-light underline underline-offset-2">Datenschutzerklärung</a> gelesen und stimme zu.*</span>
+                  </label>
+                  <span class="field-error" id="error-b-datenschutz"></span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Global Error -->
+            <div id="global-error" class="hidden mx-8 mb-6 px-5 py-4 rounded-xl flex items-start gap-3" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25)" role="alert">
+              <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="#f87171" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <p id="global-error-text" class="text-sm leading-relaxed" style="color:#f87171"></p>
+            </div>
+
+            <!-- Nav Buttons -->
+            <div id="nav-area" class="px-8 pb-8 pt-4 flex items-center justify-between gap-4">
+              <button type="button" id="btn-back" class="btn-secondary hidden">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                Zurück
+              </button>
+              <div class="flex items-center gap-3 ml-auto">
+                <button type="button" id="btn-next" class="btn-primary">Weiter <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
+                <button type="submit" id="btn-submit" class="btn-primary hidden">
+                  <span id="btn-submit-text">Absenden</span>
+                  <span id="btn-submit-spinner" class="hidden items-center gap-2"><svg class="w-4 h-4 spinner" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="31.4 31.4" stroke-linecap="round"/></svg>Wird gesendet…</span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Success -->
+      <div id="success-screen" class="hidden w-full anim-fade-up">
+        <div class="rounded-2xl text-center px-8 py-16" style="background:var(--panel);border:1px solid var(--panel-border);box-shadow:0 8px 60px rgba(0,0,0,0.4)">
+          <div class="success-ring mx-auto mb-8"><svg viewBox="0 0 52 52" class="w-full h-full"><circle class="success-circle" cx="26" cy="26" r="23" fill="none" stroke="url(#g)" stroke-width="1.5"/><path class="success-check" d="M14 26l8 8 16-16" fill="none" stroke="#C33E2F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C33E2F"/><stop offset="100%" stop-color="#C33E2F"/></linearGradient></defs></svg></div>
+          <h2 class="font-display text-3xl font-bold mb-3 uppercase tracking-wide">Erfolgreich gesendet!</h2>
+          <p id="success-msg" class="text-base mb-2" style="color:var(--text-2)">Ihre Anfrage wurde übermittelt.</p>
+          <p class="text-sm" style="color:var(--text-3)">Wir melden uns innerhalb von 24 Stunden.</p>
+          <button type="button" onclick="location.reload()" class="btn-secondary mt-10">Neue Anfrage stellen</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<footer>
+  <span class="footer-brand">© 2026 Firma Dominik Randl · Alle Rechte vorbehalten</span>
+  <nav class="footer-links">
+    <a href="/kontakt">Kontakt</a>
+    <a href="/impressum">Impressum</a>
+    <a href="/datenschutz">Datenschutz</a>
+    <button id="theme-toggle-btn" aria-label="Theme wechseln" style="background:none;border:none;cursor:pointer;color:var(--text-3);display:flex;align-items:center;padding:.3rem .35rem;border-radius:6px;transition:color .2s;"></button>
+    <a href="#" onclick="window.RandlCookieConsent&&window.RandlCookieConsent.openSettings();return false;">Cookie-Einstellungen</a>
+  </nav>
+</footer>
+
+  <script src="/captcha.js"></script>
+  <script src="form.js"></script>
+  <script src="/cookie-consent.js"></script>
+<script src="/theme-toggle.js"></script>
+</body>
+</html>

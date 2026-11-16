@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umgesetzt: Domain-Redirects – Randl Group</title>
+<style>
+  :root{
+    --bg:#0a0c10; --panel:#12151c; --panel-2:#161a23; --border:#232838;
+    --text:#e8eaf0; --text-dim:#8b93a7; --text-dim2:#5b6478;
+    --blue:#4f8cff; --red:#ef4444; --orange:#f5a623; --green:#22c55e; --gray:#6b7280;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:40px 20px 80px; background:var(--bg); color:var(--text);
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif; line-height:1.55;
+  }
+  .wrap{max-width:880px; margin:0 auto;}
+  .eyebrow{color:var(--green); font-size:13px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; margin-bottom:10px;}
+  h1{font-size:34px; margin:0 0 10px; letter-spacing:-.01em;}
+  .meta{color:var(--text-dim); font-size:14px; margin-bottom:28px;}
+  .meta b{color:var(--text);}
+  .navcards{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-bottom:24px;}
+  .navcard{background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:16px 18px; text-decoration:none; color:var(--text); display:block; transition:.15s;}
+  .navcard:hover{border-color:var(--blue);}
+  .navcard.active{border-color:var(--green); background:linear-gradient(180deg,rgba(34,197,94,.10),rgba(34,197,94,.02));}
+  .navcard .t{font-weight:600; font-size:15px; margin-bottom:4px;}
+  .navcard .d{color:var(--text-dim); font-size:13px;}
+  .successbox{background:linear-gradient(180deg,rgba(34,197,94,.10),rgba(34,197,94,.02)); border:1px solid rgba(34,197,94,.35); border-radius:12px; padding:18px 20px; margin-bottom:32px; display:flex; gap:14px; align-items:flex-start;}
+  .successbox .ico{font-size:22px;}
+  .successbox b{display:block; font-size:16px; margin-bottom:4px;}
+  .successbox span{color:var(--text-dim); font-size:14px;}
+  .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-bottom:36px;}
+  .stat{background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:20px;}
+  .stat .n{font-size:30px; font-weight:700; color:var(--green);}
+  .stat.open .n{color:var(--orange);}
+  .stat .l{font-size:13px; color:var(--text-dim); margin-top:4px;}
+  h2{font-size:20px; margin:44px 0 6px; border-top:1px solid var(--border); padding-top:32px;}
+  h2:first-of-type{border-top:none; padding-top:0;}
+  .sub{color:var(--text-dim); font-size:14px; margin-bottom:22px;}
+  .sub a{color:var(--blue); text-decoration:none;}
+  .domain{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:22px 24px; margin-bottom:20px;}
+  .domain h3{margin:0 0 2px; font-size:17px;}
+  .domain .dtag{color:var(--text-dim2); font-size:13px; margin-bottom:16px;}
+  .compare{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:12px;}
+  @media (max-width:600px){.compare{grid-template-columns:1fr;}}
+  .col{background:var(--panel-2); border:1px solid var(--border); border-radius:10px; padding:14px 16px;}
+  .col .lbl{font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--text-dim2); margin-bottom:8px; font-weight:700;}
+  .col .url{font-size:12px; color:var(--text-dim); margin-bottom:6px;}
+  .col .title{font-size:14.5px; font-weight:600; margin-bottom:4px;}
+  .col .desc{font-size:13px; color:var(--text-dim);}
+  .check{display:flex; gap:8px; align-items:flex-start; font-size:13.5px; margin-top:10px; color:var(--green);}
+  .check.warn{color:var(--orange);}
+  .check.pending{color:var(--gray);}
+  .badge{flex:0 0 auto; font-size:11px; font-weight:700; letter-spacing:.03em; padding:3px 8px; border-radius:6px; text-transform:uppercase;}
+  .b-ok{background:rgba(34,197,94,.15); color:var(--green);}
+  .b-warn{background:rgba(245,166,35,.15); color:var(--orange);}
+  .b-off{background:rgba(107,114,128,.2); color:var(--text-dim);}
+  .finding{background:var(--panel-2); border:1px solid var(--border); border-left:3px solid var(--orange); border-radius:8px; padding:12px 14px; font-size:14px; color:var(--text-dim); margin-top:14px;}
+  .infobox{background:var(--panel-2); border:1px solid var(--border); border-left:3px solid var(--blue); border-radius:8px; padding:14px 16px; font-size:14px; color:var(--text-dim); margin:24px 0;}
+  .changelog{display:flex; flex-direction:column; gap:2px;}
+  .clentry{display:flex; gap:14px; padding:12px 0; border-top:1px solid var(--border);}
+  .clentry:first-child{border-top:none;}
+  .cldate{flex:0 0 64px; color:var(--text-dim2); font-size:13px; padding-top:2px;}
+  .clbody b{display:block; font-size:14.5px; margin-bottom:2px;}
+  .clbody span{color:var(--text-dim); font-size:13.5px;}
+  .cltag{display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.03em; color:var(--blue); background:rgba(79,140,255,.15); padding:2px 6px; border-radius:5px; margin-right:6px; vertical-align:middle;}
+  footer{margin-top:56px; padding-top:24px; border-top:1px solid var(--border); text-align:center; color:var(--text-dim2); font-size:13px;}
+  footer b{color:var(--text-dim);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Umgesetzt · Phase 1 Domain-Konsolidierung</div>
+  <h1>Domain-Redirects</h1>
+  <div class="meta"><b>randl.group</b> · Umgesetzt: 14.07.2026 · Zuletzt geprüft: 15.07.2026 · Kunde: Dominik Randl</div>
+
+  <div class="navcards">
+    <a class="navcard" href="status.html">
+      <div class="t">📋 Projektstatus</div>
+      <div class="d">Aktueller Fortschritt &amp; Aufgabenliste →</div>
+    </a>
+    <div class="navcard active">
+      <div class="t">✅ Domain-Redirects (diese Seite)</div>
+      <div class="d">Nachweis der Umsetzung</div>
+    </div>
+    <a class="navcard" href="seo-audit.html">
+      <div class="t">📊 SEO Audit</div>
+      <div class="d">Vollständige Analyse &amp; Business-Profile-Entscheidung →</div>
+    </a>
+    <a class="navcard" href="gbp-zelt-checklist.html">
+      <div class="t">🎪 GBP Zelt-Profil</div>
+      <div class="d">Checkliste Überarbeitung →</div>
+    </a>
+    <a class="navcard" href="gbp-metall-checklist.html">
+      <div class="t">⚙️ GBP Metall-Profil</div>
+      <div class="d">Checkliste Neuanlage →</div>
+    </a>
+    <a class="navcard" href="gbp-gas-checklist.html">
+      <div class="t">🔥 GBP Gas-Profil</div>
+      <div class="d">Checkliste Neuanlage →</div>
+    </a>
+  </div>
+
+  <div class="successbox">
+    <div class="ico">✅</div>
+    <div>
+      <b>3 von 3 Domains bestätigt umgeleitet</b>
+      <span>Live-Check bestätigt für randl-cnctechnik.de, chiemgaugase.de (14.07.2026) und randl-partyzelte.de (15.07.2026, unabhängig verifiziert). Domain-Konsolidierung Phase 1 damit vollständig abgeschlossen.</span>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">3 / 3</div><div class="l">Redirects unabhängig bestätigt</div></div>
+    <div class="stat"><div class="n">randl.group</div><div class="l">Ziel-Domain</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">Offene Domain-Redirects</div></div>
+    <div class="stat"><div class="n">15.07.</div><div class="l">Letzter Live-Check</div></div>
+  </div>
+
+  <h2>Was wurde gemacht?</h2>
+  <div class="sub">Ein <b style="color:var(--text)">301-Redirect</b> leitet Besucher und Suchmaschinen dauerhaft von der alten Domain auf die neue Zielseite um. Das bündelt Sichtbarkeit, Backlinks und Rankings auf randl.group, statt sie auf drei separate Domains zu verteilen. Details zur strategischen Einordnung siehe <a href="seo-audit.html">SEO Audit →</a>.</div>
+
+  <div class="domain">
+    <h3>1. CNC Metallarbeiten <span class="dtag">randl-cnctechnik.de</span></h3>
+    <div class="compare">
+      <div class="col">
+        <div class="lbl">Vorher</div>
+        <div class="url">randl-cnctechnik.de</div>
+        <div class="title">Randl CNC Technik – Präzise CNC-Bearbeitung &amp; Fertigung</div>
+        <div class="desc">Eigenständige Website mit eigener Navigation („Das sind wir", „Zeltverleih", „Unsere CNC-Dienstleistungen"), eigenem Impressum/Datenschutz – komplett getrennt von randl.group.</div>
+      </div>
+      <div class="col">
+        <div class="lbl">Jetzt live</div>
+        <div class="url">→ https://randl.group/metall/</div>
+        <div class="title">CNC Metallarbeiten Bayern – Dominik Randl</div>
+        <div class="desc">301-Redirect aktiv, Canonical-Tag bestätigt auf randl.group/metall/.</div>
+      </div>
+    </div>
+    <div class="check">✓ Live-Check bestätigt: Redirect + Canonical korrekt (14.07.2026)</div>
+    <div class="finding">ℹ️ Google zeigt in den Suchergebnissen (Stand 14.07.2026) noch die alte, vor dem Redirect gecrawlte Version mit eigenen Sitelinks – normal, verschwindet nach dem nächsten Googlebot-Crawl der URL (typischerweise einige Tage bis wenige Wochen).</div>
+  </div>
+
+  <div class="domain">
+    <h3>2. Gashandel <span class="dtag">chiemgaugase.de</span></h3>
+    <div class="compare">
+      <div class="col">
+        <div class="lbl">Vorher</div>
+        <div class="url">chiemgaugase.de</div>
+        <div class="title">Gashandel Bayern – eigenständige Seite</div>
+        <div class="desc">Eigene Navigation und eigener Content, getrennt von randl.group.</div>
+      </div>
+      <div class="col">
+        <div class="lbl">Jetzt live</div>
+        <div class="url">→ https://randl.group/gas/</div>
+        <div class="title">Gashandel Bayern – Dominik Randl</div>
+        <div class="desc">301-Redirect aktiv, Canonical-Tag bestätigt auf randl.group/gas/.</div>
+      </div>
+    </div>
+    <div class="check">✓ Live-Check bestätigt: Redirect + Canonical korrekt (14.07.2026)</div>
+  </div>
+
+  <div class="domain">
+    <h3>3. Zeltverleih <span class="dtag">randl-partyzelte.de</span></h3>
+    <span class="badge b-ok" style="margin-bottom:14px; display:inline-block;">Umgeleitet – unabhängig bestätigt</span>
+    <div class="compare">
+      <div class="col">
+        <div class="lbl">Vorher</div>
+        <div class="url">randl-partyzelte.de</div>
+        <div class="title">Randl Partyzelte – eigenständige WordPress-Seite</div>
+        <div class="desc">Site Kit by Google, eigene Navigation, eigenes Impressum/Datenschutz – komplett getrennt von randl.group.</div>
+      </div>
+      <div class="col">
+        <div class="lbl">Jetzt live</div>
+        <div class="url">→ https://randl.group/zelt/</div>
+        <div class="title">Zeltverleih Bayern – Dominik Randl</div>
+        <div class="desc">301-Redirect aktiv, liefert den vollständigen Zelt-Seiteninhalt inkl. korrektem Title/Meta/Canonical.</div>
+      </div>
+    </div>
+    <div class="check">✓ Live-Check bestätigt: Redirect aktiv, landet korrekt auf randl.group/zelt (15.07.2026)</div>
+    <div class="finding" style="border-left-color:var(--green); color:var(--green);">✓ Nach einigen Tagen DNS-Propagierung jetzt auch unabhängig verifiziert – der Kunde hatte den Redirect zuvor bereits lokal gesehen, während unser Check noch die alte Seite zeigte, klassisches Propagierungs-Zeitfenster. Der zuvor gefundene defekte interne Link („chiemgaugas.de") hat sich damit automatisch erledigt – die Domain zeigt keinen eigenen Content mehr.</div>
+  </div>
+
+  <div class="infobox">ℹ️ <b style="color:var(--text)">Google-Index braucht Zeit:</b> Auch nach einem technisch sauberen 301-Redirect zeigt Google in den Suchergebnissen oft noch für einige Tage bis Wochen die alte Seite an, bis die betroffene URL neu gecrawlt wurde. Das ist normal und kein Zeichen für einen fehlerhaften Redirect – lässt sich über die URL-Prüfung in der Search Console beschleunigen, sobald die Property dort sauber eingerichtet ist.</div>
+
+  <h2>Changelog</h2>
+  <div class="changelog">
+    <div class="clentry">
+      <div class="cldate">15.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>randl-partyzelte.de: Redirect unabhängig verifiziert – 3/3 abgeschlossen</b><span>Nach mehrtägiger DNS-Propagierung zeigt unser unabhängiger Live-Check jetzt ebenfalls die korrekte Weiterleitung auf randl.group/zelt. Domain-Konsolidierung (Phase 1) damit mit allen drei Altdomains vollständig abgeschlossen: randl-cnctechnik.de, chiemgaugase.de und randl-partyzelte.de leiten alle korrekt auf randl.group um.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">15.07.26</div>
+      <div class="clbody"><b><span class="cltag">STATUS</span>randl-partyzelte.de: Hoster meldet Redirect aktiviert</b><span>Kunde bestätigt, dass der 301-Redirect auf randl.group/zelt beim externen Hoster aktiviert wurde und bei ihm bereits funktioniert. Unser unabhängiger Live-Check zeigt zum jetzigen Zeitpunkt noch die alte Seite ohne Weiterleitung – vermutlich DNS-Propagierung noch nicht überall durch (kann je nach TTL einige Stunden bis ~48h dauern). Wird erneut geprüft, dann final auf 3/3 gesetzt.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">FIX</span>301-Redirects live geschaltet &amp; verifiziert</b><span>randl-cnctechnik.de → randl.group/metall und chiemgaugase.de → randl.group/gas. Beide per Live-Abruf bestätigt: korrekter 301, Canonical stimmt mit Ziel-URL überein.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">STATUS</span>randl-partyzelte.de: liegt bei externem Hoster, Redirect angefragt</b><span>Domain nicht auf dem HestiaCP-Server, sondern bei einem anderen Hoster. Kunde hat diesen per E-Mail um Aktivierung des 301-Redirects auf randl.group/zelt gebeten. Seite liefert bis dahin weiterhin vollständigen eigenen Content. Interne Links auf randl-cnctechnik.de und die Tippfehler-Domain „chiemgaugas.de" gefunden – verschwinden automatisch mit dem Redirect.</span></div>
+    </div>
+    <div class="clentry">
+      <div class="cldate">14.07.26</div>
+      <div class="clbody"><b><span class="cltag">CHECK</span>Google-Suche „randl cnc" geprüft</b><span>randl-cnctechnik.de rankt trotz aktivem Redirect noch eigenständig vor randl.group/metall – erwartete Verzögerung bis zum nächsten Crawl, kein technisches Problem.</span></div>
+    </div>
+  </div>
+
+  <footer>
+    Erstellt für <b>Dominik Randl · Randl Group</b> · randl.group<br>
+    Umsetzungsnachweis · Phase 1 Domain-Konsolidierung · Vertraulich
+  </footer>
+</div>
+</body>
+</html>

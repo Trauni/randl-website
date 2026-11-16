@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GBP-Neuanlage: Gas-Profil – Randl Group</title>
+<style>
+  :root{
+    --bg:#0a0c10; --panel:#12151c; --panel-2:#161a23; --border:#232838;
+    --text:#e8eaf0; --text-dim:#8b93a7; --text-dim2:#5b6478;
+    --blue:#4f8cff; --red:#ef4444; --orange:#f5a623; --green:#22c55e; --gray:#6b7280;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:40px 20px 80px; background:var(--bg); color:var(--text);
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif; line-height:1.55;
+  }
+  .wrap{max-width:880px; margin:0 auto;}
+  .eyebrow{color:var(--blue); font-size:13px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; margin-bottom:10px;}
+  h1{font-size:34px; margin:0 0 10px; letter-spacing:-.01em;}
+  .meta{color:var(--text-dim); font-size:14px; margin-bottom:28px;}
+  .meta b{color:var(--text);}
+  .navcards{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-bottom:24px;}
+  .navcard{background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:16px 18px; text-decoration:none; color:var(--text); display:block; transition:.15s;}
+  .navcard:hover{border-color:var(--blue);}
+  .navcard.active{border-color:var(--blue); background:linear-gradient(180deg,rgba(79,140,255,.10),rgba(79,140,255,.02));}
+  .navcard .t{font-weight:600; font-size:15px; margin-bottom:4px;}
+  .navcard .d{color:var(--text-dim); font-size:13px;}
+  .infobox{background:var(--panel-2); border:1px solid var(--border); border-left:3px solid var(--blue); border-radius:8px; padding:14px 16px; font-size:14px; color:var(--text-dim); margin-bottom:32px;}
+  .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin-bottom:36px;}
+  .stat{background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:20px;}
+  .stat .n{font-size:28px; font-weight:700; color:var(--blue);}
+  .stat.crit .n{color:var(--red);}
+  .stat .l{font-size:13px; color:var(--text-dim); margin-top:4px;}
+  h2{font-size:20px; margin:44px 0 6px; border-top:1px solid var(--border); padding-top:32px;}
+  h2:first-of-type{border-top:none; padding-top:0;}
+  .sub{color:var(--text-dim); font-size:14px; margin-bottom:22px;}
+  .field{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:22px 24px; margin-bottom:18px;}
+  .field h3{margin:0 0 2px; font-size:16.5px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .field .ftag{color:var(--text-dim2); font-size:12.5px; margin-bottom:14px;}
+  .compare{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:4px;}
+  @media (max-width:600px){.compare{grid-template-columns:1fr;}}
+  .col{background:var(--panel-2); border:1px solid var(--border); border-radius:10px; padding:14px 16px;}
+  .col .lbl{font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--text-dim2); margin-bottom:8px; font-weight:700;}
+  .col .val{font-size:13.5px; color:var(--text); white-space:pre-line;}
+  .col.new{border-color:rgba(79,140,255,.35);}
+  .col.new .lbl{color:var(--blue);}
+  .solo{background:var(--panel-2); border:1px solid rgba(79,140,255,.35); border-radius:10px; padding:14px 16px; margin-bottom:4px;}
+  .solo .lbl{font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--blue); margin-bottom:8px; font-weight:700;}
+  .solo .val{font-size:13.5px; color:var(--text); white-space:pre-line;}
+  .badge{flex:0 0 auto; font-size:11px; font-weight:700; letter-spacing:.03em; padding:3px 8px; border-radius:6px; text-transform:uppercase; white-space:nowrap;}
+  .b-krit{background:rgba(239,68,68,.15); color:var(--red);}
+  .b-warn{background:rgba(245,166,35,.15); color:var(--orange);}
+  .b-hin{background:rgba(79,140,255,.15); color:var(--blue);}
+  .b-ok{background:rgba(34,197,94,.15); color:var(--green);}
+  .b-off{background:rgba(107,114,128,.2); color:var(--text-dim);}
+  .finding{background:var(--panel-2); border:1px solid var(--border); border-left:3px solid var(--blue); border-radius:8px; padding:12px 14px; font-size:13.5px; color:var(--text-dim); margin-top:12px;}
+  .recobox{background:linear-gradient(180deg,rgba(79,140,255,.10),rgba(79,140,255,.02)); border:1px solid rgba(79,140,255,.35); border-radius:12px; padding:20px 22px; margin-top:24px;}
+  .recobox b{display:block; font-size:15px; margin-bottom:8px; color:var(--blue);}
+  .recobox p{margin:0 0 8px; font-size:14px; color:var(--text-dim);}
+  .recobox ol{margin:8px 0 0; padding-left:20px; font-size:14px; color:var(--text-dim);}
+  .recobox li{margin-bottom:6px;}
+  footer{margin-top:56px; padding-top:24px; border-top:1px solid var(--border); text-align:center; color:var(--text-dim2); font-size:13px;}
+  footer b{color:var(--text-dim);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Google Business Profile · Neuanlage</div>
+  <h1>GBP-Neuanlage: Gas-Profil</h1>
+  <div class="meta"><b>Firma Dominik Randl Gashandel</b> · Erstellt: 15.07.2026 · Kunde: Dominik Randl</div>
+
+  <div class="navcards">
+    <a class="navcard" href="status.html">
+      <div class="t">📋 Projektstatus</div>
+      <div class="d">Aktueller Fortschritt →</div>
+    </a>
+    <a class="navcard" href="redirects-status.html">
+      <div class="t">✅ Domain-Redirects</div>
+      <div class="d">Nachweis der Umsetzung →</div>
+    </a>
+    <a class="navcard" href="seo-audit.html">
+      <div class="t">📊 SEO Audit</div>
+      <div class="d">Vollständige Analyse →</div>
+    </a>
+    <a class="navcard" href="gbp-zelt-checklist.html">
+      <div class="t">🎪 GBP Zelt-Profil</div>
+      <div class="d">Checkliste Überarbeitung →</div>
+    </a>
+    <a class="navcard" href="gbp-metall-checklist.html">
+      <div class="t">⚙️ GBP Metall-Profil</div>
+      <div class="d">Checkliste Neuanlage →</div>
+    </a>
+    <div class="navcard active">
+      <div class="t">🔥 GBP Gas-Profil (diese Seite)</div>
+      <div class="d">Checkliste Neuanlage</div>
+    </div>
+  </div>
+
+  <div class="infobox">ℹ️ <b style="color:var(--text)">Kontext:</b> Neues, eigenständiges Google-Business-Profil für die Sparte Gashandel. Diese Seite listet alle Angaben, die du beim Anlegen unter <a href="https://business.google.com" style="color:var(--blue)">business.google.com</a> brauchst. Werte sind Entwürfe auf Basis der Website-Inhalte – vor dem Eintragen gegenprüfen. <b style="color:var(--text)">Wichtig:</b> Erst anlegen, sobald die Video-/Anruf-Verifizierung des Zelt-Profils erfolgreich war (siehe GBP-Zelt-Checkliste).</div>
+
+  <div class="stats">
+    <div class="stat crit"><div class="n">8</div><div class="l">Pflichtfelder zum Anlegen</div></div>
+    <div class="stat"><div class="n">2</div><div class="l">Empfohlene Angaben</div></div>
+    <div class="stat"><div class="n">2</div><div class="l">Optionale Ergänzungen</div></div>
+  </div>
+
+  <h2>Pflichtfelder beim Anlegen</h2>
+  <div class="sub">Diese Angaben fragt Google beim Erstellen eines neuen Profils direkt ab.</div>
+
+  <div class="field">
+    <h3>Unternehmensname <span class="badge b-krit">Pflicht</span></h3>
+    <div class="ftag">NAP-konsistent zum Impressum ("Firma Dominik Randl"), ohne Keyword-Anreicherung</div>
+    <div class="solo"><div class="lbl">Empfehlung</div><div class="val">Firma Dominik Randl Gashandel</div></div>
+    <div class="finding">Gleiches Namensschema wie bei Zelt- und Metall-Profil (Rechtsform + Sparte).</div>
+  </div>
+
+  <div class="field">
+    <h3>Standort-Typ: Ladengeschäft oder Liefergebiet? <span class="badge b-krit">Pflicht – zuerst entscheiden</span></h3>
+    <div class="ftag">Google unterscheidet "Standort mit Kundenverkehr" und "Dienstleistungsgebiet-Unternehmen" – diese Entscheidung kommt vor allen anderen Feldern</div>
+    <div class="solo"><div class="lbl">Empfehlung</div><div class="val">Dienstleistungsgebiet-Unternehmen (Adresse wird nicht öffentlich angezeigt, stattdessen ein Liefer-/Servicegebiet)</div></div>
+    <div class="finding">Laut Website liefert ihr wöchentlich in einem großen Radius (LK Rosenheim, Ebersberg, München, Traunstein, Berchtesgadener Land u.a.) – das ist im Kern ein Liefer-, kein Ladengeschäft. Ein "Dienstleistungsgebiet"-Profil passt inhaltlich besser und vermeidet, dass Kunden fälschlich am Grünweg 1 vorbeikommen, um Gasflaschen abzuholen. Falls doch Selbstabholung am Standort möglich ist, stattdessen "Standort mit Kundenverkehr" wählen und die Adresse normal eintragen.</div>
+  </div>
+
+  <div class="field">
+    <h3>Servicegebiet / Adresse <span class="badge b-krit">Pflicht</span></h3>
+    <div class="ftag">Abhängig von der Entscheidung oben</div>
+    <div class="solo"><div class="lbl">Falls Dienstleistungsgebiet (empfohlen)</div><div class="val">Orte/Landkreise eintragen: Seeon-Seebruck, Rosenheim, Ebersberg, München, Traunstein, Berchtesgadener Land (aus der Website-Liefergebiet-Angabe übernehmen, ggf. mit genauerer Orts-/PLZ-Liste ergänzen)</div></div>
+    <div class="solo" style="margin-top:10px;"><div class="lbl">Falls Standort mit Kundenverkehr</div><div class="val">Grünweg 1, 83370 Seeon-Seebruck (gegenprüfen)</div></div>
+  </div>
+
+  <div class="field">
+    <h3>Kategorie <span class="badge b-krit">Pflicht</span></h3>
+    <div class="ftag">Exakte Bezeichnung kann in der Google-Liste leicht abweichen – im Auswahlfeld nach diesen Begriffen suchen</div>
+    <div class="solo">
+      <div class="lbl">Empfehlung Primär</div>
+      <div class="val">Gasversorgungsunternehmen (Suchbegriff: "Gas company" / "Gasversorger")</div>
+    </div>
+    <div class="solo" style="margin-top:10px;">
+      <div class="lbl">Empfehlung Zusatzkategorien</div>
+      <div class="val">Propangashändler
+Campinggashändler (falls verfügbar)
+Getränke-/Flaschenhandel nur falls thematisch passend, sonst weglassen</div>
+    </div>
+  </div>
+
+  <div class="field">
+    <h3>Telefon <span class="badge b-krit">Pflicht</span></h3>
+    <div class="solo"><div class="lbl">Empfehlung</div><div class="val">+49 171 4585063</div></div>
+  </div>
+
+  <div class="field">
+    <h3>Website <span class="badge b-krit">Pflicht</span></h3>
+    <div class="solo"><div class="lbl">Empfehlung</div><div class="val">https://randl.group/gas/</div></div>
+  </div>
+
+  <div class="field">
+    <h3>Beschreibung <span class="badge b-krit">Pflicht</span></h3>
+    <div class="ftag">Entwurf auf Basis der Website-Meta-Description, gern nach Geschmack anpassen (max. 750 Zeichen)</div>
+    <div class="solo"><div class="lbl">Empfehlung</div><div class="val">Flaschengase aller Art – Propangas, Campinggas, Gastro- und technische Gase. Wöchentliche Lieferung im Chiemgau und Großraum München (Landkreise Rosenheim, Ebersberg, München, Traunstein, Berchtesgadener Land u.a.). Firma Dominik Randl – persönlicher Service, faire Preise, zuverlässige Lieferung direkt zu Ihnen.</div></div>
+  </div>
+
+  <div class="field">
+    <h3>Öffnungszeiten <span class="badge b-krit">Pflicht</span></h3>
+    <div class="ftag">Zu prüfen – bei Dienstleistungsgebiet-Profilen eher Erreichbarkeits- als Ladenöffnungszeiten</div>
+    <div class="solo"><div class="lbl">Vorschlag, bitte bestätigen</div><div class="val">Mo–Fr 09:00–18:00
+Sa/So geschlossen</div></div>
+  </div>
+
+  <h2>Empfohlen</h2>
+
+  <div class="field">
+    <h3>Lieferradius im Profiltext hervorheben <span class="badge b-hin">Empfohlen</span></h3>
+    <div class="finding" style="margin-top:0;">Da das Geschäftsmodell auf regelmäßiger Lieferung basiert, im Beschreibungstext und/oder in Google-Beiträgen aktiv mit "wöchentliche Lieferung in Ihrer Region" werben – das ist ein Unterscheidungsmerkmal gegenüber Baumarkt-Gasflaschenautomaten.</div>
+  </div>
+
+  <div class="field">
+    <h3>Partnermarken / Sortiment <span class="badge b-hin">Empfohlen</span></h3>
+    <div class="finding" style="margin-top:0;">Website erwähnt Zusammenarbeit mit "führenden Gasherstellern" – falls konkrete Markennamen genannt werden dürfen, im Profil auflisten (Vertrauenssignal, hilft bei markenspezifischen Suchanfragen wie "Progas Händler Chiemgau").</div>
+  </div>
+
+  <h2>Optional – für ein vollständigeres Profil</h2>
+  <div class="sub">Kein Muss, aber kostenlose Zusatzpunkte für Profilvollständigkeit und Vertrauen.</div>
+
+  <div class="field">
+    <h3>Fotos <span class="badge b-off">Optional</span></h3>
+    <div class="finding" style="margin-top:0;">Lieferfahrzeug, Gasflaschen-Sortiment, ggf. Zustellung vor Ort – schafft Vertrauen bei einem Geschäftsmodell, das auf Hausbesuchen basiert.</div>
+  </div>
+
+  <div class="field">
+    <h3>Eröffnungsdatum <span class="badge b-off">Optional</span></h3>
+    <div class="finding" style="margin-top:0;">Kein Ranking-Faktor, nur "nice to have" für Vollständigkeit.</div>
+  </div>
+
+  <div class="recobox">
+    <b>Reihenfolge zum Abarbeiten</b>
+    <p>Dieses Profil ist vorbereitet, aber bewusst noch nicht angelegt – Reihenfolge:</p>
+    <ol>
+      <li>Zelt-Profil erfolgreich verifizieren (siehe GBP-Zelt-Checkliste)</li>
+      <li>Metall-Profil anlegen und verifizieren (siehe GBP-Metall-Checkliste)</li>
+      <li>Erst danach: dieses Profil anlegen – zuerst die Standort-Typ-Entscheidung (Dienstleistungsgebiet vs. Ladengeschäft) treffen, dann die übrigen Pflichtfelder</li>
+      <li>Video-/Anruf-Verifizierung direkt beim Anlegen anstoßen</li>
+      <li>Nach erfolgreicher Verifizierung: Empfohlene &amp; optionale Punkte ergänzen</li>
+    </ol>
+  </div>
+
+  <footer>
+    Erstellt für <b>Dominik Randl · Randl Group</b> · randl.group<br>
+    GBP-Checkliste · Manuell abzuarbeiten · Vertraulich
+  </footer>
+</div>
+</body>
+</html>

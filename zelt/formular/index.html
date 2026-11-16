@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('randl-theme')||'light');</script>
+  <meta charset="UTF-8" />
+  <!-- SEO: Basis -->
+  <title>Zeltverleih & Events anfragen – Dominik Randl</title>
+  <meta name="description" content="Festzelt mieten, Eventtechnik und Veranstaltungsausstattung für Ihr Event in Bayern. Kostenlose Anfrage in 2 Minuten." />
+  <meta name="keywords" content="Zeltverleih anfragen, Festzelt mieten Bayern, Eventzelt Chiemgau, Veranstaltungszelt Rosenheim, Dominik Randl" />
+  <link rel="canonical" href="https://randl.group/zelt/formular/" />
+
+  <!-- SEO: Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:title" content="Zeltverleih & Events anfragen – Dominik Randl" />
+  <meta property="og:description" content="Festzelt mieten, Eventtechnik und Veranstaltungsausstattung für Ihr Event in Bayern. Kostenlose Anfrage in 2 Minuten." />
+  <meta property="og:url" content="https://randl.group/zelt/formular/" />
+  <meta property="og:image" content="https://randl.group/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Dominik Randl" />
+
+  <!-- SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Zeltverleih & Events anfragen – Dominik Randl" />
+  <meta name="twitter:description" content="Festzelt mieten, Eventtechnik und Veranstaltungsausstattung für Ihr Event in Bayern. Kostenlose Anfrage in 2 Minuten." />
+  <meta name="twitter:image" content="https://randl.group/og-image.jpg" />
+
+  <!-- SEO: Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Zeltverleih & Eventservice",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Dominik Randl",
+    "telephone": "+4901714585063",
+    "email": "info@randl.group",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Seeon-Seebruck",
+      "addressRegion": "Bayern",
+      "addressCountry": "DE"
+    }
+  },
+  "areaServed": {
+    "@type": "State",
+    "name": "Bayern"
+  },
+  "description": "Festzeltverleih, Eventtechnik und Veranstaltungsausstattung für Events in Bayern, Chiemgau und Rosenheim.",
+  "url": "https://randl.group/zelt/formular/"
+}
+</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anfrage Zeltverleih – Dominik Randl</title>
+  <meta name="description" content="Anfrage für Zeltverleih, Eventtechnik und Veranstaltungsausstattung – Dominik Randl Zeltverleih." />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="shortcut icon" href="/logo.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="stylesheet" href="/fonts.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Barlow Condensed"', 'Arial Narrow', 'sans-serif'],
+            body:    ['"DM Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            ink:   { DEFAULT: '#09090c' },
+            spark: { DEFAULT: '#ff0000', light: '#C33E2F', dark: '#C33E2F' },
+            panel: { DEFAULT: '#111520', light: '#181e2e', border: '#222840' },
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Top Info Bar ─────────────────────────────────────────────── */
+    #topbar {
+      background: var(--panel);
+      border-bottom: 1px solid var(--panel-border);
+      padding: .55rem clamp(1rem,4vw,3rem);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: .5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .73rem;
+      position: sticky; top: 0; z-index: 200;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .topbar-left a {
+      color: var(--text-2); text-decoration: none;
+      display: flex; align-items: center; gap: .45rem;
+      transition: color .2s;
+    }
+    .topbar-left a:hover { color: var(--spark); }
+    .topbar-left svg { width: 13px; height: 13px; color: var(--spark); flex-shrink: 0; }
+    .topbar-right {
+      display: flex; align-items: center; gap: .5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .topbar-right a {
+      color: var(--text-2); text-decoration: none;
+      transition: color .2s; white-space: nowrap;
+    }
+    .topbar-right a:hover { color: var(--spark); }
+    .topbar-right a.active { color: var(--text-1); }
+    .topbar-sep { color: var(--text-3); font-size: .55rem; }
+
+    /* ── Form Switcher ────────────────────────────────────────────── */
+    #form-switcher {
+      background: var(--panel);
+      border-bottom: 1px solid var(--panel-border);
+      padding: .6rem clamp(1rem,4vw,3rem);
+      display: flex; align-items: center; gap: .5rem;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    #form-switcher::-webkit-scrollbar { display: none; }
+    .switcher-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--text-3); white-space: nowrap; margin-right: .5rem;
+    }
+    .switcher-tab {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .38rem .9rem;
+      border-radius: 6px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+      text-decoration: none; white-space: nowrap;
+      border: 1px solid transparent;
+      color: var(--text-2);
+      transition: all .2s;
+    }
+    .switcher-tab:hover {
+      color: var(--text-1);
+      border-color: var(--panel-border);
+      background: rgba(0,0,0,.04);
+    }
+    .switcher-tab.active {
+      color: var(--spark);
+      border-color: rgba(195,62,47,.35);
+      background: rgba(195,62,47,.08);
+    }
+    .switcher-tab svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+    /* ── Footer ───────────────────────────────────────────────────── */
+    #page-footer {
+      border-top: 1px solid var(--panel-border);
+      padding: 1.5rem clamp(1rem,4vw,3rem);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .72rem;
+      margin-top: 2rem;
+    }
+    .footer-copy { color: var(--text-3); }
+    .footer-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-nav a {
+      color: var(--text-2); text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-nav a:hover { color: var(--spark); }
+  
+    body { background: var(--bg); color: var(--text-1); }
+  </style>
+  <script>
+    /* Google Analytics erst nach Einwilligung (Event cc:consent aus cookie-consent.js) */
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.addEventListener('cc:consent', function (e) {
+      var ok = e.detail && e.detail.analytics;
+      window['ga-disable-G-0521LCB2SC'] = !ok;
+      if (!ok) {
+        ['_ga', '_ga_0521LCB2SC', '_gid', '_gat'].forEach(function (n) {
+          document.cookie = n + '=; Max-Age=0; path=/';
+          document.cookie = n + '=; Max-Age=0; path=/; domain=' + location.hostname;
+          document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname.replace(/^www\./, '');
+        });
+        return;
+      }
+      if (window.__gaLoaded) return;
+      window.__gaLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0521LCB2SC';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-0521LCB2SC', { anonymize_ip: true });
+    });
+  </script>
+</head>
+<body class="font-body min-h-screen flex flex-col">
+
+  <!-- ── Top Info Bar ─────────────────────────────────────────────── -->
+  <div id="topbar">
+    <div class="topbar-left">
+      <a href="tel:+4901714585063">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.25 1.16 2 2 0 012.24 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.28-.55a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        +49 (0) 171 45 850 63
+      </a>
+      <a href="mailto:info@randl.group">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+        </svg>
+        info@randl.group
+      </a>
+    </div>
+    <div class="topbar-right">
+      <a href="https://randl-partyzelte.de/" class="active" target="blank">Zeltverleih</a>
+      <span class="topbar-sep">•</span>
+      <a href="https://randl-cnctechnik.de/" target="blank">CNC Metallarbeiten</a>
+      <span class="topbar-sep">•</span>
+      <a href="https://chiemgaugase.de/" target="blank">Gashandel</a>
+      <button id="theme-toggle-btn" aria-label="Theme wechseln" style="background:none;border:none;cursor:pointer;color:var(--text-2);display:flex;align-items:center;padding:.3rem .35rem;border-radius:6px;transition:color .2s;margin-left:.25rem;"></button>
+    </div>
+  </div>
+
+  <!-- ── Form Switcher ────────────────────────────────────────────── -->
+  <div id="form-switcher">
+    <span class="switcher-label">Anfrage für:</span>
+
+    <a href="/zelt/formular" class="switcher-tab active">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/>
+      </svg>
+      Zeltverleih
+    </a>
+
+    <a href="/metall/formular" class="switcher-tab">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+      </svg>
+      Metallarbeiten
+    </a>
+
+    <a href="/gas/formular" class="switcher-tab">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"/>
+      </svg>
+      Gashandel
+    </a>
+  </div>
+
+  <!-- ── Page Content ─────────────────────────────────────────────── -->
+  <div class="flex-1 flex items-center justify-center py-10 px-4 relative">
+
+    <!-- Background decorations -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-48 -left-48 w-[700px] h-[700px] rounded-full"
+           style="background:radial-gradient(circle,rgba(255,0,0,0.055) 0%,transparent 70%)"></div>
+      <div class="absolute bottom-0 -right-24 w-[500px] h-[500px] rounded-full"
+           style="background:radial-gradient(circle,rgba(58,123,213,0.05) 0%,transparent 70%)"></div>
+      <div class="absolute inset-0"
+           style="background-image:radial-gradient(var(--dot-fg,rgba(255,255,255,.025)) 1px,transparent 1px);background-size:28px 28px"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-2xl flex flex-col items-center gap-8">
+
+      <!-- Header -->
+      <header class="text-center w-full anim-fade-up" style="--delay:.05s">
+        <div class="inline-flex items-center gap-3 mb-6">
+          <div class="w-11 h-11 rounded-full overflow-hidden flex-shrink-0"
+               style="box-shadow:0 0 20px rgba(195,62,47,0.1)">
+            <img src="/logo.png" alt="Dominik Randl Logo" class="w-full h-full object-cover" />
+          </div>
+          <span class="font-display text-base tracking-widest uppercase" style="color:var(--text-1)">
+            Dominik Randl – Zeltverleih
+          </span>
+        </div>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-wide uppercase">
+          Ihre <span class="text-spark-light">Veranstaltung</span> beginnt hier
+        </h1>
+        <p class="mt-3 text-base sm:text-lg font-light max-w-lg mx-auto" style="color:var(--text-2)">
+          Beschreiben Sie Ihr Vorhaben — wir antworten innerhalb von 24 Stunden.
+        </p>
+      </header>
+
+      <!-- Form card -->
+      <div id="form-card" class="w-full anim-fade-up" style="--delay:.15s">
+        <div class="rounded-2xl overflow-hidden"
+             style="background:var(--panel);border:1px solid var(--panel-border);box-shadow:0 8px 60px rgba(0,0,0,0.4)">
+
+          <!-- Progress area -->
+          <div id="progress-area" class="px-8 pt-8 pb-6" style="border-bottom:1px solid var(--panel-border)">
+            <div id="step-dots" class="flex items-center justify-between mb-5"
+                 role="list" aria-label="Formular-Fortschritt"></div>
+            <div class="h-1 rounded-full overflow-hidden" style="background:var(--panel-border)">
+              <div id="progress-bar" class="h-full rounded-full transition-all duration-500 ease-out"
+                   style="width:25%;background:linear-gradient(90deg,#ff0033,#C33E2F)"></div>
+            </div>
+          </div>
+
+          <form id="inquiry-form" novalidate autocomplete="on">
+
+            <!-- Honeypot -->
+            <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none" aria-hidden="true" tabindex="-1">
+              <input type="hidden" name="website" id="hp-website" />
+              <input type="hidden" name="email_confirm" id="hp-email-confirm" />
+            </div>
+
+            <!-- ── SCHRITT 1: Kontaktdaten ───────────────────────── -->
+            <section id="step-1" class="form-step px-8 py-8" data-step="1">
+              <div class="mb-7">
+                <span class="step-badge">01</span>
+                <h2 class="step-title">Kontaktdaten</h2>
+                <p class="step-subtitle">Wie können wir Sie erreichen?</p>
+              </div>
+              <div class="space-y-5">
+                <div class="field-group">
+                  <label for="firma" class="field-label">Firma <span class="optional-tag">(optional)</span></label>
+                  <input type="text" id="firma" name="firma" class="field-input" placeholder="Mustermann GmbH" autocomplete="organization" />
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div class="field-group">
+                    <label for="vorname" class="field-label">Vorname <span class="req-star">*</span></label>
+                    <input type="text" id="vorname" name="vorname" class="field-input" placeholder="Max" required autocomplete="given-name" />
+                    <span class="field-error" id="error-vorname">Bitte Vornamen eingeben</span>
+                  </div>
+                  <div class="field-group">
+                    <label for="nachname" class="field-label">Nachname <span class="req-star">*</span></label>
+                    <input type="text" id="nachname" name="nachname" class="field-input" placeholder="Mustermann" required autocomplete="family-name" />
+                    <span class="field-error" id="error-nachname">Bitte Nachnamen eingeben</span>
+                  </div>
+                </div>
+                <div class="field-group">
+                  <label for="email" class="field-label">E-Mail-Adresse <span class="req-star">*</span></label>
+                  <input type="email" id="email" name="email" class="field-input" placeholder="max@beispiel.de" required autocomplete="email" />
+                  <span class="field-error" id="error-email">Gültige E-Mail-Adresse erforderlich</span>
+                </div>
+                <div class="field-group">
+                  <label for="telefon" class="field-label">Telefonnummer <span class="req-star">*</span></label>
+                  <input type="tel" id="telefon" name="telefon" class="field-input" placeholder="+49 123 456789" required autocomplete="tel" />
+                  <span class="field-error" id="error-telefon">Telefonnummer erforderlich</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- ── SCHRITT 2: Adresse ────────────────────────────── -->
+            <section id="step-2" class="form-step px-8 py-8 hidden" data-step="2">
+              <div class="mb-7">
+                <span class="step-badge">02</span>
+                <h2 class="step-title">Adresse</h2>
+                <p class="step-subtitle">Ihr Unternehmensstandort und Lieferadresse</p>
+              </div>
+              <div class="space-y-5">
+                <div class="field-group">
+                  <label for="strasse" class="field-label">Straße & Hausnummer <span class="req-star">*</span></label>
+                  <input type="text" id="strasse" name="strasse" class="field-input" placeholder="Industriestraße 12" required autocomplete="street-address" />
+                  <span class="field-error" id="error-strasse">Bitte Straße eingeben</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                  <div class="field-group">
+                    <label for="plz" class="field-label">PLZ <span class="req-star">*</span></label>
+                    <input type="text" id="plz" name="plz" class="field-input" placeholder="12345" required autocomplete="postal-code" maxlength="10" />
+                    <span class="field-error" id="error-plz">PLZ erforderlich</span>
+                  </div>
+                  <div class="field-group sm:col-span-2">
+                    <label for="ort" class="field-label">Ort <span class="req-star">*</span></label>
+                    <input type="text" id="ort" name="ort" class="field-input" placeholder="München" required autocomplete="address-level2" />
+                    <span class="field-error" id="error-ort">Ort erforderlich</span>
+                  </div>
+                </div>
+                <div class="field-group">
+                  <label for="land" class="field-label">Land <span class="optional-tag">(optional)</span></label>
+                  <select id="land" name="land" class="field-input">
+                    <option value="Deutschland" selected>Deutschland</option>
+                    <option value="Österreich">Österreich</option>
+                    <option value="Schweiz">Schweiz</option>
+                    <option value="Sonstiges">Sonstiges</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <!-- ── SCHRITT 3: Projektdetails ──────────────────── -->
+            <section id="step-3" class="form-step px-8 py-8 hidden" data-step="3">
+              <div class="mb-7">
+                <span class="step-badge">03</span>
+                <h2 class="step-title">Projektdetails</h2>
+                <p class="step-subtitle">Erzählen Sie uns von Ihrer Veranstaltung.</p>
+              </div>
+              <div class="space-y-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div class="field-group">
+                    <label for="projektname" class="field-label">Projektname <span class="req-star">*</span></label>
+                    <input type="text" id="projektname" name="projektname" class="field-input" placeholder="Sommerfest 2025" required />
+                    <span class="field-error" id="error-projektname">Bitte Projektname eingeben</span>
+                  </div>
+                  <div class="field-group">
+                    <label for="veranstaltungsort" class="field-label">Veranstaltungsort <span class="req-star">*</span></label>
+                    <input type="text" id="veranstaltungsort" name="veranstaltungsort" class="field-input" placeholder="Olympiapark München" required />
+                    <span class="field-error" id="error-veranstaltungsort">Bitte Veranstaltungsort angeben</span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                  <div class="field-group">
+                    <label for="veranstaltungsdatum" class="field-label">Veranstaltung <span class="req-star">*</span></label>
+                    <input type="date" id="veranstaltungsdatum" name="veranstaltungsdatum" class="field-input" required />
+                    <span class="field-error" id="error-veranstaltungsdatum">Datum angeben</span>
+                  </div>
+                  <div class="field-group">
+                    <label for="aufbaudatum" class="field-label">Aufbau ab <span class="optional-tag">(opt.)</span></label>
+                    <input type="date" id="aufbaudatum" name="aufbaudatum" class="field-input" />
+                  </div>
+                  <div class="field-group">
+                    <label for="abbaudatum" class="field-label">Abbau bis <span class="optional-tag">(opt.)</span></label>
+                    <input type="date" id="abbaudatum" name="abbaudatum" class="field-input" />
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ── SCHRITT 4: Leistungen & Details ───────────────── -->
+
+            <section id="step-4" class="form-step px-8 py-8 hidden" data-step="4">
+              <div class="mb-7">
+                <span class="step-badge">04</span>
+                <h2 class="step-title">Leistungen & Details</h2>
+                <p class="step-subtitle">Was benötigen Sie? Mehrfachauswahl möglich.</p>
+              </div>
+              <div class="space-y-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" role="group" aria-label="Leistungen auswählen">
+                  <label class="service-tile"><input type="checkbox" name="leistungen" value="Zeltverleih" class="sr-only" /><div class="service-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/></svg></div><div class="flex-1 min-w-0"><div class="service-name">Zeltverleih</div><div class="service-desc">Zelte aller Größen für Ihr Event</div></div><div class="service-check-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l4 4 6-6"/></svg></div></label>
+                  <label class="service-tile"><input type="checkbox" name="leistungen" value="Eventtechnik" class="sr-only" /><div class="service-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><div class="flex-1 min-w-0"><div class="service-name">Eventtechnik</div><div class="service-desc">Licht, Ton, Video & Bühne</div></div><div class="service-check-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l4 4 6-6"/></svg></div></label>
+                  <label class="service-tile"><input type="checkbox" name="leistungen" value="Veranstaltungsmöbel" class="sr-only" /><div class="service-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10V7a2 2 0 00-2-2H6a2 2 0 00-2 2v3M4 10h16M4 10v7a1 1 0 001 1h1m14-8v7a1 1 0 01-1 1h-1m-12 0h10"/></svg></div><div class="flex-1 min-w-0"><div class="service-name">Veranstaltungsmöbel</div><div class="service-desc">Tische, Stühle & Lounge-Mobiliar</div></div><div class="service-check-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l4 4 6-6"/></svg></div></label>
+                  <label class="service-tile"><input type="checkbox" name="leistungen" value="Event Fotobox" class="sr-only" /><div class="service-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div><div class="flex-1 min-w-0"><div class="service-name">Event Fotobox</div><div class="service-desc">Sofortfotos & digitale Galerie</div></div><div class="service-check-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l4 4 6-6"/></svg></div></label>
+                </div>
+                <span class="field-error" id="error-leistungen">Bitte mindestens eine Leistung wählen</span>
+
+                <div class="field-group">
+                  <label for="beschreibung" class="field-label">Projektbeschreibung <span class="req-star">*</span></label>
+                  <textarea id="beschreibung" name="beschreibung" class="field-input" style="resize:vertical;min-height:120px" rows="5" required minlength="20" placeholder="Schildern Sie uns Ihr Projekt: Größe, Gästezahl, Anforderungen, besondere Wünsche …" maxlength="2000"></textarea>
+                  <div class="flex justify-between items-center mt-1.5">
+                    <span class="field-error" id="error-beschreibung">Bitte Projektbeschreibung eingeben (min. 20 Zeichen)</span>
+                    <span id="char-counter" class="ml-auto text-xs tabular-nums" style="color:var(--text-3)">0 / 2000</span>
+                  </div>
+                </div>
+
+                <!-- CAPTCHA -->
+<div id="captcha-container" class="mb-2"></div>
+                <div class="field-group mt-2">
+
+                  <label class="flex items-start gap-3 cursor-pointer select-none">
+                    <input type="checkbox" id="datenschutz" name="datenschutz" class="consent-checkbox mt-0.5 shrink-0" required />
+                    <span class="text-sm leading-relaxed" style="color:var(--text-2)">
+                      Ich habe die <a href="/datenschutz" class="text-spark-light underline underline-offset-2 hover:text-white transition-colors">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten gemäß DSGVO zu.*
+                    </span>
+                  </label>
+                  <span class="field-error" id="error-datenschutz">Bitte Datenschutz bestätigen</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Global Error -->
+            <div id="global-error" class="hidden mx-8 mb-6 px-5 py-4 rounded-xl flex items-start gap-3" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25)" role="alert" aria-live="assertive">
+              <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="#f87171" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <p id="global-error-text" class="text-sm leading-relaxed" style="color:#f87171"></p>
+            </div>
+
+            <!-- Navigation -->
+            <div id="nav-area" class="px-8 pb-8 pt-4 flex items-center justify-between gap-4">
+              <button type="button" id="btn-back" class="btn-secondary hidden">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                Zurück
+              </button>
+              <div class="flex items-center gap-3 ml-auto">
+                <button type="button" id="btn-next" class="btn-primary">
+                  Weiter <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </button>
+                <button type="submit" id="btn-submit" class="btn-primary hidden">
+                  <span id="btn-submit-text">Anfrage absenden</span>
+                  <span id="btn-submit-spinner" class="hidden items-center gap-2">
+                    <svg class="w-4 h-4 spinner" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="31.4 31.4" stroke-linecap="round"/></svg>
+                    Wird gesendet…
+                  </span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Success Screen -->
+      <div id="success-screen" class="hidden w-full anim-fade-up" style="--delay:0s">
+        <div class="rounded-2xl text-center px-8 py-16" style="background:var(--panel);border:1px solid var(--panel-border);box-shadow:0 8px 60px rgba(0,0,0,0.4)">
+          <div class="success-ring mx-auto mb-8">
+            <svg viewBox="0 0 52 52" class="w-full h-full">
+              <circle class="success-circle" cx="26" cy="26" r="23" fill="none" stroke="url(#g)" stroke-width="1.5"/>
+              <path class="success-check" d="M14 26l8 8 16-16" fill="none" stroke="#C33E2F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C33E2F"/><stop offset="100%" stop-color="#C33E2F"/></linearGradient></defs>
+            </svg>
+          </div>
+          <h2 class="font-display text-3xl font-bold mb-3 uppercase tracking-wide">Vielen Dank!</h2>
+          <p class="text-base mb-2" style="color:var(--text-2)">Ihre Anfrage wurde erfolgreich übermittelt.</p>
+          <p class="text-sm" style="color:var(--text-3)">Wir melden uns in der Regel innerhalb von 24 Stunden bei Ihnen.</p>
+          <button type="button" onclick="location.reload()" class="btn-secondary mt-10">Neue Anfrage stellen</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Footer ────────────────────────────────────────────────────── -->
+<footer>
+  <span class="footer-brand">© 2026 Firma Dominik Randl · Alle Rechte vorbehalten</span>
+  <nav class="footer-links">
+    <a href="/kontakt">Kontakt</a>
+    <a href="/impressum">Impressum</a>
+    <a href="/datenschutz">Datenschutz</a>
+    <button id="theme-toggle-btn" aria-label="Theme wechseln" style="background:none;border:none;cursor:pointer;color:var(--text-3);display:flex;align-items:center;padding:.3rem .35rem;border-radius:6px;transition:color .2s;"></button>
+    <a href="#" onclick="window.RandlCookieConsent&&window.RandlCookieConsent.openSettings();return false;">Cookie-Einstellungen</a>
+  </nav>
+</footer>
+
+  <script src="/captcha.js"></script>
+<script src="form.js"></script>
+  <script src="/cookie-consent.js"></script>
+<script src="/theme-toggle.js"></script>
+</body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Werk 2 Automotive – Statusbericht IONOS-Ausstieg &amp; Domainumzug</title>
+<link rel="stylesheet" href="/fonts.css" />
+<style>
+:root{
+  --creme:#F7F4F0;
+  --paper:#FFFFFF;
+  --ink:#2C2320;
+  --ink-soft:#7A6C64;
+  --red:#CC1111;
+  --rule:#E2DAD2;
+  --done:#4F6B4A;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --display:"Bricolage Grotesque","Inter",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:var(--creme);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.sheet{
+  max-width:880px;
+  margin:0 auto;
+  background:var(--paper);
+  padding:56px 60px 44px;
+}
+
+/* ---------- Kopf ---------- */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:10.5px;
+  font-weight:500;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--red);
+}
+.masthead{
+  border-bottom:3px solid var(--ink);
+  padding-bottom:22px;
+}
+.masthead h1{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:38px;
+  line-height:1.04;
+  letter-spacing:-.025em;
+  margin:14px 0 6px;
+  max-width:16ch;
+}
+.masthead .sub{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:19px;
+  line-height:1.25;
+  color:var(--ink-soft);
+  letter-spacing:-.01em;
+  margin:0;
+  max-width:36ch;
+}
+.meta{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:26px;
+  padding-top:16px;
+  border-top:1px solid var(--rule);
+}
+.meta dt{
+  font-family:var(--mono);
+  font-size:9.5px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-bottom:3px;
+}
+.meta dd{margin:0;font-size:13px;font-weight:600;line-height:1.35;}
+
+/* ---------- Kurzfassung ---------- */
+.summary{
+  background:var(--ink);
+  color:var(--creme);
+  padding:26px 30px;
+  margin-top:30px;
+}
+.summary .eyebrow{color:#E88;}
+.summary p{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:17px;
+  line-height:1.45;
+  letter-spacing:-.008em;
+  margin:12px 0 0;
+}
+.summary p + p{
+  font-family:var(--sans);
+  font-size:13.5px;
+  font-weight:400;
+  line-height:1.6;
+  color:#CFC4BC;
+  margin-top:12px;
+}
+.summary strong{color:#fff;font-weight:600;}
+
+/* ---------- Signatur: Migrationspfad ---------- */
+.rail{margin:38px 0 6px;}
+.rail-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:0;
+  margin-top:18px;
+}
+.stage{position:relative;padding:0 14px 0 0;}
+.stage-line{
+  position:relative;
+  height:1px;
+  background:var(--ink);
+  margin-bottom:16px;
+}
+.stage:last-child .stage-line{background:var(--rule);}
+.stage-line::before{
+  content:"";
+  position:absolute;
+  left:0;top:50%;
+  width:13px;height:13px;
+  border-radius:50%;
+  transform:translateY(-50%);
+  background:var(--ink);
+}
+.stage.open .stage-line::before{
+  background:var(--paper);
+  border:3px solid var(--red);
+  width:15px;height:15px;
+}
+.stage-status{
+  font-family:var(--mono);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--done);
+}
+.stage.open .stage-status{color:var(--red);}
+.stage h4{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:13.5px;
+  line-height:1.25;
+  letter-spacing:-.012em;
+  margin:5px 0 4px;
+}
+.stage p{margin:0;font-size:11px;line-height:1.45;color:var(--ink-soft);}
+
+/* ---------- Abschnitte ---------- */
+section{margin-top:42px;page-break-inside:avoid;}
+.sec-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:16px;
+  border-bottom:1.5px solid var(--ink);
+  padding-bottom:8px;
+  margin-bottom:18px;
+}
+.sec-head h2{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:21px;
+  letter-spacing:-.02em;
+  margin:0;
+}
+.tag{
+  font-family:var(--mono);
+  font-size:9.5px;
+  font-weight:700;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  padding-bottom:2px;
+}
+.tag.ok{color:var(--done);}
+.tag.open{color:var(--red);}
+.tag.info{color:var(--ink-soft);}
+
+/* ---------- Tabellen ---------- */
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th{
+  font-family:var(--mono);
+  font-size:9.5px;
+  font-weight:500;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  text-align:left;
+  padding:0 10px 7px 0;
+  border-bottom:1px solid var(--rule);
+}
+td{
+  padding:10px 10px 10px 0;
+  border-bottom:1px solid var(--rule);
+  vertical-align:top;
+}
+td:last-child,th:last-child{padding-right:0;}
+.mono{font-family:var(--mono);font-size:11.5px;font-weight:500;}
+.dim{color:var(--ink-soft);}
+.nowrap{white-space:nowrap;}
+.pill{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:9.5px;
+  font-weight:700;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  padding:2.5px 7px;
+  border:1px solid currentColor;
+  border-radius:2px;
+  white-space:nowrap;
+}
+.pill.ok{color:var(--done);}
+.pill.open{color:var(--red);}
+.pill.neutral{color:var(--ink-soft);}
+
+/* ---------- Aufgabenliste mit Priorität ---------- */
+.task{
+  display:grid;
+  grid-template-columns:96px 1fr;
+  gap:20px;
+  padding:14px 0 14px 14px;
+  border-bottom:1px solid var(--rule);
+  border-left:4px solid var(--rule);
+}
+.task.krit{border-left-color:var(--red);}
+.task.mittel{border-left-color:var(--ink);}
+.task.opt{border-left-color:var(--rule);}
+.task.fertig{border-left-color:var(--done);}
+.task .prio{
+  font-family:var(--mono);
+  font-size:9.5px;
+  font-weight:700;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  padding-top:2px;
+}
+.task.krit .prio{color:var(--red);}
+.task.mittel .prio{color:var(--ink);}
+.task.fertig .prio{color:var(--done);}
+.task h4{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:14.5px;
+  letter-spacing:-.012em;
+  margin:0 0 3px;
+}
+.task p{margin:0;font-size:12.5px;line-height:1.5;color:var(--ink-soft);}
+.task p code{font-family:var(--mono);font-size:11.5px;color:var(--ink);}
+
+/* ---------- Hinweis-Box ---------- */
+.callout{
+  border:1.5px solid var(--red);
+  padding:18px 22px;
+  margin-top:20px;
+  background:#FDF6F5;
+}
+.callout h4{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:-.012em;
+  margin:6px 0 6px;
+}
+.callout p{margin:0;font-size:12.5px;line-height:1.55;}
+.callout p + p{margin-top:8px;}
+.callout ul{margin:8px 0 0;padding-left:18px;font-size:12.5px;line-height:1.6;}
+.callout li{margin-bottom:3px;}
+
+.note{
+  font-size:11.5px;
+  line-height:1.5;
+  color:var(--ink-soft);
+  margin-top:12px;
+}
+
+/* ---------- Nächste Schritte ---------- */
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;}
+.steps li{
+  counter-increment:s;
+  display:grid;
+  grid-template-columns:34px 1fr auto;
+  gap:16px;
+  align-items:baseline;
+  padding:12px 0;
+  border-bottom:1px solid var(--rule);
+}
+.steps li::before{
+  content:counter(s,decimal-leading-zero);
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  color:var(--red);
+}
+.steps .who{
+  font-family:var(--mono);
+  font-size:9.5px;
+  font-weight:700;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  white-space:nowrap;
+}
+.steps strong{font-weight:600;}
+.steps span.det{display:block;font-size:12px;color:var(--ink-soft);margin-top:2px;}
+
+/* ---------- Fuß ---------- */
+footer{
+  margin-top:46px;
+  padding-top:16px;
+  border-top:3px solid var(--ink);
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.06em;
+  color:var(--ink-soft);
+  text-transform:uppercase;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:760px){
+  .sheet{padding:32px 22px 30px;}
+  .masthead h1{font-size:28px;}
+  .masthead .sub{font-size:16px;}
+  .meta{grid-template-columns:repeat(2,1fr);}
+  .rail-grid{grid-template-columns:1fr;gap:14px;}
+  .stage{padding:0 0 0 24px;}
+  .stage-line{
+    position:absolute;left:6px;top:6px;bottom:-14px;
+    width:1px;height:auto;margin:0;
+  }
+  .stage-line::before{left:-6px;top:0;transform:none;}
+  .stage:last-child .stage-line{bottom:auto;height:0;}
+  .task{grid-template-columns:1fr;gap:6px;}
+  .steps li{grid-template-columns:28px 1fr;}
+  .steps .who{grid-column:2;}
+  table{font-size:11.5px;}
+  footer{flex-direction:column;gap:6px;}
+}
+
+@media print{
+  @page{size:A4;margin:14mm 12mm;}
+  body{background:#fff;}
+  .sheet{max-width:none;padding:0;}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  section,.summary,.rail,.callout,table{page-break-inside:avoid;}
+  .task,.steps li{page-break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="eyebrow">Randl Web &middot; Statusbericht &amp; Maßnahmenplan</div>
+    <h1>IONOS-Ausstieg abgeschlossen</h1>
+    <p class="sub">Werk 2 Automotive GmbH — Domainumzug erledigt, Shopware-Wartung folgt im September</p>
+
+    <dl class="meta">
+      <div><dt>Stand</dt><dd>04. August 2026</dd></div>
+      <div><dt>Für</dt><dd>Herr Reinhard Rode</dd></div>
+      <div><dt>Systeme</dt><dd>Shopware 6.7, WordPress</dd></div>
+      <div><dt>Status</dt><dd>Umzug abgeschlossen</dd></div>
+    </dl>
+  </header>
+
+  <div class="summary">
+    <div class="eyebrow">Kurzfassung</div>
+    <p>Der Umzug ist durch. werk-2.net liegt beim neuen Registrar, alle IONOS-Kündigungen sind ausgelöst.</p>
+    <p>Der Registrarwechsel von <strong>werk-2.net</strong> zu Netcup ist einwandfrei durchgelaufen — Shop und Website waren zu keinem Zeitpunkt betroffen. Sämtliche IONOS-Verträge sind gekündigt und die Kündigungen ausgelöst. <strong>onlyrevo.de</strong> wird bewusst nicht mitgenommen und läuft zum 09.09.2026 aus. Offen bleibt damit nur noch die technische Wartung von Shop und Backend — <strong>terminiert auf September 2026</strong>.</p>
+  </div>
+
+  <div class="rail">
+    <div class="eyebrow">Projektstand — 4 von 5 Schritten abgeschlossen</div>
+    <div class="rail-grid">
+      <div class="stage">
+        <div class="stage-line"></div>
+        <div class="stage-status">Erledigt</div>
+        <h4>Inhalte auf Randl-Server</h4>
+        <p>Shop und Website auf eigener Infrastruktur.</p>
+      </div>
+      <div class="stage">
+        <div class="stage-line"></div>
+        <div class="stage-status">Erledigt</div>
+        <h4>DNS über Cloudflare</h4>
+        <p>Domains über Cloudflare umgeleitet.</p>
+      </div>
+      <div class="stage">
+        <div class="stage-line"></div>
+        <div class="stage-status">Erledigt</div>
+        <h4>Subdomains aktiv</h4>
+        <p>dealer und shop bedienen die Shopware-Umgebung.</p>
+      </div>
+      <div class="stage">
+        <div class="stage-line"></div>
+        <div class="stage-status">Erledigt</div>
+        <h4>Registrarwechsel zu Netcup</h4>
+        <p>werk-2.net vollständig übertragen.</p>
+      </div>
+      <div class="stage open">
+        <div class="stage-line"></div>
+        <div class="stage-status">September</div>
+        <h4>Wartung Shop &amp; Backend</h4>
+        <p>Ein gemeinsames Fenster für alle Updates.</p>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-head">
+      <h2>Vertragsstatus IONOS</h2>
+      <span class="tag ok">Kündigungen ausgelöst</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:24%">Vertrag</th>
+          <th style="width:34%">Leistung</th>
+          <th style="width:20%">Endet zum</th>
+          <th style="width:22%">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mono">59879366</td>
+          <td>Unlimited Pro — Website und Shop</td>
+          <td class="mono nowrap">20.06.2027</td>
+          <td><span class="pill ok">Gekündigt</span></td>
+        </tr>
+        <tr>
+          <td class="mono">59879366</td>
+          <td>SSL Business</td>
+          <td class="mono nowrap">20.06.2027</td>
+          <td><span class="pill ok">Gekündigt</span></td>
+        </tr>
+        <tr>
+          <td class="mono">59879366</td>
+          <td>Zusatzdomain onlyrevo.de</td>
+          <td class="mono nowrap">20.06.2027</td>
+          <td><span class="pill ok">Gekündigt</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">Bis zum Vertragsende bleiben die IONOS-Leistungen technisch nutzbar, werden von uns aber nicht mehr benötigt. Wir empfehlen, die schriftlichen Kündigungsbestätigungen von IONOS abzulegen und den Termin zur Kontrolle vorzumerken.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Domains</h2>
+      <span class="tag ok">Umzug abgeschlossen</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:30%">Domain</th>
+          <th style="width:22%">Registrar</th>
+          <th style="width:26%">Technisch</th>
+          <th style="width:22%">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mono">werk-2.net</td>
+          <td>Netcup</td>
+          <td>Cloudflare &rarr; Randl-Server</td>
+          <td><span class="pill ok">Umgezogen</span></td>
+        </tr>
+        <tr>
+          <td class="mono dim" style="padding-left:14px">└ dealer.werk-2.net</td>
+          <td class="dim">mit Hauptdomain</td>
+          <td>Shopware-Umgebung</td>
+          <td><span class="pill ok">Aktiv</span></td>
+        </tr>
+        <tr>
+          <td class="mono dim" style="padding-left:14px">└ shop.werk-2.net</td>
+          <td class="dim">mit Hauptdomain</td>
+          <td>Shopware-Umgebung</td>
+          <td><span class="pill ok">Aktiv</span></td>
+        </tr>
+        <tr>
+          <td class="mono">onlyrevo.de</td>
+          <td class="dim">IONOS (bleibt)</td>
+          <td class="dim">wird abgeräumt</td>
+          <td><span class="pill neutral">Läuft aus 09.09.2026</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="eyebrow">Vor dem 09.09.2026 zu klären</div>
+      <h4>onlyrevo.de wird aufgegeben — vorher Abhängigkeiten prüfen</h4>
+      <p>Nach dem Ablaufdatum ist die Domain nicht mehr erreichbar und kann grundsätzlich von Dritten registriert werden. Damit nichts unbemerkt ins Leere läuft, prüfen wir vorab:</p>
+      <ul>
+        <li>Weiterleitungen und Verlinkungen auf onlyrevo.de</li>
+        <li>Verwendung als Verkaufskanal oder Absenderadresse in Shopware</li>
+        <li>Einträge in Visitenkarten, Fahrzeugbeschriftung, Anzeigen oder Social-Media-Profilen</li>
+        <li>Abräumen der Cloudflare-Zone und der Server-Konfiguration nach Ablauf</li>
+      </ul>
+      <p><strong>Rückmeldung nötig:</strong> Falls die Adresse noch irgendwo im Umlauf ist, sagen Sie uns bitte Bescheid — dann richten wir rechtzeitig eine Weiterleitung auf werk-2.net ein.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Shopware — anstehende Wartung</h2>
+      <span class="tag open">September 2026</span>
+    </div>
+    <div class="task krit">
+      <div class="prio">Kritisch</div>
+      <div>
+        <h4>MySQL 8.0 &rarr; 8.4</h4>
+        <p>Version 8.0 hat seit April 2026 das Support-Ende erreicht — es gibt keine Sicherheitsupdates mehr. Backup, Umstellung auf <code>mysql:8.4</code>, ca. 5 Minuten Downtime.</p>
+      </div>
+    </div>
+    <div class="task mittel">
+      <div class="prio">Mittel</div>
+      <div>
+        <h4>PHP 8.2 &rarr; 8.3</h4>
+        <p>Der aktive Support ist ausgelaufen, Sicherheitsupdates gibt es nur noch bis Dezember 2026. Zugleich Voraussetzung für das Shopware-Update.</p>
+      </div>
+    </div>
+    <div class="task mittel">
+      <div class="prio">Mittel</div>
+      <div>
+        <h4>Shopware auf 6.7.12.2 aktualisieren</h4>
+        <p>Setzt PHP 8.3 und MySQL 8.4 voraus — läuft daher direkt nach den beiden Schritten oben. Enthält Sicherheits- und Stabilitätskorrekturen.</p>
+      </div>
+    </div>
+    <div class="task mittel">
+      <div class="prio">Mittel</div>
+      <div>
+        <h4>Erweiterungen aktualisieren</h4>
+        <p>Mehrere Plugins sind nicht mehr auf aktuellem Stand. Update im selben Fenster, anschließend Funktionstest von Bestellstrecke und Zahlungsarten.</p>
+      </div>
+    </div>
+    <div class="task mittel">
+      <div class="prio">Mittel</div>
+      <div>
+        <h4>Mail-Konfiguration auf Microsoft OAuth</h4>
+        <p>Anbindung an Exchange Online über die Microsoft Graph API — ersetzt den wegfallenden IONOS-SMTP in Shopware und im Werk-2-WordPress. Wird im selben Fenster erledigt, damit später kein zweiter Eingriff nötig ist.</p>
+      </div>
+    </div>
+    <div class="task fertig">
+      <div class="prio">Erledigt</div>
+      <div>
+        <h4>Automatisches Backup</h4>
+        <p>Eingerichtet. Die Datenbank wird täglich um 03:00 Uhr gesichert.</p>
+      </div>
+    </div>
+    <div class="task opt">
+      <div class="prio">Optional</div>
+      <div>
+        <h4>Redis für Queue &amp; Increment Storage</h4>
+        <p>Performance-Optimierung ohne akuten Handlungsdruck. Aktuell laufen beide über die Datenbank, die Redis-Trefferquote liegt entsprechend bei null. Kann nach dem Wartungsfenster ohne Downtime nachgezogen werden.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Wartungsfenster im September</h2>
+      <span class="tag info">ca. 3 Stunden</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:52%">Arbeitsschritt</th>
+          <th style="width:22%">Dauer</th>
+          <th style="width:26%">Shop erreichbar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Vollbackup Datenbank und Volumes</td><td class="mono">ca. 15 Min</td><td><span class="pill ok">Ja</span></td></tr>
+        <tr><td>MySQL 8.0 &rarr; 8.4</td><td class="mono">ca. 5 Min</td><td><span class="pill open">Nein</span></td></tr>
+        <tr><td>PHP 8.2 &rarr; 8.3 (Container-Rebuild)</td><td class="mono">ca. 15 Min</td><td><span class="pill open">Nein</span></td></tr>
+        <tr><td>Shopware-Update auf 6.7.12.2</td><td class="mono">ca. 30 Min</td><td><span class="pill open">Nein</span></td></tr>
+        <tr><td>Erweiterungen aktualisieren</td><td class="mono">ca. 20 Min</td><td><span class="pill neutral">Teilweise</span></td></tr>
+        <tr><td>Mail-Umstellung Shopware und WordPress</td><td class="mono">ca. 30 Min</td><td><span class="pill ok">Ja</span></td></tr>
+        <tr><td>Funktionstest: Bestellung, Mailversand, Login</td><td class="mono">ca. 30 Min</td><td><span class="pill ok">Ja</span></td></tr>
+        <tr><td class="dim">Puffer für Rückfragen und Nacharbeiten</td><td class="mono dim">ca. 35 Min</td><td><span class="pill neutral">—</span></td></tr>
+      </tbody>
+    </table>
+    <p class="note"><strong>Tatsächliche Nichterreichbarkeit des Shops: rund 60 Minuten</strong> — der Rest des Fensters entfällt auf Vorbereitung, Umstellung im Hintergrund und Tests. Wir empfehlen einen Termin abends ab 20:00 Uhr oder an einem Sonntag, um Bestellausfälle zu vermeiden. Ein vollständiges Backup wird vorab erstellt, ein Rückfall auf den vorherigen Stand ist jederzeit möglich. Die Reihenfolge MySQL &rarr; PHP &rarr; Shopware &rarr; Erweiterungen ist technisch zwingend.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Nächste Schritte</h2>
+      <span class="tag open">Rückmeldung erbeten</span>
+    </div>
+    <ol class="steps">
+      <li>
+        <div><strong>Konkreten Wartungstermin im September festlegen</strong>
+          <span class="det">Wunschtermin nennen, idealerweise ein Sonntag oder ein Abend ab 20:00 Uhr.</span></div>
+        <span class="who">Werk 2</span>
+      </li>
+      <li>
+        <div><strong>Rückmeldung zu onlyrevo.de</strong>
+          <span class="det">Ist die Adresse noch irgendwo im Einsatz? Falls ja, richten wir vor dem 09.09.2026 eine Weiterleitung ein.</span></div>
+        <span class="who">Werk 2</span>
+      </li>
+      <li>
+        <div><strong>Microsoft-365-Zugang für den Mailversand freigeben</strong>
+          <span class="det">App-Registrierung beziehungsweise Freigabe des Absenderpostfachs für Exchange Online — vor dem Wartungstermin.</span></div>
+        <span class="who">Werk 2</span>
+      </li>
+      <li>
+        <div><strong>Kündigungsbestätigungen von IONOS ablegen</strong>
+          <span class="det">Zur Absicherung, dass zum 20.06.2027 keine stille Verlängerung erfolgt.</span></div>
+        <span class="who">Werk 2</span>
+      </li>
+      <li>
+        <div><strong>onlyrevo.de abräumen</strong>
+          <span class="det">Cloudflare-Zone und Server-Konfiguration nach Ablauf entfernen.</span></div>
+        <span class="who">Randl Web</span>
+      </li>
+      <li>
+        <div><strong>Wartung durchführen und Ergebnis dokumentieren</strong>
+          <span class="det">Updates, Mail-Umstellung, Funktionstest. Protokoll im Anschluss per Mail.</span></div>
+        <span class="who">Randl Web</span>
+      </li>
+      <li>
+        <div><strong>Optional: Redis-Optimierung nachziehen</strong>
+          <span class="det">Nach dem Fenster, ohne weitere Downtime.</span></div>
+        <span class="who">Randl Web</span>
+      </li>
+    </ol>
+  </section>
+
+  <footer>
+    <span>Randl Web &middot; Statusbericht Werk 2 Automotive GmbH</span>
+    <span>Stand 04.08.2026 &middot; Seite 1</span>
+  </footer>
+
+</div>
+</body>
+</html>

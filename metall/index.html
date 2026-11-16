@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CNC Metallarbeiten Bayern – Dominik Randl | Präzisionsfertigung im Chiemgau</title>
+  <meta name="description" content="CNC Fräsen, Drehen, Schweißen & Oberflächenveredelung. DMU60, Mazak Nexus 250, Hurco VMX42T. Serie und Einzelanfertigung – Firma Dominik Randl im Chiemgau." />
+  <link rel="canonical" href="https://randl.group/metall/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:title" content="CNC Metallarbeiten Bayern – Dominik Randl | Präzisionsfertigung im Chiemgau" />
+  <meta property="og:description" content="CNC Fräsen, Drehen, Schweißen & Oberflächenveredelung. DMU60, Mazak Nexus 250, Hurco VMX42T. Serie und Einzelanfertigung – Firma Dominik Randl im Chiemgau." />
+  <meta property="og:url" content="https://randl.group/metall/" />
+  <meta property="og:image" content="https://randl.group/metall/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Dominik Randl" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CNC Metallarbeiten Bayern – Dominik Randl | Präzisionsfertigung im Chiemgau" />
+  <meta name="twitter:description" content="CNC Fräsen, Drehen, Schweißen & Oberflächenveredelung. DMU60, Mazak Nexus 250, Hurco VMX42T. Serie und Einzelanfertigung – Firma Dominik Randl im Chiemgau." />
+  <meta name="twitter:image" content="https://randl.group/metall/og-image.jpg" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "CNC Metallarbeiten",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Firma Dominik Randl",
+    "telephone": "+4901714585063",
+    "email": "info@randl.group",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Grünweg 1",
+      "postalCode": "83370",
+      "addressLocality": "Seeon",
+      "addressRegion": "Bayern",
+      "addressCountry": "DE"
+    }
+  },
+  "areaServed": { "@type": "State", "name": "Bayern" },
+  "description": "CNC Fräsen, Drehen, Schweißen & Oberflächenveredelung. Serie und Einzelanfertigung – Firma Dominik Randl im Chiemgau.",
+  "url": "https://randl.group/metall/"
+}
+</script>
+  <link rel="stylesheet" href="/fonts.css" />
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="shortcut icon" href="/logo.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+
+  <style>
+    :root {
+      --spark: #cc0000; --spark-light: #a83020; --spark-dark: #a83020;
+      --spark-glow: rgba(204,0,0,0.15); --spark-muted: rgba(204,0,0,0.08);
+      --bg: #f5f5f0; --bg-alt: #edecea; --panel: #ffffff; --panel-light: #f0eeea; --panel-border: #e0ddd8;
+      --text-1: rgba(0,0,0,0.85); --text-2: rgba(0,0,0,0.55); --text-3: rgba(0,0,0,0.35);
+      --topbar-bg: #0d0f14; --topbar-txt: rgba(255,255,255,0.75);
+    }
+    [data-theme="dark"] {
+      --spark: #ff0000; --spark-light: #C33E2F; --spark-dark: #C33E2F;
+      --spark-glow: rgba(255,0,0,0.2); --spark-muted: rgba(195,62,47,0.12);
+      --bg: #09090c; --bg-alt: #0d0f14; --panel: #111520; --panel-light: #181e2e; --panel-border: #222840;
+      --text-1: rgba(255,255,255,0.92); --text-2: rgba(255,255,255,0.50); --text-3: rgba(255,255,255,0.28);
+      --topbar-bg: #060709; --topbar-txt: rgba(255,255,255,0.65);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-1); line-height: 1.6; transition: background 0.3s, color 0.3s; }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)} }
+    .anim-up { animation: fadeUp 0.65s cubic-bezier(0.22,1,0.36,1) both; }
+    .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.38s}
+
+    /* TOPBAR */
+    .topbar { background:var(--topbar-bg); color:var(--topbar-txt); font-size:.75rem; letter-spacing:.04em; position:sticky; top:0; z-index:100; border-bottom:1px solid rgba(255,255,255,.06); }
+    .topbar-inner { max-width:1200px; margin:0 auto; padding:0 1.5rem; height:44px; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+    .topbar-contact { display:flex; align-items:center; gap:1.2rem; }
+    .topbar-contact a { display:flex; align-items:center; gap:.35rem; color:var(--topbar-txt); transition:color .2s; white-space:nowrap; }
+    .topbar-contact a:hover { color:#fff; }
+    .topbar-contact svg { width:12px; height:12px; opacity:.7; flex-shrink:0; }
+    .topbar-divider { width:1px; height:14px; background:rgba(255,255,255,.15); }
+    .topbar-right { display:flex; align-items:center; gap:.25rem; }
+    .topbar-nav { display:flex; align-items:center; gap:.2rem; }
+    .topbar-nav a { color:var(--topbar-txt); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; padding:.25rem .65rem; border-radius:4px; transition:color .2s,background .2s; }
+    .topbar-nav a:hover { color:#fff; background:rgba(255,255,255,.06); }
+    .topbar-nav a.active { color:var(--spark); background:rgba(255,0,0,.08); }
+    .topbar-nav .sep { color:rgba(255,255,255,.2); font-size:.7rem; padding:0 .1rem; }
+    .theme-toggle { background:none; border:1px solid rgba(255,255,255,.12); border-radius:6px; color:var(--topbar-txt); cursor:pointer; padding:.25rem .45rem; display:flex; align-items:center; transition:border-color .2s,color .2s; margin-left:.5rem; }
+    .theme-toggle:hover { border-color:rgba(255,255,255,.3); color:#fff; }
+    .theme-toggle svg { width:13px; height:13px; }
+    .icon-sun { display:none; }
+    [data-theme="dark"] .icon-moon { display:none; }
+    [data-theme="dark"] .icon-sun { display:block; }
+
+    /* HERO */
+    .hero { position:relative; min-height:80vh; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; background:linear-gradient(135deg,#080c10 0%,#10181c 50%,#080a0c 100%); }
+    .hero-bg::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 55% at 60% 40%,rgba(30,60,100,.2) 0%,transparent 65%),radial-gradient(ellipse 35% 45% at 25% 65%,rgba(180,30,20,.15) 0%,transparent 60%); }
+    .hero-img { position:absolute; inset:0; object-fit:cover; opacity:.3; width:100%; height:100%; display:none; }
+    .hero-img.loaded { display:block; }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.3) 50%,rgba(0,0,0,.1) 100%); }
+    .hero-content { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:4rem 1.5rem 5rem; width:100%; }
+    .hero-badge { display:inline-flex; align-items:center; gap:.5rem; font-family:'Barlow Condensed',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--spark); border:1px solid rgba(255,80,50,.35); background:rgba(255,50,30,.1); padding:.22rem .75rem; border-radius:4px; margin-bottom:1.1rem; }
+    .hero-title { font-family:'Barlow Condensed',sans-serif; font-size:clamp(2.8rem,7vw,5.5rem); font-weight:900; line-height:.95; text-transform:uppercase; color:#fff; margin-bottom:1.2rem; max-width:700px; }
+    .hero-title em { font-style:normal; color:var(--spark); }
+    .hero-sub { font-size:1.05rem; color:rgba(255,255,255,.65); max-width:500px; margin-bottom:2rem; font-weight:300; line-height:1.65; }
+    .hero-cta { display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; }
+    .btn-primary { display:inline-flex; align-items:center; gap:.5rem; padding:.85rem 1.8rem; border-radius:10px; background:linear-gradient(135deg,#a83020,#C33E2F); color:#fff; font-family:'DM Sans',sans-serif; font-size:.9rem; font-weight:600; border:none; cursor:pointer; text-decoration:none; transition:opacity .2s,transform .15s,box-shadow .2s; }
+    .btn-primary:hover { opacity:.92; transform:translateY(-2px); box-shadow:0 8px 24px rgba(180,40,30,.4); }
+    .btn-outline { display:inline-flex; align-items:center; gap:.5rem; padding:.85rem 1.6rem; border-radius:10px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18); color:rgba(255,255,255,.85); font-size:.9rem; font-weight:500; text-decoration:none; transition:background .2s,border-color .2s; backdrop-filter:blur(8px); }
+    .btn-outline:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.3); }
+    .btn-svg { width:16px; height:16px; }
+    .hero-stats { position:relative; z-index:2; background:rgba(0,0,0,.55); backdrop-filter:blur(12px); border-top:1px solid rgba(255,255,255,.06); }
+    .hero-stats-inner { max-width:1200px; margin:0 auto; padding:0 1.5rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); }
+    .stat-item { padding:1.1rem 1rem; border-right:1px solid rgba(255,255,255,.06); text-align:center; }
+    .stat-item:last-child { border-right:none; }
+    .stat-num { font-family:'Barlow Condensed',sans-serif; font-size:1.8rem; font-weight:800; color:var(--spark); line-height:1; }
+    .stat-label { font-size:.7rem; color:rgba(255,255,255,.45); letter-spacing:.08em; text-transform:uppercase; margin-top:.2rem; }
+
+    /* SECTIONS */
+    .section { padding:5rem 1.5rem; }
+    .section-alt { background:var(--bg-alt); }
+    .container { max-width:1200px; margin:0 auto; }
+    .section-label { font-family:'Barlow Condensed',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--spark); margin-bottom:.6rem; }
+    .section-title { font-family:'Barlow Condensed',sans-serif; font-size:clamp(1.9rem,4vw,3rem); font-weight:800; text-transform:uppercase; color:var(--text-1); line-height:1.05; margin-bottom:.6rem; }
+    .section-sub { font-size:.97rem; color:var(--text-2); max-width:560px; font-weight:300; line-height:1.7; }
+    .section-header { margin-bottom:3rem; }
+    .section-header.center { text-align:center; }
+    .section-header.center .section-sub { margin:0 auto; }
+
+    /* LEISTUNGEN */
+    .leistungen-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:1.25rem; }
+    .leistung-card { background:var(--panel); border:1px solid var(--panel-border); border-radius:16px; padding:1.75rem; transition:border-color .2s,box-shadow .2s,transform .2s; }
+    .leistung-card:hover { border-color:rgba(180,40,30,.3); box-shadow:0 8px 32px rgba(0,0,0,.08); transform:translateY(-3px); }
+    .leistung-icon { width:48px; height:48px; border-radius:12px; background:var(--spark-muted); border:1px solid rgba(180,40,30,.2); display:flex; align-items:center; justify-content:center; color:var(--spark); margin-bottom:1.1rem; }
+    .leistung-icon svg { width:22px; height:22px; }
+    .leistung-title { font-family:'Barlow Condensed',sans-serif; font-size:1.15rem; font-weight:800; text-transform:uppercase; color:var(--text-1); margin-bottom:.5rem; }
+    .leistung-desc { font-size:.86rem; color:var(--text-2); line-height:1.65; font-weight:300; }
+
+    /* MASCHINEN */
+    .machine-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.25rem; }
+    .machine-card { background:var(--panel); border:1px solid var(--panel-border); border-radius:16px; overflow:hidden; transition:border-color .2s,transform .2s; }
+    .machine-card:hover { border-color:rgba(180,40,30,.3); transform:translateY(-3px); }
+    .machine-head { padding:1.5rem 1.5rem 0; }
+    .machine-model { font-family:'Barlow Condensed',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--spark); margin-bottom:.25rem; }
+    .machine-name { font-family:'Barlow Condensed',sans-serif; font-size:1.4rem; font-weight:800; text-transform:uppercase; color:var(--text-1); line-height:1.1; margin-bottom:.65rem; }
+    .machine-desc { font-size:.85rem; color:var(--text-2); line-height:1.6; font-weight:300; padding:0 1.5rem; }
+    .machine-specs-wrap { padding:1.25rem 1.5rem 1.5rem; }
+    .machine-specs { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .machine-spec { font-size:.72rem; font-weight:500; background:var(--panel-light); border:1px solid var(--panel-border); color:var(--text-2); padding:.2rem .6rem; border-radius:20px; }
+    .machine-divider { height:1px; background:var(--panel-border); margin:1rem 1.5rem 0; }
+
+    /* OBERFLAECHEN */
+    .oberfl-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:.75rem; }
+    .oberfl-card { background:var(--panel); border:1px solid var(--panel-border); border-radius:12px; padding:1.1rem 1rem; display:flex; align-items:flex-start; gap:.75rem; transition:border-color .2s; }
+    .oberfl-card:hover { border-color:rgba(180,40,30,.3); }
+    .oberfl-dot { width:8px; height:8px; border-radius:50%; background:var(--spark); flex-shrink:0; margin-top:.35rem; }
+    .oberfl-name { font-family:'Barlow Condensed',sans-serif; font-size:.95rem; font-weight:700; text-transform:uppercase; color:var(--text-1); margin-bottom:.15rem; }
+    .oberfl-desc { font-size:.77rem; color:var(--text-3); line-height:1.45; }
+
+    /* USPs */
+    .usp-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+    .usp-item { display:flex; gap:1rem; align-items:flex-start; }
+    .usp-icon { width:40px; height:40px; border-radius:10px; background:var(--spark-muted); border:1px solid rgba(180,40,30,.2); display:flex; align-items:center; justify-content:center; color:var(--spark); flex-shrink:0; margin-top:.1rem; }
+    .usp-icon svg { width:18px; height:18px; }
+    .usp-title { font-family:'Barlow Condensed',sans-serif; font-size:1rem; font-weight:700; text-transform:uppercase; color:var(--text-1); margin-bottom:.25rem; }
+    .usp-desc { font-size:.83rem; color:var(--text-2); line-height:1.6; font-weight:300; }
+
+    /* CTA */
+    .cta-band { padding:5rem 1.5rem; background:#0a0b0f; text-align:center; position:relative; overflow:hidden; }
+    .cta-band::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 70% at 50% 120%,rgba(180,30,20,.25) 0%,transparent 65%); pointer-events:none; }
+    .cta-band-content { position:relative; z-index:1; }
+    .cta-band-label { font-family:'Barlow Condensed',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--spark); margin-bottom:.75rem; }
+    .cta-band-title { font-family:'Barlow Condensed',sans-serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:900; text-transform:uppercase; color:#fff; line-height:1.05; margin-bottom:.75rem; }
+    .cta-band-sub { font-size:.97rem; color:rgba(255,255,255,.5); margin-bottom:2rem; font-weight:300; }
+    .cta-band-actions { display:flex; flex-wrap:wrap; gap:.75rem; justify-content:center; }
+    .btn-tel { display:inline-flex; align-items:center; gap:.5rem; padding:.85rem 1.6rem; border-radius:10px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.8); font-size:.9rem; font-weight:500; text-decoration:none; transition:background .2s,border-color .2s; }
+    .btn-tel:hover { background:rgba(255,255,255,.11); border-color:rgba(255,255,255,.25); }
+
+    /* FOOTER */
+    .footer { background:#06070a; padding:2rem 1.5rem; border-top:1px solid rgba(255,255,255,.05); }
+    .footer-inner { max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; }
+    .footer-copy { font-size:.78rem; color:rgba(255,255,255,.3); }
+    footer { border-top:1px solid var(--panel-border, rgba(0,0,0,.12)); padding:2rem clamp(1.5rem,4vw,4rem); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .footer-brand { font-family:'Barlow Condensed',sans-serif; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-3, rgba(0,0,0,.45)); }
+    .footer-links { display:flex; gap:2rem; flex-wrap:wrap; align-items:center; }
+    .footer-links a { font-size:.75rem; color:var(--text-3, rgba(0,0,0,.45)); text-decoration:none; letter-spacing:.06em; transition:color .2s; }
+    .footer-links a:hover { color:var(--text-1, rgba(0,0,0,.85)); }
+
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    @media(max-width:768px){ .section{padding:3.5rem 1.25rem;} .hero-content{padding:3rem 1.25rem 4rem;} .topbar-contact .topbar-mail{display:none;} }
+    @media(max-width:480px){ .topbar-nav a{font-size:.65rem;padding:.2rem .4rem;} }
+  </style>
+  <script>
+    /* Google Analytics erst nach Einwilligung (Event cc:consent aus cookie-consent.js) */
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.addEventListener('cc:consent', function (e) {
+      var ok = e.detail && e.detail.analytics;
+      window['ga-disable-G-0521LCB2SC'] = !ok;
+      if (!ok) {
+        ['_ga', '_ga_0521LCB2SC', '_gid', '_gat'].forEach(function (n) {
+          document.cookie = n + '=; Max-Age=0; path=/';
+          document.cookie = n + '=; Max-Age=0; path=/; domain=' + location.hostname;
+          document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname.replace(/^www\./, '');
+        });
+        return;
+      }
+      if (window.__gaLoaded) return;
+      window.__gaLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0521LCB2SC';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-0521LCB2SC', { anonymize_ip: true });
+    });
+  </script>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-contact">
+        <a href="tel:+4901714585063">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +49 (0) 171 45 850 63
+        </a>
+        <div class="topbar-divider"></div>
+        <a href="mailto:info@randl.group" class="topbar-mail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          info@randl.group
+        </a>
+      </div>
+      <div class="topbar-right">
+        <nav class="topbar-nav">
+          <a href="/zelt/">Zeltverleih</a>
+          <span class="sep">·</span>
+          <a href="/metall/" class="active">CNC Metallarbeiten</a>
+          <span class="sep">·</span>
+          <a href="/gas/">Gashandel</a>
+        </nav>
+        <button class="theme-toggle" id="themeBtn" aria-label="Theme wechseln">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <img class="hero-img" id="hero-img" src="" alt="CNC Metallarbeiten Dominik Randl" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge anim-up d1">
+        <svg style="width:10px;height:10px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M12 2v2M12 20v2M4.93 19.07l1.41-1.41M18.66 18.66l-1.41-1.41M2 12h2M20 12h2"/></svg>
+        Firma Dominik Randl · CNC Metallarbeiten
+      </div>
+      <h1 class="hero-title anim-up d2">
+        <em>Präzision</em><br>aus dem Chiemgau
+      </h1>
+      <p class="hero-sub anim-up d3">
+        CNC-Fräsen, Drehen, Schweißen und Oberflächenveredelung. Serie und Einzelanfertigung auf Highend-Maschinen – alles aus einer Hand.
+      </p>
+      <div class="hero-cta anim-up d4">
+        <a href="https://randl.group/metall/formular/" class="btn-primary">
+          <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Anfrage stellen
+        </a>
+        <a href="#maschinen" class="btn-outline">
+          <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          Maschinenpark ansehen
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stats-inner" id="stats-container"></div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section class="section" id="leistungen">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Leistungen</div>
+        <h2 class="section-title">Alles aus<br>einer Hand</h2>
+        <p class="section-sub">Von der Konstruktionszeichnung bis zum fertig beschichteten Bauteil – wir begleiten Ihr Projekt von Anfang bis Ende.</p>
+      </div>
+      <div class="leistungen-grid" id="leistungen-grid"></div>
+    </div>
+  </section>
+
+  <!-- MASCHINENPARK -->
+  <section class="section section-alt" id="maschinen">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Maschinenpark</div>
+        <h2 class="section-title">Highend-Maschinen<br>für höchste Präzision</h2>
+        <p class="section-sub">Unser Maschinenpark umfasst namhafte CNC-Bearbeitungszentren für komplexe Fräs- und Dreharbeiten.</p>
+      </div>
+      <div class="machine-grid" id="machine-grid"></div>
+    </div>
+  </section>
+
+  <!-- OBERFLAECHENBEHANDLUNG -->
+  <section class="section" id="oberflaechen">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Oberflächen</div>
+        <h2 class="section-title">Veredlung &<br>Schutz</h2>
+        <p class="section-sub">Das Finish macht den Unterschied. Wir koordinieren alle gängigen Oberflächenbehandlungen – von galvanisch bis thermisch.</p>
+      </div>
+      <div class="oberfl-grid" id="oberfl-grid"></div>
+    </div>
+  </section>
+
+  <!-- USPs -->
+  <section class="section section-alt" id="vorteile">
+    <div class="container">
+      <div class="section-header center reveal">
+        <div class="section-label">Ihre Vorteile</div>
+        <h2 class="section-title">Warum Randl<br>CNC Technik?</h2>
+        <p class="section-sub">Persönlich. Präzise. Ohne Schnittstellen – von der Idee bis zum fertigen Teil.</p>
+      </div>
+      <div class="usp-grid" id="usp-grid"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="cta-band-content container">
+      <div class="cta-band-label">Ihr nächstes Projekt</div>
+      <h2 class="cta-band-title">Projekt anfragen –<br>wir setzen es um.</h2>
+      <p class="cta-band-sub">Zeichnung, Skizze oder Idee? Schicken Sie uns Ihre Anfrage – wir antworten schnell und persönlich.</p>
+      <div class="cta-band-actions">
+        <a href="https://randl.group/metall/formular/" class="btn-primary">
+          <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Technische Anfrage stellen
+        </a>
+        <a href="tel:+4901714585063" class="btn-tel">
+          <svg style="width:15px;height:15px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +49 (0) 171 45 850 63
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+<footer>
+  <span class="footer-brand">© 2026 Firma Dominik Randl · Alle Rechte vorbehalten</span>
+  <nav class="footer-links">
+    <a href="/kontakt">Kontakt</a>
+    <a href="/impressum">Impressum</a>
+    <a href="/datenschutz">Datenschutz</a>
+    <a href="#" onclick="window.RandlCookieConsent&&window.RandlCookieConsent.openSettings();return false;">Cookie-Einstellungen</a>
+  </nav>
+</footer>
+
+  <script>
+  const CONTENT = {
+    stats: [
+      { num: "3",    label: "CNC-Bearbeitungszentren" },
+      { num: "5-Achs", label: "DMU60 Monoblock"       },
+      { num: "∞",    label: "Werkstoffe bearbeitbar"  },
+      { num: "1",    label: "Ansprechpartner"          }
+    ],
+    leistungen: [
+      { icon: "cpu",     title: "CNC Fräsen",              desc: "Hochmoderne CNC-Frästechnik für präzise Bauteile in Serie oder Einzelanfertigung. Von einfachen Konturen bis zu komplexen 5-Achs-Bearbeitungen." },
+      { icon: "rotate",  title: "CNC Drehen",              desc: "Präzise CNC-Drehtechnik für Rotationsbauteile. Kleinserien, Einzelteile und Serienproduktion auf unserer Mazak Nexus 250." },
+      { icon: "zap",     title: "Schweißarbeiten",         desc: "Professionelle Schweißarbeiten in verschiedenen Verfahren. Von der Einzelschweißung bis zur Serienfertigung von Schweißkonstruktionen." },
+      { icon: "layers",  title: "Schleifen & Polieren",    desc: "Präzisionsschleifen für engste Toleranzen und höchste Oberflächengüte. Polieren für optisch ansprechende und funktionale Oberflächen." },
+      { icon: "shield",  title: "Pulverbeschichtung",      desc: "Robuster und langlebiger Schutz durch Pulverbeschichtung. Vielfältige Farben und Strukturen für optimalen Korrosionsschutz und Design." },
+      { icon: "star",    title: "Persönliche Beratung",    desc: "Von der ersten Idee bis zum fertigen Produkt. Wir beraten Sie umfassend und begleiten Ihr Projekt ohne komplizierte Schnittstellen." }
+    ],
+    machines: [
+      {
+        image: "maschine-dmu60.webp",
+        model: "DMG",
+        name: "DMU 60 Monoblock",
+        desc: "Unser 5-Achs-Bearbeitungszentrum für höchste Präzision und komplexe Freiformflächen. Ideal für anspruchsvolle Teile aus allen Materialien.",
+        specs: ["5-Achs-Simultanbearbeitung", "Verfahrweg: 600 × 500 × 500 mm", "Hohe Wiederholgenauigkeit", "Hochpräzisions-Spindel"]
+      },
+      {
+        image: "maschine-mazak.webp",
+        model: "Mazak",
+        name: "Nexus 250",
+        desc: "Hochpräzises CNC-Drehzentrum für Rotationsbauteile in Einzel- und Serienfertigung. Effizient und zuverlässig.",
+        specs: ["CNC-Drehen", "Serien- & Einzelteile", "Diverse Werkstoffe", "Schnelle Rüstzeiten"]
+      },
+      {
+        image: "maschine-hurco.webp",
+        model: "Hurco",
+        name: "VMX 42T",
+        desc: "Vertikales Bearbeitungszentrum für die effiziente Fräsbearbeitung von Werkstücken mittlerer Größe. Flexibel und produktiv.",
+        specs: ["Vertikalfräsen", "Verfahrweg: 1.066 × 610 × 610 mm", "Werkzeugwechsler", "Schwenkbarer Tisch"]
+      }
+    ],
+    oberflaechen: [
+      { name: "Pulverbeschichtung",        desc: "Robuster Farbschutz in vielen Farben & Strukturen" },
+      { name: "Lackieren",                  desc: "Nass- und Spritzlackierung, individuell" },
+      { name: "Galvanische Verzinkung",    desc: "Korrosionsschutz durch Zinkauftrag" },
+      { name: "Vernickeln",                 desc: "Dekorativer & funktionaler Nickelüberzug" },
+      { name: "Verchromen",                 desc: "Glänzende Hartchromschicht für Verschleißschutz" },
+      { name: "Eloxieren",                  desc: "Anodisierung von Aluminium, verschiedene Farben" },
+      { name: "Sandstrahlen",               desc: "Reinigung & Vorbereitung der Oberfläche" },
+      { name: "Härten",                     desc: "Verbesserung der Materialhärte & Verschleißfestigkeit" }
+    ],
+    usps: [
+      { icon: "target",  title: "Höchste Präzision",       desc: "Toleranzen im µm-Bereich. Unsere Highend-Maschinen garantieren konstant höchste Fertigungsqualität." },
+      { icon: "refresh", title: "Serie & Einzelanfertigung",desc: "Ob Einzelstück oder Kleinserie – wir fertigen flexibel nach Ihren Anforderungen und Zeichnungen." },
+      { icon: "user",    title: "Alles aus einer Hand",     desc: "Von der Beratung über die Fertigung bis zur Oberflächenbehandlung – keine komplizierten Schnittstellen." },
+      { icon: "clock",   title: "Schnelle Umsetzung",       desc: "Kurze Reaktionszeiten und verlässliche Liefertermine. Wir wissen, dass Zeit Geld ist." }
+    ]
+  };
+
+  const I = {
+    cpu:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>`,
+    rotate:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>`,
+    zap:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+    layers:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+    shield:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    star:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    target:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`,
+    refresh: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>`,
+    user:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+    clock:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`
+  };
+
+  const sc = document.getElementById('stats-container');
+  CONTENT.stats.forEach(s => { sc.innerHTML += `<div class="stat-item"><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`; });
+
+  const lg = document.getElementById('leistungen-grid');
+  CONTENT.leistungen.forEach(l => {
+    lg.innerHTML += `
+    <div class="leistung-card">
+      <div class="leistung-icon">${I[l.icon]||I.cpu}</div>
+      <div class="leistung-title">${l.title}</div>
+      <p class="leistung-desc">${l.desc}</p>
+    </div>`;
+  });
+
+  const mg = document.getElementById('machine-grid');
+  CONTENT.machines.forEach(m => {
+    mg.innerHTML += `
+    <div class="machine-card">
+      ${m.image ? '<div style="height:180px;overflow:hidden;border-radius:8px;background:var(--panel-light);margin-bottom:1.25rem;"><img src="' + m.image + '" alt="' + m.name + '" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentNode.style.display=\'none\'"></div>' : ''}
+      <div class="machine-head">
+        <div class="machine-model">${m.model}</div>
+        <div class="machine-name">${m.name}</div>
+      </div>
+      <div class="machine-divider"></div>
+      <p class="machine-desc">${m.desc}</p>
+      <div class="machine-specs-wrap">
+        <div class="machine-specs">${m.specs.map(s=>`<span class="machine-spec">${s}</span>`).join('')}</div>
+      </div>
+    </div>`;
+  });
+
+  const og = document.getElementById('oberfl-grid');
+  CONTENT.oberflaechen.forEach(o => {
+    og.innerHTML += `
+    <div class="oberfl-card">
+      <div class="oberfl-dot"></div>
+      <div><div class="oberfl-name">${o.name}</div><div class="oberfl-desc">${o.desc}</div></div>
+    </div>`;
+  });
+
+  const ug = document.getElementById('usp-grid');
+  CONTENT.usps.forEach(u => {
+    ug.innerHTML += `
+    <div class="usp-item">
+      <div class="usp-icon">${I[u.icon]||I.star}</div>
+      <div><div class="usp-title">${u.title}</div><p class="usp-desc">${u.desc}</p></div>
+    </div>`;
+  });
+
+
+  const html = document.documentElement;
+  html.setAttribute('data-theme', localStorage.getItem('randl-theme') || 'light');
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('randl-theme', next);
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  
+  /* ── HERO-LOADER ───────────────────────────────────────────── */
+  (function(){
+    var img = document.getElementById('hero-img');
+    img.addEventListener('load',  function(){ img.classList.add('loaded'); });
+    img.addEventListener('error', function(){});
+    img.src = 'hero.webp';
+  })();
+</script>
+<script src="/cookie-consent.js"></script>
+</body>
+</html>

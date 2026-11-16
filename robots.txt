@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /randl-admin/
+Disallow: /system/
+
+Sitemap: https://randl.group/sitemap.xml
