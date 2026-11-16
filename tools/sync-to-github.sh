@@ -37,7 +37,7 @@ git_run() {
 }
 
 # Nie ins Repo; Dateien, die nur im Repo existieren, werden vor --delete geschützt.
-RSYNC_OPTS=(-rlpt --delete --itemize-changes
+RSYNC_OPTS=(-rlp --checksum --delete --itemize-changes
   --exclude='.git/' --exclude='system/' --exclude='private/' --exclude='node_modules/'
   --exclude='.env' --exclude='*.env' --exclude='*.bak' --exclude='*.bak.*' --exclude='*.bak-*'
   --exclude='*.old' --exclude='*.orig' --exclude='*.bk' --exclude='*~' --exclude='.DS_Store'
