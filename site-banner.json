@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "enabled": true,
+  "badge": "Messe",
+  "text": "Rosenheimer Hochzeitsmesse · 28. + 29. November 2026 · KU'KO Rosenheim",
+  "linkUrl": "/#messe",
+  "linkLabel": "Besuchen Sie uns",
+  "style": "rot",
+  "startAt": null,
+  "endAt": "2026-11-29T18:00:00+01:00",
+  "updatedAt": "2026-11-18T21:00:00+01:00",
+  "updatedBy": "vorbereitung"
+}
