@@ -14,7 +14,9 @@ Was passiert:
   4. Schreibt galerie.json und rendert die Bilder statisch in index.html
      (zwischen <!-- GALERIE:START --> und <!-- GALERIE:END -->) – gut für SEO, läuft auch ohne JS.
   5. Schreibt /root/galerie-duplikate.csv (außerhalb des Webroots) mit allen aussortierten Dateien.
-  6. Übernimmt die Pflege aus dem Mitarbeiterportal (zelt/galerie/.verwaltung.json): gelöschte Bilder,
+  6. Erkennt Gesichter (lokal, OpenCV + YuNet-Modell in tools/models/) und markiert die Bilder fürs Portal.
+     Im Portal verpixelte Bilder werden beim Neuerzeugen wieder verpixelt.
+  7. Übernimmt die Pflege aus dem Mitarbeiterportal (zelt/galerie/.verwaltung.json): gelöschte Bilder,
      hochgeladene Bilder, geänderte Kategorie-Zuordnung, Kategorie-Namen und -Reihenfolge.
      galerie-alben.json legt nur fest, welcher Nextcloud-Ordner zu welcher Kategorie gehört
      (und die Startwerte für Namen/Reihenfolge beim allerersten Lauf).
@@ -25,7 +27,7 @@ enthalten Kundendaten. Das Skript bricht ab, wenn --src nicht "Photos" ist oder 
 
 Aufruf (als root auf dem Server):
   python3 -m venv /opt/galerie-venv
-  /opt/galerie-venv/bin/pip install pillow pillow-heif
+  /opt/galerie-venv/bin/pip install pillow pillow-heif opencv-python-headless
   /opt/galerie-venv/bin/python tools/build-galerie.py \
       --src /PFAD/ZU/nextcloud/data/kparzinger/files/Photos \
       --out /home/USER/web/randl.group/public_html/zelt/galerie \
@@ -54,6 +56,50 @@ Image.MAX_IMAGE_PIXELS = 200_000_000
 EXT = {".jpg", ".jpeg", ".png", ".webp"} | ({".heic", ".heif"} if HEIC else set())
 FULL_MAX, THUMB_W = 2048, 640
 Q_FULL, Q_THUMB = 80, 72
+
+# ── Gesichtserkennung (optional, lokal mit OpenCV/YuNet) ─────────────
+FACE_MODEL = Path(__file__).with_name("models") / "face_detection_yunet_2023mar.onnx"
+try:
+    import cv2
+    FACES = FACE_MODEL.exists()
+except ImportError:
+    FACES = False
+
+
+def detect_faces(path):
+    """Gesichter im (fertigen) WebP finden. Rückgabe: [[x, y, w, h], …] relativ zur Bildgröße (0–1)."""
+    img = cv2.imread(str(path))
+    if img is None:
+        return []
+    h, w = img.shape[:2]
+    det = cv2.FaceDetectorYN.create(str(FACE_MODEL), "", (w, h), 0.7, 0.3, 5000)
+    _, found = det.detect(img)
+    boxes = []
+    for f in (found if found is not None else []):
+        bx, by, bw, bh = (float(v) for v in f[:4])
+        eye_dist = abs(float(f[6]) - float(f[4]))
+        # Plausibilität: Fehltreffer (Deko, Lampions) haben meist ein schmales Seitenverhältnis
+        # und zu eng stehende "Augen"
+        if bh <= 0 or not 0.68 <= bw / bh <= 1.25 or eye_dist / bw < 0.22:
+            continue
+        x0, y0 = max(0.0, bx), max(0.0, by)
+        boxes.append([round(x0 / w, 4), round(y0 / h, 4), round(min(bw, w - x0) / w, 4), round(min(bh, h - y0) / h, 4)])
+    return boxes
+
+
+def pixelate(im, boxes, pad=0.25, blocks=7):
+    """Gesichter unkenntlich machen (gleiche Werte wie im Mitarbeiterportal)."""
+    W, H = im.size
+    for x, y, w, h in boxes:
+        l = max(0, round((x - w * pad) * W)); t = max(0, round((y - h * pad) * H))
+        r = min(W, round((x + w * (1 + pad)) * W)); b = min(H, round((y + h * (1 + pad)) * H))
+        if r - l < 2 or b - t < 2:
+            continue
+        region = im.crop((l, t, r, b))
+        blk = max(r - l, b - t) / blocks
+        small = region.resize((max(1, round((r - l) / blk)), max(1, round((b - t) / blk))), Image.BOX)
+        im.paste(small.resize((r - l, b - t), Image.NEAREST), (l, t))
+    return im
 
 
 def slugify(s):
@@ -125,6 +171,16 @@ def main():
     cfg = dict(cfg, alben=alben)
     album_ids = [al["id"] for al in alben]
     zuordnung = {k: v for k, v in state.get("zuordnung", {}).items() if v in album_ids}
+    verpixelt = state.get("verpixelt", {})   # {sha8: boxen} – im Portal verpixelte Bilder
+    version = state.get("version", {})       # {sha8: n}     – Cache-Buster nach Bildänderung
+    prev_faces = {}                          # Ergebnis vom letzten Lauf wiederverwenden
+    try:
+        for m in json.loads((out / "galerie.json").read_text(encoding="utf-8")).get("bilder", []):
+            if "boxen" in m: prev_faces[m["file"][-13:-5]] = m["boxen"]
+    except (OSError, ValueError):
+        pass
+    if not FACES:
+        print("Hinweis: OpenCV oder Modell fehlt – keine Gesichtserkennung (pip install opencv-python-headless).")
 
     for alb in cfg["alben"]:
         for folder in alb["ordner"]:
@@ -226,8 +282,10 @@ def main():
         s = min(1, FULL_MAX / max(fw, fh)); fw, fh = round(fw * s), round(fh * s)
         tw, th = THUMB_W, round(THUMB_W * it["h"] / it["w"])
         if not a.dry_run and not ((full_dir / fname).exists() and (thumb_dir / fname).exists()):
-            im = ImageOps.exif_transpose(Image.open(it["path"])).convert("RGB")
-            im.resize((fw, fh), Image.LANCZOS).save(full_dir / fname, "WEBP", quality=Q_FULL, method=6)
+            im = ImageOps.exif_transpose(Image.open(it["path"])).convert("RGB").resize((fw, fh), Image.LANCZOS)
+            if it["sha"][:8] in verpixelt:  # im Portal verpixelt → auch beim Neuerzeugen
+                im = pixelate(im, verpixelt[it["sha"][:8]])
+            im.save(full_dir / fname, "WEBP", quality=Q_FULL, method=6)
             im.resize((tw, th), Image.LANCZOS).save(thumb_dir / fname, "WEBP", quality=Q_THUMB, method=6)
             print(f"  [{n}/{len(keep)}] {fname}")
         manifest.append(dict(file=fname, album=it["album"], caption=caption, w=fw, h=fh, tw=tw, th=th))
@@ -244,8 +302,21 @@ def main():
         manifest.append({k: e[k] for k in ("file", "album", "caption", "w", "h", "tw", "th")})
         wanted.add(e["file"]); shas.add(sha8)
     manifest.sort(key=lambda m: album_ids.index(m["album"]))  # stabil: Reihenfolge im Album bleibt
+    n_faces = 0
     for m in manifest:
         m["alt"] = f'{titles[m["album"]]}{" – " + m["caption"] if m["caption"] else ""} | Zeltverleih Dominik Randl'
+        s8 = m["file"][-13:-5]
+        if s8 in verpixelt:
+            m["boxen"], m["verpixelt"] = verpixelt[s8], True
+        elif s8 in prev_faces:
+            m["boxen"] = prev_faces[s8]
+        elif FACES and not a.dry_run:
+            m["boxen"] = detect_faces(full_dir / m["file"])
+        if s8 in version:
+            m["v"] = version[s8]
+        n_faces += bool(m.get("boxen"))
+    if FACES or prev_faces:
+        print(f"Bilder mit Gesichtern: {n_faces}")
 
     # ── 4. Manifest + statisches HTML ────────────────────────────
     albums = [dict(id=al["id"], titel=al["titel"], anzahl=sum(m["album"] == al["id"] for m in manifest))
@@ -256,10 +327,11 @@ def main():
     figs = []
     for i, m in enumerate(manifest):
         lazy = 'loading="lazy" decoding="async"' if i > 7 else 'fetchpriority="high"' if i == 0 else ""
+        q = f'?v={m["v"]}' if m.get("v") else ""
         figs.append(
             f'<figure class="g-item" data-album="{m["album"]}">'
-            f'<a href="img/full/{m["file"]}" data-w="{m["w"]}" data-h="{m["h"]}">'
-            f'<img src="img/thumb/{m["file"]}" width="{m["tw"]}" height="{m["th"]}" alt="{html.escape(m["alt"])}" {lazy}></a>'
+            f'<a href="img/full/{m["file"]}{q}" data-w="{m["w"]}" data-h="{m["h"]}">'
+            f'<img src="img/thumb/{m["file"]}{q}" width="{m["tw"]}" height="{m["th"]}" alt="{html.escape(m["alt"])}" {lazy}></a>'
             + (f'<figcaption>{html.escape(m["caption"])}</figcaption>' if m["caption"] else "")
             + "</figure>")
     chips = ['<button class="g-chip active" data-filter="alle">Alle <span>{}</span></button>'.format(len(manifest))]
