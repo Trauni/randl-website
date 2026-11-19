@@ -15,7 +15,8 @@ Was passiert:
      (zwischen <!-- GALERIE:START --> und <!-- GALERIE:END -->) – gut für SEO, läuft auch ohne JS.
   5. Schreibt /root/galerie-duplikate.csv (außerhalb des Webroots) mit allen aussortierten Dateien.
   6. Erkennt Gesichter (lokal, OpenCV + YuNet-Modell in tools/models/) und markiert die Bilder fürs Portal.
-     Im Portal verpixelte Bilder werden beim Neuerzeugen wieder verpixelt.
+     Im Portal verpixelte Bilder werden beim Neuerzeugen wieder verpixelt. Geänderte Bilder heißen name.vN.webp,
+     damit Cloudflare/nginx keine alte Fassung ausliefern.
   7. Übernimmt die Pflege aus dem Mitarbeiterportal (zelt/galerie/.verwaltung.json): gelöschte Bilder,
      hochgeladene Bilder, geänderte Kategorie-Zuordnung, Kategorie-Namen und -Reihenfolge.
      galerie-alben.json legt nur fest, welcher Nextcloud-Ordner zu welcher Kategorie gehört
@@ -85,6 +86,11 @@ def detect_faces(path):
         x0, y0 = max(0.0, bx), max(0.0, by)
         boxes.append([round(x0 / w, 4), round(y0 / h, 4), round(min(bw, w - x0) / w, 4), round(min(bh, h - y0) / h, 4)])
     return boxes
+
+
+def phys(file, v):
+    """Dateiname auf der Platte: nach Bildänderung (Verpixeln) name.vN.webp – neuer Pfad, kein Cache liefert Altes."""
+    return file[:-5] + f".v{v}.webp" if v else file
 
 
 def pixelate(im, boxes, pad=0.25, blocks=7):
@@ -172,7 +178,7 @@ def main():
     album_ids = [al["id"] for al in alben]
     zuordnung = {k: v for k, v in state.get("zuordnung", {}).items() if v in album_ids}
     verpixelt = state.get("verpixelt", {})   # {sha8: boxen} – im Portal verpixelte Bilder
-    version = state.get("version", {})       # {sha8: n}     – Cache-Buster nach Bildänderung
+    version = state.get("version", {})       # {sha8: n}     – Datei heißt dann name.vN.webp
     prev_faces = {}                          # Ergebnis vom letzten Lauf wiederverwenden
     try:
         for m in json.loads((out / "galerie.json").read_text(encoding="utf-8")).get("bilder", []):
@@ -277,17 +283,18 @@ def main():
     for n, it in enumerate(keep, 1):
         caption = it["sub"] if it["sub"] and slugify(it["sub"]) != it["album"] else ""
         fname = f'{it["album"]}-{slugify(caption) + "-" if caption else ""}{it["sha"][:8]}.webp'
-        wanted.add(fname)
+        pname = phys(fname, version.get(it["sha"][:8]))
+        wanted.add(pname)
         fw, fh = it["w"], it["h"]
         s = min(1, FULL_MAX / max(fw, fh)); fw, fh = round(fw * s), round(fh * s)
         tw, th = THUMB_W, round(THUMB_W * it["h"] / it["w"])
-        if not a.dry_run and not ((full_dir / fname).exists() and (thumb_dir / fname).exists()):
+        if not a.dry_run and not ((full_dir / pname).exists() and (thumb_dir / pname).exists()):
             im = ImageOps.exif_transpose(Image.open(it["path"])).convert("RGB").resize((fw, fh), Image.LANCZOS)
             if it["sha"][:8] in verpixelt:  # im Portal verpixelt → auch beim Neuerzeugen
                 im = pixelate(im, verpixelt[it["sha"][:8]])
-            im.save(full_dir / fname, "WEBP", quality=Q_FULL, method=6)
-            im.resize((tw, th), Image.LANCZOS).save(thumb_dir / fname, "WEBP", quality=Q_THUMB, method=6)
-            print(f"  [{n}/{len(keep)}] {fname}")
+            im.save(full_dir / pname, "WEBP", quality=Q_FULL, method=6)
+            im.resize((tw, th), Image.LANCZOS).save(thumb_dir / pname, "WEBP", quality=Q_THUMB, method=6)
+            print(f"  [{n}/{len(keep)}] {pname}")
         manifest.append(dict(file=fname, album=it["album"], caption=caption, w=fw, h=fh, tw=tw, th=th))
 
     # Im Portal hochgeladene Bilder dazunehmen (nur wenn die Dateien noch da sind)
@@ -296,11 +303,12 @@ def main():
         sha8 = e["file"][-13:-5]
         if sha8 in hidden or sha8 in shas or e.get("album") not in album_ids:
             continue
-        if not a.dry_run and not ((full_dir / e["file"]).exists() and (thumb_dir / e["file"]).exists()):
-            print(f"WARNUNG: hochgeladenes Bild fehlt: {e['file']}")
+        pname = phys(e["file"], version.get(sha8))
+        if not a.dry_run and not ((full_dir / pname).exists() and (thumb_dir / pname).exists()):
+            print(f"WARNUNG: hochgeladenes Bild fehlt: {pname}")
             continue
         manifest.append({k: e[k] for k in ("file", "album", "caption", "w", "h", "tw", "th")})
-        wanted.add(e["file"]); shas.add(sha8)
+        wanted.add(pname); shas.add(sha8)
     manifest.sort(key=lambda m: album_ids.index(m["album"]))  # stabil: Reihenfolge im Album bleibt
     n_faces = 0
     for m in manifest:
@@ -311,7 +319,7 @@ def main():
         elif s8 in prev_faces:
             m["boxen"] = prev_faces[s8]
         elif FACES and not a.dry_run:
-            m["boxen"] = detect_faces(full_dir / m["file"])
+            m["boxen"] = detect_faces(full_dir / phys(m["file"], version.get(s8)))
         if s8 in version:
             m["v"] = version[s8]
         n_faces += bool(m.get("boxen"))
@@ -327,11 +335,11 @@ def main():
     figs = []
     for i, m in enumerate(manifest):
         lazy = 'loading="lazy" decoding="async"' if i > 7 else 'fetchpriority="high"' if i == 0 else ""
-        q = f'?v={m["v"]}' if m.get("v") else ""
+        f = phys(m["file"], m.get("v"))
         figs.append(
             f'<figure class="g-item" data-album="{m["album"]}">'
-            f'<a href="img/full/{m["file"]}{q}" data-w="{m["w"]}" data-h="{m["h"]}">'
-            f'<img src="img/thumb/{m["file"]}{q}" width="{m["tw"]}" height="{m["th"]}" alt="{html.escape(m["alt"])}" {lazy}></a>'
+            f'<a href="img/full/{f}" data-w="{m["w"]}" data-h="{m["h"]}">'
+            f'<img src="img/thumb/{f}" width="{m["tw"]}" height="{m["th"]}" alt="{html.escape(m["alt"])}" {lazy}></a>'
             + (f'<figcaption>{html.escape(m["caption"])}</figcaption>' if m["caption"] else "")
             + "</figure>")
     chips = ['<button class="g-chip active" data-filter="alle">Alle <span>{}</span></button>'.format(len(manifest))]
