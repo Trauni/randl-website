@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Reihenfolge = Reihenfolge der Filter auf /zelt/galerie/. 'ordner' ist relativ zum Nextcloud-Ordner Photos. Bei Duplikaten über Alben hinweg gewinnt das weiter oben stehende Album.",
+  "_hinweis": "Ordnet Nextcloud-Ordner (relativ zu Photos) den Kategorien zu. Namen und Reihenfolge sind nur Startwerte – danach werden sie im Mitarbeiterportal gepflegt (zelt/galerie/.verwaltung.json). Bei Duplikaten über Kategorien hinweg gewinnt die weiter oben stehende.",
   "alben": [
     { "id": "galazelt",     "titel": "Galazelt",                 "ordner": ["Galazelt"] },
     { "id": "weinzelt",     "titel": "Weinzelt",                 "ordner": ["Weinzelt"] },

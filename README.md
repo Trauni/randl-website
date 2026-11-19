@@ -28,3 +28,5 @@ wandelt in WebP (Vollbild 2048 px + Vorschau 640 px, ohne EXIF/GPS) und schreibt
 `zelt/galerie/index.html` (zwischen den `GALERIE`-Markern) plus `galerie.json`. Alben und Reihenfolge:
 `tools/galerie-alben.json`. Die WebP-Dateien (`zelt/galerie/img/`) liegen nur auf dem Server, nicht im Repo.
 Neue Fotos in der Nextcloud → Skript erneut laufen lassen (bereits konvertierte Bilder werden übersprungen).
+Pflege im Mitarbeiterportal (Bilderverwaltung → Kundengalerie): löschen, hochladen, Kategorie ändern, Kategorien
+umbenennen/sortieren. Der Stand liegt in `zelt/galerie/.verwaltung.json` und wird vom Skript übernommen.

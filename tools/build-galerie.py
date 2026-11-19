@@ -14,6 +14,10 @@ Was passiert:
   4. Schreibt galerie.json und rendert die Bilder statisch in index.html
      (zwischen <!-- GALERIE:START --> und <!-- GALERIE:END -->) – gut für SEO, läuft auch ohne JS.
   5. Schreibt /root/galerie-duplikate.csv (außerhalb des Webroots) mit allen aussortierten Dateien.
+  6. Übernimmt die Pflege aus dem Mitarbeiterportal (zelt/galerie/.verwaltung.json): gelöschte Bilder,
+     hochgeladene Bilder, geänderte Kategorie-Zuordnung, Kategorie-Namen und -Reihenfolge.
+     galerie-alben.json legt nur fest, welcher Nextcloud-Ordner zu welcher Kategorie gehört
+     (und die Startwerte für Namen/Reihenfolge beim allerersten Lauf).
 
 Die Nextcloud-Originale werden nur gelesen, nie verändert.
 Es werden AUSSCHLIESSLICH Bilder aus dem Ordner "Photos" verwendet – andere Root-Ordner der Nextcloud
@@ -99,6 +103,29 @@ def main():
     if src.name != "Photos" or not src.is_dir():
         sys.exit(f"ABBRUCH: --src muss der Nextcloud-Ordner 'Photos' sein, nicht {src}")
     cfg = json.loads(Path(a.config).read_text(encoding="utf-8"))
+
+    # Verwaltungsstand aus dem Mitarbeiterportal (zelt/galerie/.verwaltung.json):
+    #   alben        Titel + Reihenfolge (im Portal bearbeitbar), "ordner" kommt immer aus galerie-alben.json
+    #   ausgeblendet gelöschte Bilder (Papierkorb) – bleiben samt Duplikaten draußen
+    #   hinzugefuegt im Portal hochgeladene Bilder (liegen nur in der Galerie, nicht in der Nextcloud)
+    #   zuordnung    {sha8: album} – im Portal umsortierte Bilder
+    state_file = out / ".verwaltung.json"
+    state = json.loads(state_file.read_text(encoding="utf-8")) if state_file.exists() else {}
+    legacy = out / ".ausgeblendet.json"
+    if legacy.exists():  # alter Stand aus Portal v1.9.0
+        state.setdefault("ausgeblendet", []).extend(json.loads(legacy.read_text(encoding="utf-8")).get("bilder", []))
+    code_alben = {al["id"]: al for al in cfg["alben"]}
+    alben = []
+    for al in state.get("alben") or cfg["alben"]:
+        alben.append(dict(id=al["id"], titel=al["titel"], ordner=list(code_alben.get(al["id"], {}).get("ordner", []))))
+    for al in cfg["alben"]:  # neue Ordner-Alben aus galerie-alben.json ergänzen
+        if al["id"] not in {x["id"] for x in alben}:
+            alben.append(dict(id=al["id"], titel=al["titel"], ordner=list(al["ordner"])))
+    state["alben"] = alben
+    cfg = dict(cfg, alben=alben)
+    album_ids = [al["id"] for al in alben]
+    zuordnung = {k: v for k, v in state.get("zuordnung", {}).items() if v in album_ids}
+
     for alb in cfg["alben"]:
         for folder in alb["ordner"]:
             if Path(folder).is_absolute() or ".." in Path(folder).parts \
@@ -165,14 +192,11 @@ def main():
     for i in range(len(items)):
         groups.setdefault(find(i), []).append(i)
 
-    # Im Mitarbeiterportal ausgeblendete Bilder (zelt/galerie/.ausgeblendet.json) bleiben draußen –
-    # samt allen Duplikaten aus derselben Gruppe.
-    hidden_file = out / ".ausgeblendet.json"
+    # Im Mitarbeiterportal gelöschte Bilder bleiben draußen – samt allen Duplikaten aus derselben Gruppe.
     hidden = set()
-    if hidden_file.exists():
-        for e in json.loads(hidden_file.read_text(encoding="utf-8")).get("bilder", []):
-            m = re.search(r"-([0-9a-f]{8})\.webp$", e.get("file", ""))
-            if m: hidden.add(m.group(1))
+    for e in state.get("ausgeblendet", []):
+        m = re.search(r"-([0-9a-f]{8})\.webp$", e.get("file", ""))
+        if m: hidden.add(m.group(1))
     keep, dupes, n_hidden = [], [], 0
     for g in list(groups.values()):
         if any(items[i]["sha"][:8] in hidden for i in g):
@@ -183,7 +207,9 @@ def main():
         keep.append(items[g[0]])
         for i in g[1:]:
             dupes.append((items[i], items[g[0]]))
-    keep.sort(key=lambda it: (it["prio"], it["sub"], str(it["path"])))
+    for it in keep:  # im Portal umsortiert?
+        it["album"] = zuordnung.get(it["sha"][:8], it["album"])
+    keep.sort(key=lambda it: (album_ids.index(it["album"]), it["sub"], str(it["path"])))
     print(f"Duplikate aussortiert: {len(dupes)}, im Portal ausgeblendet: {n_hidden} → Galerie: {len(keep)} Bilder")
 
     # ── 3. Konvertieren ──────────────────────────────────────────
@@ -204,8 +230,22 @@ def main():
             im.resize((fw, fh), Image.LANCZOS).save(full_dir / fname, "WEBP", quality=Q_FULL, method=6)
             im.resize((tw, th), Image.LANCZOS).save(thumb_dir / fname, "WEBP", quality=Q_THUMB, method=6)
             print(f"  [{n}/{len(keep)}] {fname}")
-        alt = f'{titles[it["album"]]}{" – " + caption if caption else ""} | Zeltverleih Dominik Randl'
-        manifest.append(dict(file=fname, album=it["album"], caption=caption, alt=alt, w=fw, h=fh, tw=tw, th=th))
+        manifest.append(dict(file=fname, album=it["album"], caption=caption, w=fw, h=fh, tw=tw, th=th))
+
+    # Im Portal hochgeladene Bilder dazunehmen (nur wenn die Dateien noch da sind)
+    shas = {m["file"][-13:-5] for m in manifest}
+    for e in state.get("hinzugefuegt", []):
+        sha8 = e["file"][-13:-5]
+        if sha8 in hidden or sha8 in shas or e.get("album") not in album_ids:
+            continue
+        if not a.dry_run and not ((full_dir / e["file"]).exists() and (thumb_dir / e["file"]).exists()):
+            print(f"WARNUNG: hochgeladenes Bild fehlt: {e['file']}")
+            continue
+        manifest.append({k: e[k] for k in ("file", "album", "caption", "w", "h", "tw", "th")})
+        wanted.add(e["file"]); shas.add(sha8)
+    manifest.sort(key=lambda m: album_ids.index(m["album"]))  # stabil: Reihenfolge im Album bleibt
+    for m in manifest:
+        m["alt"] = f'{titles[m["album"]]}{" – " + m["caption"] if m["caption"] else ""} | Zeltverleih Dominik Randl'
 
     # ── 4. Manifest + statisches HTML ────────────────────────────
     albums = [dict(id=al["id"], titel=al["titel"], anzahl=sum(m["album"] == al["id"] for m in manifest))
@@ -233,6 +273,8 @@ def main():
         print("Trockenlauf – nichts geschrieben.")
     else:
         (out / "galerie.json").write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+        state_file.write_text(json.dumps(state, ensure_ascii=False, indent=1), encoding="utf-8")
+        if legacy.exists(): legacy.unlink()
         page = out / "index.html"
         if page.exists():
             t = page.read_text(encoding="utf-8")
