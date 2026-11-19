@@ -189,13 +189,18 @@
     .g-hero p strong { color:#fff; font-weight:600; }
 
     .g-section { padding:2rem 1.5rem 5rem; }
-    .g-filter { position:sticky; top:44px; z-index:50; display:flex; gap:0.5rem; overflow-x:auto; scrollbar-width:none; padding:0.9rem 0; margin-bottom:1.25rem; background:var(--bg); }
-    .g-filter::-webkit-scrollbar { display:none; }
-    .g-chip { flex:0 0 auto; font-family:"DM Sans", sans-serif; font-size:0.82rem; font-weight:500; color:var(--text-2); background:var(--panel); border:1px solid var(--panel-border); border-radius:999px; padding:0.45rem 0.95rem; cursor:pointer; transition:color .2s, border-color .2s, background .2s; }
-    .g-chip span { font-size:0.72rem; color:var(--text-3); margin-left:0.15rem; }
-    .g-chip:hover { color:var(--text-1); border-color:rgba(180,40,30,0.35); }
+    .g-filter { display:flex; flex-wrap:wrap; gap:0.5rem; padding:0.9rem 0 0.4rem; margin-bottom:1.25rem; }
+    .g-chip { font-family:"DM Sans", sans-serif; font-size:0.82rem; font-weight:500; color:var(--text2); background:var(--panel); border:1px solid var(--panel-border); border-radius:999px; padding:0.45rem 0.95rem; cursor:pointer; transition:color .2s, border-color .2s, background .2s; }
+    .g-chip span { font-size:0.72rem; color:var(--text3); margin-left:0.15rem; }
+    .g-chip:hover { color:var(--text1); border-color:rgba(180,40,30,0.35); }
     .g-chip.active { color:#fff; background:linear-gradient(135deg, #a83020, #C33E2F); border-color:transparent; }
     .g-chip.active span { color:rgba(255,255,255,0.75); }
+    /* Handy: Auswahlliste statt Chips (wird per JS aus den Chips erzeugt) */
+    .g-select-wrap { display:none; position:sticky; top:44px; z-index:50; background:var(--bg); padding:0.75rem 0; margin-bottom:0.75rem; }
+    .g-select-wrap label { display:block; font-family:"Barlow Condensed", sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--spark); margin-bottom:0.35rem; }
+    .g-select { width:100%; appearance:none; -webkit-appearance:none; font-family:"DM Sans", sans-serif; font-size:1rem; font-weight:500; color:var(--text1); background:var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a83020' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 0.9rem center / 18px; border:1px solid var(--panel-border); border-radius:10px; padding:0.8rem 2.6rem 0.8rem 0.95rem; }
+    .g-select:focus { outline:2px solid var(--spark); outline-offset:1px; }
+    @media (max-width: 760px) { .g-filter { display:none; } .g-select-wrap { display:block; } }
     .g-chip:focus-visible, .g-item a:focus-visible { outline:2px solid var(--spark); outline-offset:2px; }
 
     .g-grid { column-count:4; column-gap:0.75rem; }
@@ -208,7 +213,7 @@
     .g-item:hover figcaption { opacity:1; }
     @media (hover:none) { .g-item figcaption { opacity:1; } }
     @media (max-width: 1100px) { .g-grid { column-count:3; } }
-    @media (max-width: 760px)  { .g-grid { column-count:2; column-gap:0.5rem; } .g-item { margin-bottom:0.5rem; border-radius:8px; } .g-filter { top:44px; } }
+    @media (max-width: 760px)  { .g-grid { column-count:2; column-gap:0.5rem; } .g-item { margin-bottom:0.5rem; border-radius:8px; } }
 
     /* Lightbox */
     .lb { position:fixed; inset:0; z-index:100001; background:rgba(5,6,9,0.96); display:none; align-items:center; justify-content:center; touch-action:pan-y; }
@@ -362,9 +367,32 @@
   var total = document.getElementById('g-total');
   if (total && !total.textContent) total.textContent = items.length;
 
+  /* Handy: Auswahlliste aus den Chips erzeugen */
+  var filterBar = document.querySelector('.g-filter'), select = null;
+  if (filterBar) {
+    var wrap = document.createElement('div');
+    wrap.className = 'g-select-wrap';
+    wrap.innerHTML = '<label for="g-select">Kategorie</label><select id="g-select" class="g-select"></select>';
+    select = wrap.querySelector('select');
+    chips.forEach(function(c){
+      var o = document.createElement('option');
+      var n = c.querySelector('span');
+      o.value = c.dataset.filter;
+      o.textContent = c.firstChild.textContent.trim() + (n ? ' (' + n.textContent + ')' : '');
+      select.appendChild(o);
+    });
+    filterBar.parentNode.insertBefore(wrap, filterBar);
+    select.addEventListener('change', function(){
+      setFilter(select.value, true);
+      var top = wrap.getBoundingClientRect().top + window.pageYOffset - 44;
+      if (window.pageYOffset > top) window.scrollTo(0, top);
+    });
+  }
+
   /* Filter (+ Deeplink #galazelt) */
   function setFilter(id, push){
     if (!chips.some(function(c){ return c.dataset.filter === id; })) id = 'alle';
+    if (select) select.value = id;
     chips.forEach(function(c){ var on = c.dataset.filter === id; c.classList.toggle('active', on); c.setAttribute('aria-pressed', on); });
     items.forEach(function(it){ it.hidden = id !== 'alle' && it.dataset.album !== id; });
     if (push) history.replaceState(null, '', id === 'alle' ? location.pathname : '#' + id);
