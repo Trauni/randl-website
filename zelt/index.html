@@ -145,6 +145,10 @@
     .gallery-item { background:var(--panel); border:1px solid var(--panel-border); position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
     .gallery-item img { width:100%; height:100%; object-fit:cover; }
     .gallery-placeholder { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.4rem; color:var(--text-3); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; }
+    .gallery-more { display:flex; justify-content:center; margin-top:1.5rem; }
+    .gallery-more .pkg-cta { display:inline-flex; align-items:center; gap:0.5rem; padding:0.8rem 1.6rem; }
+    .gallery-more svg { width:16px; height:16px; }
+    .gallery-item { cursor:pointer; }
     .gallery-placeholder svg { width:24px; height:24px; opacity:0.4; }
     @media (max-width: 600px) { .gallery-grid{grid-template-columns:1fr 1fr; grid-template-rows:150px 150px 150px;}.gallery-main{grid-column:1 / -1; grid-row:auto;} }
     .products-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:1.5rem; }
@@ -318,6 +322,12 @@
         <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div>
         <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div>
         <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div>
+      </div>
+      <div class="gallery-more">
+        <a href="/zelt/galerie/" class="pkg-cta pkg-cta-primary">
+          Alle Bilder ansehen
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -587,6 +597,7 @@
       img.alt = s.alt;
       img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
       img.onload = function(){ el.innerHTML = ''; el.appendChild(img); };
+      el.addEventListener('click', function(){ location.href = '/zelt/galerie/'; });
       img.src = s.src;
     });
   })();

@@ -20,3 +20,11 @@ Aufgaben: OpenProject, Projekt `website` (https://projects.randlweb.de).
 Repo und pusht nach GitHub. Läuft als root auf dem Server, Git-Zugriff über einen Deploy-Key
 (`~kpssh/.ssh/randl-website-deploy`). Erst Trockenlauf, dann `--apply`; bricht ab, wenn mehr als
 15 Dateien gelöscht würden. Details im Kopf des Skripts.
+
+## Kundengalerie `/zelt/galerie/`
+
+Die Bilder kommen aus der Nextcloud (`Photos`, gleicher Server). `tools/build-galerie.py` sortiert Duplikate aus,
+wandelt in WebP (Vollbild 2048 px + Vorschau 640 px, ohne EXIF/GPS) und schreibt die Bilder statisch in
+`zelt/galerie/index.html` (zwischen den `GALERIE`-Markern) plus `galerie.json`. Alben und Reihenfolge:
+`tools/galerie-alben.json`. Die WebP-Dateien (`zelt/galerie/img/`) liegen nur auf dem Server, nicht im Repo.
+Neue Fotos in der Nextcloud → Skript erneut laufen lassen (bereits konvertierte Bilder werden übersprungen).

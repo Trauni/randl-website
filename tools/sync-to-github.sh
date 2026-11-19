@@ -41,7 +41,8 @@ RSYNC_OPTS=(-rlp --checksum --delete --itemize-changes
   --exclude='.git/' --exclude='system/' --exclude='private/' --exclude='node_modules/'
   --exclude='.env' --exclude='*.env' --exclude='*.bak' --exclude='*.bak.*' --exclude='*.bak-*'
   --exclude='*.old' --exclude='*.orig' --exclude='*.bk' --exclude='*~' --exclude='.DS_Store'
-  --exclude='/README.md' --exclude='/.gitignore' --exclude='/tools/')
+  --exclude='/README.md' --exclude='/.gitignore' --exclude='/tools/'
+  --exclude='/zelt/galerie/img/')
 
 echo "== Änderungen Server -> Repo:"
 CHANGES="$(rsync "${RSYNC_OPTS[@]}" --dry-run "$SRC"/ "$REPO"/ | grep -v '^\.' || true)"
