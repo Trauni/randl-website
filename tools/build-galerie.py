@@ -165,14 +165,26 @@ def main():
     for i in range(len(items)):
         groups.setdefault(find(i), []).append(i)
 
-    keep, dupes = [], []
+    # Im Mitarbeiterportal ausgeblendete Bilder (zelt/galerie/.ausgeblendet.json) bleiben draußen –
+    # samt allen Duplikaten aus derselben Gruppe.
+    hidden_file = out / ".ausgeblendet.json"
+    hidden = set()
+    if hidden_file.exists():
+        for e in json.loads(hidden_file.read_text(encoding="utf-8")).get("bilder", []):
+            m = re.search(r"-([0-9a-f]{8})\.webp$", e.get("file", ""))
+            if m: hidden.add(m.group(1))
+    keep, dupes, n_hidden = [], [], 0
+    for g in list(groups.values()):
+        if any(items[i]["sha"][:8] in hidden for i in g):
+            n_hidden += 1
+            del groups[find(g[0])]
     for g in groups.values():
         g.sort(key=lambda i: (items[i]["prio"], -items[i]["w"] * items[i]["h"], items[i]["pen"], str(items[i]["path"])))
         keep.append(items[g[0]])
         for i in g[1:]:
             dupes.append((items[i], items[g[0]]))
     keep.sort(key=lambda it: (it["prio"], it["sub"], str(it["path"])))
-    print(f"Duplikate aussortiert: {len(dupes)} → Galerie: {len(keep)} Bilder")
+    print(f"Duplikate aussortiert: {len(dupes)}, im Portal ausgeblendet: {n_hidden} → Galerie: {len(keep)} Bilder")
 
     # ── 3. Konvertieren ──────────────────────────────────────────
     titles = {al["id"]: al["titel"] for al in cfg["alben"]}
@@ -198,8 +210,8 @@ def main():
     # ── 4. Manifest + statisches HTML ────────────────────────────
     albums = [dict(id=al["id"], titel=al["titel"], anzahl=sum(m["album"] == al["id"] for m in manifest))
               for al in cfg["alben"]]
-    albums = [al for al in albums if al["anzahl"]]
     data = dict(erstellt=datetime.now(timezone.utc).isoformat(timespec="seconds"), alben=albums, bilder=manifest)
+    albums = [al for al in albums if al["anzahl"]]
 
     figs = []
     for i, m in enumerate(manifest):
