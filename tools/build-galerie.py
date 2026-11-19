@@ -16,6 +16,8 @@ Was passiert:
   5. Schreibt /root/galerie-duplikate.csv (außerhalb des Webroots) mit allen aussortierten Dateien.
 
 Die Nextcloud-Originale werden nur gelesen, nie verändert.
+Es werden AUSSCHLIESSLICH Bilder aus dem Ordner "Photos" verwendet – andere Root-Ordner der Nextcloud
+enthalten Kundendaten. Das Skript bricht ab, wenn --src nicht "Photos" ist oder ein Album aus Photos herauszeigt.
 
 Aufruf (als root auf dem Server):
   python3 -m venv /opt/galerie-venv
@@ -91,8 +93,17 @@ def main():
     ap.add_argument("--report", default="/root/galerie-duplikate.csv")
     a = ap.parse_args()
 
-    src, out = Path(a.src), Path(a.out)
+    src, out = Path(a.src).resolve(), Path(a.out)
+    # SPERRE: Nur der Nextcloud-Ordner "Photos" ist freigegeben. Andere Root-Ordner
+    # (Bestellungen, Approvals, Kunden-Uploads, Projekte …) enthalten Kundendaten.
+    if src.name != "Photos" or not src.is_dir():
+        sys.exit(f"ABBRUCH: --src muss der Nextcloud-Ordner 'Photos' sein, nicht {src}")
     cfg = json.loads(Path(a.config).read_text(encoding="utf-8"))
+    for alb in cfg["alben"]:
+        for folder in alb["ordner"]:
+            if Path(folder).is_absolute() or ".." in Path(folder).parts \
+                    or not (src / folder).resolve().is_relative_to(src):
+                sys.exit(f"ABBRUCH: Ordner '{folder}' liegt nicht innerhalb von Photos")
     excl = set(cfg.get("ausschliessen", []))
     if not HEIC:
         print("Hinweis: pillow-heif nicht installiert – HEIC-Bilder werden übersprungen.")
@@ -107,6 +118,9 @@ def main():
                 continue
             for p in sorted(base.rglob("*")):
                 if not p.is_file() or any(part in excl for part in p.relative_to(src).parts):
+                    continue
+                if not p.resolve().is_relative_to(src):  # Symlinks, die aus Photos herausführen
+                    skipped.append((p, "liegt außerhalb von Photos (Link) – ignoriert"))
                     continue
                 if p.suffix.lower() not in EXT:
                     skipped.append((p, "Format " + p.suffix))
