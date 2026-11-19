@@ -1,0 +1,17 @@
+{
+  "_hinweis": "Reihenfolge = Reihenfolge der Filter auf /zelt/galerie/. 'ordner' ist relativ zum Nextcloud-Ordner Photos. Bei Duplikaten über Alben hinweg gewinnt das weiter oben stehende Album.",
+  "alben": [
+    { "id": "galazelt",     "titel": "Galazelt",                 "ordner": ["Galazelt"] },
+    { "id": "weinzelt",     "titel": "Weinzelt",                 "ordner": ["Weinzelt"] },
+    { "id": "pagodenzelte", "titel": "Pagodenzelte",             "ordner": ["Pagodenzelte"] },
+    { "id": "faltzelt",     "titel": "Faltzelte",                "ordner": ["Faltzelt"] },
+    { "id": "anbauten",     "titel": "Anbauten & Sonderbauten",  "ordner": ["Anbauten und Soderbauten"] },
+    { "id": "dekoration",   "titel": "Dekoration",               "ordner": ["Dekoration"] },
+    { "id": "ausstattung",  "titel": "Möbel & Ausstattung",      "ordner": ["Möbel", "Buffet und Catering"] },
+    { "id": "locations",    "titel": "Event-Locations",          "ordner": ["Event Locations"] },
+    { "id": "fotobox",      "titel": "Fotobox",                  "ordner": ["Fotobox"] }
+  ],
+  "ausschliessen": [
+    "Partner"
+  ]
+}
