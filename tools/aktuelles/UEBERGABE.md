@@ -178,6 +178,12 @@ Bilder-Tab „Messe“.
 
 ## Hinweise
 
+- Messe-Sektion `#messe` (581): bleibt bis 29.11.2026 18:00 stehen
+  und blendet sich dann im Browser selbst aus. Fehlt sie, setzt
+  `deploy.py` sie aus `messe-sektion.*` wieder ein. Ein Lauf nach dem
+  Messe-Ende (Trockenlauf, dann `--apply`) baut alle Reste von
+  MESSE-2026-v1 aus dem HTML zurück (`messe-rueckbau=todo`).
+
 - Nach der Messe: Die Teaser laufen am 29.11. 18:00 von selbst ab.
   `/news/hochzeitsmesse-rosenheim-2026/` bleibt. Den Text im Portal
   zum Rückblick umschreiben, die Veranstaltung angehakt lassen (Datum
