@@ -60,4 +60,18 @@
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
   </url>
+  <!-- AKTUELLES:START (automatisch aus dem Mitarbeiterportal – nicht von Hand ändern) -->
+  <url>
+    <loc>https://randl.group/news/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://randl.group/news/hochzeitsmesse-rosenheim-2026/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <!-- AKTUELLES:END -->
 </urlset>

@@ -1,0 +1,22 @@
+{
+ "version": 1,
+ "beitraege": [
+  {
+   "slug": "hochzeitsmesse-rosenheim-2026",
+   "url": "/news/hochzeitsmesse-rosenheim-2026/",
+   "titel": "Hochzeitsmesse Rosenheim 2026",
+   "teaser": "Am 28. und 29. November 2026 sind wir auf der Rosenheimer Hochzeitsmesse im KU'KO: Hochzeitszelte, gedeckte Tafel, Fotobox und Messerabatt für 2027.",
+   "sparte": "zelt",
+   "sparteTitel": "Zeltverleih",
+   "datum": "2026-11-24",
+   "startseite": true,
+   "startseiteBis": "2026-11-29T18:00:00+01:00",
+   "bild": {
+    "src": "/news/img/thumb/gedeckte-runde-hochzeitstafel-am-randl-messestand-e539299f.webp",
+    "w": 640,
+    "h": 436,
+    "alt": "Gedeckte runde Hochzeitstafel am Randl-Messestand"
+   }
+  }
+ ]
+}

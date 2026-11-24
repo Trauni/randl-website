@@ -734,7 +734,7 @@ footer {
 
 /* ── Hero: Kachel-Spalte (HERO-TILES-v1) ──────────────────────────── */
 .hero-tiles {
-  width: 392px; /* MESSE-2026-v1 */
+  width: 392px; /* AKTUELLES-v1 */
   flex-shrink: 0;
   display: flex; flex-direction: column; justify-content: center;
   gap: 1rem;
@@ -783,6 +783,58 @@ footer {
 @media (max-width: 768px) {
   .content-section { padding: 3.5rem 1.25rem; }
 }
+/* PRELOADER-v1 CSS */
+#rl-pre {
+  position: fixed; inset: 0; z-index: 99990;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(9, 9, 12, .78);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  transition: opacity .45s ease, visibility 0s linear .45s;
+  animation: rlPreSafety 0s linear 4s forwards;
+}
+[data-theme="light"] #rl-pre { background: rgba(245, 245, 240, .84); }
+#rl-pre.rl-pre-out { opacity: 0; visibility: hidden; pointer-events: none; }
+@keyframes rlPreSafety {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+.rl-pre-box {
+  width: min(560px, 82vw);
+  display: grid; grid-template-columns: 1fr auto; align-items: end;
+  row-gap: .9rem; column-gap: 1rem;
+}
+.rl-pre-id { display: flex; align-items: center; gap: .7rem; padding-bottom: .45rem; }
+.rl-pre-logo { width: 34px; height: 34px; object-fit: contain; }
+.rl-pre-label {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  font-size: .8rem; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--text-2, rgba(255,255,255,.65));
+}
+.rl-pre-num {
+  font-family: 'Bebas Neue', 'Barlow Condensed', sans-serif;
+  font-size: clamp(3.2rem, 9vw, 5.6rem); line-height: .85;
+  color: var(--text-1); font-variant-numeric: tabular-nums;
+  min-width: 3.1ch; text-align: right;
+}
+.rl-pre-num i {
+  font-style: normal; font-size: .38em; margin-left: .12em;
+  color: var(--spark); vertical-align: top; position: relative; top: .12em;
+}
+.rl-pre-track {
+  grid-column: 1 / -1; display: block; height: 3px; overflow: hidden;
+  background: rgba(255, 255, 255, .16); border-radius: 2px;
+}
+[data-theme="light"] .rl-pre-track { background: rgba(0, 0, 0, .12); }
+.rl-pre-fill {
+  display: block; height: 100%; width: 100%;
+  transform: scaleX(0); transform-origin: left center; will-change: transform;
+  background: linear-gradient(90deg, #ffffff 0%, #f3ead6 58%, var(--spark) 100%);
+}
+[data-theme="light"] .rl-pre-fill {
+  background: linear-gradient(90deg, #e4d6b8 0%, #e8a090 60%, var(--spark) 100%);
+}
+@media (prefers-reduced-motion: reduce) { #rl-pre { display: none; } }
+/* PRELOADER-v1 CSS end */
+
 /* MESSE-2026-v1 begin */
 [data-messe-bis][hidden] { display: none !important; }
 
@@ -905,58 +957,31 @@ html.mlb-lock, html.mlb-lock body { overflow: hidden; }
   .hero-tiles { width: 340px; padding-right: 1.5rem; }
 }
 /* MESSE-2026-v1 end */
-/* PRELOADER-v1 CSS */
-#rl-pre {
-  position: fixed; inset: 0; z-index: 99990;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(9, 9, 12, .78);
-  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
-  transition: opacity .45s ease, visibility 0s linear .45s;
-  animation: rlPreSafety 0s linear 4s forwards;
-}
-[data-theme="light"] #rl-pre { background: rgba(245, 245, 240, .84); }
-#rl-pre.rl-pre-out { opacity: 0; visibility: hidden; pointer-events: none; }
-@keyframes rlPreSafety {
-  to { opacity: 0; visibility: hidden; pointer-events: none; }
-}
-.rl-pre-box {
-  width: min(560px, 82vw);
-  display: grid; grid-template-columns: 1fr auto; align-items: end;
-  row-gap: .9rem; column-gap: 1rem;
-}
-.rl-pre-id { display: flex; align-items: center; gap: .7rem; padding-bottom: .45rem; }
-.rl-pre-logo { width: 34px; height: 34px; object-fit: contain; }
-.rl-pre-label {
-  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-  font-size: .8rem; letter-spacing: .28em; text-transform: uppercase;
-  color: var(--text-2, rgba(255,255,255,.65));
-}
-.rl-pre-num {
-  font-family: 'Bebas Neue', 'Barlow Condensed', sans-serif;
-  font-size: clamp(3.2rem, 9vw, 5.6rem); line-height: .85;
-  color: var(--text-1); font-variant-numeric: tabular-nums;
-  min-width: 3.1ch; text-align: right;
-}
-.rl-pre-num i {
-  font-style: normal; font-size: .38em; margin-left: .12em;
-  color: var(--spark); vertical-align: top; position: relative; top: .12em;
-}
-.rl-pre-track {
-  grid-column: 1 / -1; display: block; height: 3px; overflow: hidden;
-  background: rgba(255, 255, 255, .16); border-radius: 2px;
-}
-[data-theme="light"] .rl-pre-track { background: rgba(0, 0, 0, .12); }
-.rl-pre-fill {
-  display: block; height: 100%; width: 100%;
-  transform: scaleX(0); transform-origin: left center; will-change: transform;
-  background: linear-gradient(90deg, #ffffff 0%, #f3ead6 58%, var(--spark) 100%);
-}
-[data-theme="light"] .rl-pre-fill {
-  background: linear-gradient(90deg, #e4d6b8 0%, #e8a090 60%, var(--spark) 100%);
-}
-@media (prefers-reduced-motion: reduce) { #rl-pre { display: none; } }
-/* PRELOADER-v1 CSS end */
-
+/* AKTUELLES-v1 begin */
+.akt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 1.25rem; margin-top: 1.75rem; }
+.akt-card { display: flex; flex-direction: column; overflow: hidden; background: var(--panel); border: 1px solid var(--panel-border); border-radius: 16px; color: inherit; text-decoration: none; transition: border-color .2s, transform .2s, box-shadow .2s; }
+.akt-card:hover { border-color: rgba(180,40,30,.35); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,.08); }
+.akt-card:focus-visible { outline: 2px solid var(--spark); outline-offset: 2px; }
+.akt-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--panel-light); }
+.akt-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.akt-body { display: flex; flex-direction: column; flex: 1; gap: .45rem; padding: 1.1rem 1.25rem 1.25rem; text-align: left; }
+.akt-sparte { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--spark-light); }
+.akt-title { margin: 0; font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 800; line-height: 1.1; text-transform: uppercase; color: var(--text-1); }
+.akt-text { margin: 0; font-size: .88rem; line-height: 1.55; color: var(--text-2); }
+.akt-more { margin-top: auto; padding-top: .4rem; font-size: .82rem; font-weight: 600; color: var(--spark-light); }
+.akt-all { margin-top: 1.5rem; font-size: .9rem; }
+.akt-all a { font-weight: 600; color: var(--spark-light); text-decoration: underline; text-underline-offset: 3px; }
+.akt[hidden], [data-bis][hidden] { display: none !important; }
+/* Hero-Kachel der Startseite (neuester Beitrag "Auf Startseite") */
+.h-tile--akt { justify-content: flex-start; gap: .8rem; padding: .7rem .9rem .7rem .7rem; }
+.h-tile-akt-img { width: 118px; height: 76px; flex-shrink: 0; object-fit: cover; border-radius: 6px; border: 1px solid var(--panel-border); }
+.h-tile-akt-text { display: block; min-width: 0; flex: 1; }
+.h-tile-akt-badge { display: inline-block; margin-bottom: .25rem; padding: .05rem .5rem; border-radius: 999px; background: var(--spark); color: white; font-family: 'Barlow Condensed', sans-serif; font-size: .6rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.h-tile--akt .h-tile-title { font-size: 1.05rem; }
+.h-tile--akt .h-tile-sub { font-size: .68rem; margin-top: .2rem; }
+@media (max-width: 900px) { .h-tile--akt { flex: 1 1 100%; } }
+@media (prefers-reduced-motion: reduce) { .akt-card { transition: none; } .akt-card:hover { transform: none; } }
+/* AKTUELLES-v1 end */
 </style>
   <script>
     /* Google Analytics erst nach Einwilligung (Event cc:consent aus cookie-consent.js) */
@@ -1092,17 +1117,18 @@ html.mlb-lock, html.mlb-lock body { overflow: hidden; }
       <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M8 7h9v9"/></svg>
     </a>
 
-    <!-- MESSE-2026-v1 tile begin -->
-    <a href="#messe" class="h-tile h-tile--messe" data-messe-bis="2026-11-29T18:00:00+01:00" aria-label="Hochzeitsmesse Rosenheim: zu den Messe-Infos scrollen">
-      <img src="/messe/banner.webp" alt="" class="h-tile-messe-img" width="118" height="76" loading="lazy" decoding="async" />
-      <span class="h-tile-messe-text">
-        <span class="h-tile-messe-badge">Messe</span>
-        <span class="h-tile-title">Hochzeitsmesse Rosenheim</span>
-        <span class="h-tile-sub">28. + 29.11. · KU'KO · 10–17 Uhr</span>
+    <!-- AKTUELLES:START sparte="alle" layout="kachel" max="1" -->
+    <a href="/news/hochzeitsmesse-rosenheim-2026/" class="h-tile h-tile--akt" data-bis="2026-11-29T18:00:00+01:00">
+      <img src="/news/img/thumb/gedeckte-runde-hochzeitstafel-am-randl-messestand-e539299f.webp" alt="" class="h-tile-akt-img" width="118" height="76" loading="lazy" decoding="async" />
+      <span class="h-tile-akt-text">
+        <span class="h-tile-akt-badge">Aktuell</span>
+        <span class="h-tile-title">Hochzeitsmesse Rosenheim 2026</span>
+        <span class="h-tile-sub">28. + 29.11. · KU&#x27;KO Rosenheim</span>
       </span>
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12l7 7 7-7"/></svg>
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
-    <!-- MESSE-2026-v1 tile end -->
+<script>(function(){var r=document.currentScript.previousElementSibling;if(!r)return;function run(){var n=Date.now(),x=0,e=r.matches('[data-bis]')?[r]:r.querySelectorAll('[data-bis]');for(var i=0;i<e.length;i++){var t=Date.parse(e[i].getAttribute('data-bis'));if(isNaN(t))continue;if(n>=t)e[i].hidden=true;else if(!x||t<x)x=t;}if(r.classList.contains('akt')&&!r.querySelector('.akt-card:not([hidden])'))r.hidden=true;if(x&&x-n<864e5)setTimeout(run,x-n+500);}run();})();</script>
+    <!-- AKTUELLES:END -->
 
     <a href="https://randl.group/fotobox/" class="h-tile h-tile--foto hero-fotobox-tile" id="hero-fotobox-tile">
       <div class="hero-highlight">
@@ -1295,6 +1321,28 @@ html.mlb-lock, html.mlb-lock body { overflow: hidden; }
 </div>
 
 <!-- FOOTER ─────────────────────────────────────────────────────────── -->
+<!-- AKTUELLES:START sparte="alle" layout="start" max="3" -->
+<section class="content-section akt" id="aktuelles" aria-labelledby="akt-titel">
+  <div class="content-inner akt-inner">
+    <p class="content-eyebrow">Aktuelles</p>
+    <h2 class="content-title" id="akt-titel">Neues aus dem Betrieb</h2>
+    <div class="akt-grid">
+      <a class="akt-card" href="/news/hochzeitsmesse-rosenheim-2026/" data-bis="2026-11-29T18:00:00+01:00">
+        <div class="akt-img"><img src="/news/img/thumb/gedeckte-runde-hochzeitstafel-am-randl-messestand-e539299f.webp" width="640" height="436" alt="Gedeckte runde Hochzeitstafel am Randl-Messestand" loading="lazy" decoding="async" /></div>
+        <div class="akt-body">
+          <span class="akt-sparte">Zeltverleih</span>
+          <h3 class="akt-title">Hochzeitsmesse Rosenheim 2026</h3>
+          <p class="akt-text">Am 28. und 29. November 2026 sind wir auf der Rosenheimer Hochzeitsmesse im KU&#x27;KO: Hochzeitszelte, gedeckte Tafel, Fotobox und Messerabatt für 2027.</p>
+          <span class="akt-more">Weiterlesen →</span>
+        </div>
+      </a>
+    </div>
+    <p class="akt-all"><a href="/news/">Alle Beiträge →</a></p>
+  </div>
+</section>
+<script>(function(){var r=document.currentScript.previousElementSibling;if(!r)return;function run(){var n=Date.now(),x=0,e=r.matches('[data-bis]')?[r]:r.querySelectorAll('[data-bis]');for(var i=0;i<e.length;i++){var t=Date.parse(e[i].getAttribute('data-bis'));if(isNaN(t))continue;if(n>=t)e[i].hidden=true;else if(!x||t<x)x=t;}if(r.classList.contains('akt')&&!r.querySelector('.akt-card:not([hidden])'))r.hidden=true;if(x&&x-n<864e5)setTimeout(run,x-n+500);}run();})();</script>
+<!-- AKTUELLES:END -->
+
 <section class="content-section" id="ueber-uns">
   <div class="content-inner">
     <p class="content-eyebrow">Über uns</p>
@@ -1324,12 +1372,6 @@ html.mlb-lock, html.mlb-lock body { overflow: hidden; }
     <h2 class="content-title">Gut zu wissen</h2>
 
     <div class="faq-list">
-      <!-- MESSE-2026-v1 faq begin -->
-      <details class="faq-item" data-messe-bis="2026-11-29T18:00:00+01:00">
-        <summary>Wo finde ich Sie auf der Hochzeitsmesse Rosenheim?</summary>
-        <p>Am 28. und 29. November 2026 im KU'KO Rosenheim (Kufsteiner Str. 4), täglich 10–17 Uhr. Tickets gibt es online auf hochzeitsmesse-rosenheim.de oder an der Kasse. Sie möchten sicher Zeit mit uns haben? Fragen Sie vorab einen Beratungstermin an.</p>
-      </details>
-      <!-- MESSE-2026-v1 faq end -->
       <details class="faq-item">
         <summary>In welchen Regionen sind Sie tätig?</summary>
         <p>Der Schwerpunkt liegt im Chiemgau und der Region Rosenheim, u.&nbsp;a. Bad Endorf und Seeon-Seebruck. Je nach Gewerk sind Einsätze und Lieferungen auch darüber hinaus in Bayern möglich.</p>
@@ -1368,6 +1410,7 @@ html.mlb-lock, html.mlb-lock body { overflow: hidden; }
 <footer>
   <span class="footer-brand">© 2026 Firma Dominik Randl · Alle Rechte vorbehalten</span>
   <nav class="footer-links">
+    <a href="/news/">Aktuelles</a>
     <a href="/kontakt">Kontakt</a>
     <a href="/impressum">Impressum</a>
     <a href="/datenschutz">Datenschutz</a>

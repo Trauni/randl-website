@@ -194,7 +194,32 @@
     /* #592 Topbar am Handy: Telefon nur als Icon, kompakte Navigation */
     @media (max-width: 480px) { .topbar-inner{padding:0 0.75rem; gap:0.5rem;} .topbar-contact{gap:0;} .topbar-tel-txt,.topbar-divider,.topbar-nav .sep{display:none;} .topbar-contact a{padding:0.4rem 0.25rem;} .topbar-contact svg{width:16px; height:16px;} .topbar-nav{gap:0;} .topbar-nav a{font-size:0.62rem; letter-spacing:0.05em; padding:0.25rem 0.35rem;} .theme-toggle{margin-left:0.25rem;} }
     @media (max-width: 359px) { .topbar-inner{padding:0 0.5rem;} .topbar-nav a{padding:0.25rem 0.25rem;} }
-  </style>
+  /* AKTUELLES-v1 begin */
+.akt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 1.25rem; margin-top: 1.75rem; }
+.akt-card { display: flex; flex-direction: column; overflow: hidden; background: var(--panel); border: 1px solid var(--panel-border); border-radius: 16px; color: inherit; text-decoration: none; transition: border-color .2s, transform .2s, box-shadow .2s; }
+.akt-card:hover { border-color: rgba(180,40,30,.35); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,.08); }
+.akt-card:focus-visible { outline: 2px solid var(--spark); outline-offset: 2px; }
+.akt-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--panel-light); }
+.akt-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.akt-body { display: flex; flex-direction: column; flex: 1; gap: .45rem; padding: 1.1rem 1.25rem 1.25rem; text-align: left; }
+.akt-sparte { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--spark-light); }
+.akt-title { margin: 0; font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 800; line-height: 1.1; text-transform: uppercase; color: var(--text-1); }
+.akt-text { margin: 0; font-size: .88rem; line-height: 1.55; color: var(--text-2); }
+.akt-more { margin-top: auto; padding-top: .4rem; font-size: .82rem; font-weight: 600; color: var(--spark-light); }
+.akt-all { margin-top: 1.5rem; font-size: .9rem; }
+.akt-all a { font-weight: 600; color: var(--spark-light); text-decoration: underline; text-underline-offset: 3px; }
+.akt[hidden], [data-bis][hidden] { display: none !important; }
+/* Hero-Kachel der Startseite (neuester Beitrag "Auf Startseite") */
+.h-tile--akt { justify-content: flex-start; gap: .8rem; padding: .7rem .9rem .7rem .7rem; }
+.h-tile-akt-img { width: 118px; height: 76px; flex-shrink: 0; object-fit: cover; border-radius: 6px; border: 1px solid var(--panel-border); }
+.h-tile-akt-text { display: block; min-width: 0; flex: 1; }
+.h-tile-akt-badge { display: inline-block; margin-bottom: .25rem; padding: .05rem .5rem; border-radius: 999px; background: var(--spark); color: white; font-family: 'Barlow Condensed', sans-serif; font-size: .6rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.h-tile--akt .h-tile-title { font-size: 1.05rem; }
+.h-tile--akt .h-tile-sub { font-size: .68rem; margin-top: .2rem; }
+@media (max-width: 900px) { .h-tile--akt { flex: 1 1 100%; } }
+@media (prefers-reduced-motion: reduce) { .akt-card { transition: none; } .akt-card:hover { transform: none; } }
+/* AKTUELLES-v1 end */
+</style>
   <script>
     /* Google Analytics erst nach Einwilligung (Event cc:consent aus cookie-consent.js) */
     window.dataLayer = window.dataLayer || [];
@@ -360,6 +385,30 @@
   </section>
 
   <!-- ═══ CTA ══════════════════════════════════════════════════════ -->
+<!-- AKTUELLES:START sparte="zelt" layout="sparte" klasse="section section-alt" max="3" -->
+<section class="section section-alt akt" id="aktuelles" aria-labelledby="akt-titel">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Aktuelles</div>
+      <h2 class="section-title" id="akt-titel">Neues vom Zeltverleih</h2>
+    </div>
+    <div class="akt-grid">
+      <a class="akt-card" href="/news/hochzeitsmesse-rosenheim-2026/" data-bis="2026-11-29T18:00:00+01:00">
+        <div class="akt-img"><img src="/news/img/thumb/gedeckte-runde-hochzeitstafel-am-randl-messestand-e539299f.webp" width="640" height="436" alt="Gedeckte runde Hochzeitstafel am Randl-Messestand" loading="lazy" decoding="async" /></div>
+        <div class="akt-body">
+          <span class="akt-sparte">Zeltverleih</span>
+          <h3 class="akt-title">Hochzeitsmesse Rosenheim 2026</h3>
+          <p class="akt-text">Am 28. und 29. November 2026 sind wir auf der Rosenheimer Hochzeitsmesse im KU&#x27;KO: Hochzeitszelte, gedeckte Tafel, Fotobox und Messerabatt für 2027.</p>
+          <span class="akt-more">Weiterlesen →</span>
+        </div>
+      </a>
+    </div>
+    <p class="akt-all"><a href="/news/#zelt">Alle Beiträge →</a></p>
+  </div>
+</section>
+<script>(function(){var r=document.currentScript.previousElementSibling;if(!r)return;function run(){var n=Date.now(),x=0,e=r.matches('[data-bis]')?[r]:r.querySelectorAll('[data-bis]');for(var i=0;i<e.length;i++){var t=Date.parse(e[i].getAttribute('data-bis'));if(isNaN(t))continue;if(n>=t)e[i].hidden=true;else if(!x||t<x)x=t;}if(r.classList.contains('akt')&&!r.querySelector('.akt-card:not([hidden])'))r.hidden=true;if(x&&x-n<864e5)setTimeout(run,x-n+500);}run();})();</script>
+<!-- AKTUELLES:END -->
+
   <section class="cta-band">
     <div class="cta-band-content container">
       <div class="cta-band-label">Ihr nächstes Event</div>
@@ -382,6 +431,7 @@
 <footer>
   <span class="footer-brand">© 2026 Firma Dominik Randl · Alle Rechte vorbehalten</span>
   <nav class="footer-links">
+    <a href="/news/">Aktuelles</a>
     <a href="/kontakt">Kontakt</a>
     <a href="/impressum">Impressum</a>
     <a href="/datenschutz">Datenschutz</a>

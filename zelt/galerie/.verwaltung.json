@@ -682,6 +682,19 @@
    "pos": 39,
    "ausgeblendet": "2026-11-19T09:40:17Z",
    "von": "klaus.parzinger@randl.group"
+  },
+  {
+   "file": "galazelt-test-8c6982f2.webp",
+   "album": "galazelt",
+   "caption": "test",
+   "w": 2048,
+   "h": 1406,
+   "tw": 640,
+   "th": 439,
+   "alt": "Galazelt – test | Zeltverleih Dominik Randl",
+   "pos": 70,
+   "ausgeblendet": "2026-11-20T21:23:09Z",
+   "von": "klaus.parzinger@randl.group"
   }
  ],
  "alben": [
@@ -750,7 +763,19 @@
    ]
   }
  ],
- "hinzugefuegt": [],
+ "hinzugefuegt": [
+  {
+   "file": "galazelt-test-8c6982f2.webp",
+   "album": "galazelt",
+   "caption": "test",
+   "w": 2048,
+   "h": 1406,
+   "tw": 640,
+   "th": 439,
+   "hochgeladen": "2026-11-20T21:22:56Z",
+   "von": "klaus.parzinger@randl.group"
+  }
+ ],
  "zuordnung": {
   "c13aea22": "ausstattung",
   "f4ee1806": "anbauten",
@@ -769,6 +794,7 @@
  },
  "version": {
   "c3c8ca03": 1,
-  "7c4f8984": 4
+  "7c4f8984": 4,
+  "913c8a5e": 2
  }
 }

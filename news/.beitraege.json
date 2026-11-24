@@ -1,0 +1,154 @@
+{
+ "version": 1,
+ "beitraege": [
+  {
+   "id": "0dbb2ad4",
+   "titel": "Hochzeitsmesse Rosenheim 2026",
+   "slug": "hochzeitsmesse-rosenheim-2026",
+   "datum": "2026-11-24",
+   "sparte": "zelt",
+   "teaser": "Am 28. und 29. November 2026 sind wir auf der Rosenheimer Hochzeitsmesse im KU'KO: Hochzeitszelte, gedeckte Tafel, Fotobox und Messerabatt für 2027.",
+   "text": "Sie planen Ihre Hochzeit und überlegen, ob ein eigenes Zelt dazu passt? Am letzten Novemberwochenende können Sie sich das in Ruhe ansehen. Wir sind mit unserem Zeltverleih auf der Rosenheimer Hochzeitsmesse im KU'KO und zeigen an unserem Stand, wie eine Feier im Zelt aussieht: mit gedeckter Tafel, Licht und Fotobox.\n\n## Wann und wo\n\n- **Samstag und Sonntag, 28. und 29. November 2026**\n- **Täglich von 10 bis 17 Uhr**\n- **KU'KO Rosenheim**, Kufsteiner Str. 4, 83022 Rosenheim\n\n![Banner der Rosenheimer Hochzeitsmesse 2026](/news/img/full/banner-der-rosenheimer-hochzeitsmesse-2026-35d5e7bf.webp)\n\nTickets gibt es online für 14 € und auch vor Ort. Tickets und weitere Infos zur Messe finden Sie auf der [Webseite der Hochzeitsmesse](https://hochzeitsmesse-rosenheim.de/).\n\n## Das erwartet Sie an unserem Stand\n\n### Hochzeitszelte\n\nOb im Garten, auf dem Hof oder an Ihrer Wunsch-Location: Wir haben Festzelte in der passenden Größe. Am Stand besprechen wir mit Ihnen, welches Zelt zu Ihrer Gästezahl und zu Ihrem Platz passt.\n\n### Tische und Ausstattung\n\nRunde Tafeln, Stehtische, Bänke und Beleuchtung sehen Sie bei uns so, wie sie später auf Ihrer Feier stehen: fertig gedeckt. So bekommen Sie ein Gefühl dafür, wie viel Platz eine Tafel braucht und wie das Licht im Zelt wirkt.\n\n### Fotobox\n\nUnsere Fotobox verleihen wir auch zur Hochzeit. Fragen Sie uns am Stand danach oder sehen Sie sich vorab die Seite zur [Fotobox](/fotobox/) an.\n\n### Messerabatt für 2027\n\nWer uns am Stand besucht, sichert sich den Messerabatt für die eigene Feier im Jahr 2027.\n\n## Beratung direkt vor Ort\n\nBringen Sie gern Ihre Eckdaten mit: Termin, ungefähre Gästezahl und den Ort, an dem Sie feiern möchten. Dann planen wir direkt am Stand mit Ihnen. Wenn Sie vorab einen Gesprächstermin auf der Messe möchten, [schreiben Sie uns über das Anfrageformular](/zelt/formular/).\n\n## Wo finde ich Sie auf der Messe?\n\nAm 28. und 29. November 2026 im KU'KO Rosenheim (Kufsteiner Str. 4), täglich von 10 bis 17 Uhr. Sie möchten sicher Zeit mit uns haben? Dann fragen Sie vorab einen Beratungstermin an.\n\n## Rückblick: unser Stand 2025\n\nWir waren schon im vergangenen Jahr dabei. Die Bilder unten zeigen unseren Stand von 2025 mit der gedeckten runden Hochzeitstafel und der Tischdekoration, dazu Eindrücke von der Messebühne mit Traubogen und Brautmodenschau.\n\nMehr Bilder von echten Aufbauten finden Sie in unserer [Galerie](/zelt/galerie/), alle Zelte und Pakete auf der Seite [Zeltverleih](/zelt/).",
+   "titelbild": "gedeckte-runde-hochzeitstafel-am-randl-messestand-e539299f.webp",
+   "galerie": [
+    "traubogen-mit-blumen-auf-der-messebuehne-91a26e70.webp",
+    "tischdeko-mit-trockenblumen-und-leinenserviette-908b1d0f.webp",
+    "sekt-und-glaeser-am-stand-7f0470c2.webp",
+    "brautmodenschau-auf-der-messebuehne-2d697ad4.webp",
+    "stehtisch-mit-katalog-und-infomaterial-d7a1eb72.webp",
+    "trauungs-szene-mit-blumenbogen-auf-der-messebuehne-42d7c3c8.webp"
+   ],
+   "status": "veroeffentlicht",
+   "veranstaltung": {
+    "start": "2026-11-28T10:00",
+    "ende": "2026-11-29T17:00",
+    "ort": "KU'KO Rosenheim",
+    "strasse": "Kufsteiner Str. 4",
+    "plz": "83022",
+    "stadt": "Rosenheim",
+    "zeiten": "Täglich 10–17 Uhr",
+    "url": "https://hochzeitsmesse-rosenheim.de/"
+   },
+   "startseite": true,
+   "startseiteBis": "2026-11-29T18:00",
+   "erstellt": "2026-11-24T10:17:57Z",
+   "geaendert": "2026-11-24T10:17:57Z",
+   "von": "import"
+  },
+  {
+   "id": "510f9504",
+   "titel": "Testbeitrag",
+   "slug": "testbeitrag",
+   "datum": "2026-11-24",
+   "sparte": "zelt",
+   "teaser": "Dies ist ein Test",
+   "text": "Test",
+   "titelbild": "sekt-und-glaeser-am-stand-7f0470c2.webp",
+   "galerie": [
+    "gedeckte-runde-hochzeitstafel-am-randl-messestand-e539299f.webp",
+    "banner-der-rosenheimer-hochzeitsmesse-2026-35d5e7bf.webp"
+   ],
+   "status": "deaktiviert",
+   "veranstaltung": null,
+   "startseite": true,
+   "startseiteBis": "2026-11-24T11:23",
+   "erstellt": "2026-11-24T10:21:41Z",
+   "geaendert": "2026-11-24T10:24:02Z",
+   "von": "klaus.parzinger@randl.group"
+  }
+ ],
+ "bilder": [
+  {
+   "file": "banner-der-rosenheimer-hochzeitsmesse-2026-35d5e7bf.webp",
+   "w": 1920,
+   "h": 800,
+   "tw": 640,
+   "th": 267,
+   "alt": "Banner der Rosenheimer Hochzeitsmesse 2026",
+   "nachweis": "Banner: Agentur für Messen & Events Jutta Christ",
+   "hochgeladen": "2026-11-24T10:17:54Z",
+   "von": "import"
+  },
+  {
+   "file": "gedeckte-runde-hochzeitstafel-am-randl-messestand-e539299f.webp",
+   "w": 1920,
+   "h": 1307,
+   "tw": 640,
+   "th": 436,
+   "alt": "Gedeckte runde Hochzeitstafel am Randl-Messestand",
+   "nachweis": "",
+   "hochgeladen": "2026-11-24T10:17:55Z",
+   "von": "import"
+  },
+  {
+   "file": "traubogen-mit-blumen-auf-der-messebuehne-91a26e70.webp",
+   "w": 887,
+   "h": 1920,
+   "tw": 640,
+   "th": 1385,
+   "alt": "Traubogen mit Blumen auf der Messebühne",
+   "nachweis": "",
+   "hochgeladen": "2026-11-24T10:17:55Z",
+   "von": "import"
+  },
+  {
+   "file": "tischdeko-mit-trockenblumen-und-leinenserviette-908b1d0f.webp",
+   "w": 887,
+   "h": 1920,
+   "tw": 640,
+   "th": 1385,
+   "alt": "Tischdeko mit Trockenblumen und Leinenserviette",
+   "nachweis": "",
+   "hochgeladen": "2026-11-24T10:17:55Z",
+   "von": "import"
+  },
+  {
+   "file": "sekt-und-glaeser-am-stand-7f0470c2.webp",
+   "w": 887,
+   "h": 1920,
+   "tw": 640,
+   "th": 1385,
+   "alt": "Sekt und Gläser am Stand",
+   "nachweis": "",
+   "hochgeladen": "2026-11-24T10:17:56Z",
+   "von": "import"
+  },
+  {
+   "file": "brautmodenschau-auf-der-messebuehne-2d697ad4.webp",
+   "w": 1920,
+   "h": 887,
+   "tw": 640,
+   "th": 296,
+   "alt": "Brautmodenschau auf der Messebühne",
+   "nachweis": "",
+   "hochgeladen": "2026-11-24T10:17:56Z",
+   "von": "import"
+  },
+  {
+   "file": "stehtisch-mit-katalog-und-infomaterial-d7a1eb72.webp",
+   "w": 1080,
+   "h": 1920,
+   "tw": 640,
+   "th": 1138,
+   "alt": "Stehtisch mit Katalog und Infomaterial",
+   "nachweis": "",
+   "hochgeladen": "2026-11-24T10:17:56Z",
+   "von": "import"
+  },
+  {
+   "file": "trauungs-szene-mit-blumenbogen-auf-der-messebuehne-42d7c3c8.webp",
+   "w": 887,
+   "h": 1920,
+   "tw": 640,
+   "th": 1385,
+   "alt": "Trauungs-Szene mit Blumenbogen auf der Messebühne",
+   "nachweis": "",
+   "hochgeladen": "2026-11-24T10:17:57Z",
+   "von": "import"
+  }
+ ],
+ "gebaut": [
+  "hochzeitsmesse-rosenheim-2026"
+ ],
+ "geaendert": "2026-11-24T10:24:02Z"
+}
