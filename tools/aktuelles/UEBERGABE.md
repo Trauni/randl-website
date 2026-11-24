@@ -38,7 +38,7 @@ Keine DB-Migration, keine neuen Pakete.
 ## 2. Website, Durchgang 1 (Vorlage, CSS, Marker)
 
     find /home/radmin/web/randl.group/public_html -name '*.bak*'
-    cd /home/kpssh/randl-website && git pull -q
+    cd /root/randl-website && git pull -q
     cd tools/aktuelles
     python3 deploy.py
 
@@ -51,7 +51,7 @@ Erwartung: 4 Seiten `PATCH` (teaser-css=todo, teaser-marker=todo),
 ## 3. Messe-Beitrag anlegen und bauen
 
     cd /home/radmin/web/randlweb.de/public_html/portal
-    J=/home/kpssh/randl-website/tools/aktuelles/messe-beitrag.json
+    J=/root/randl-website/tools/aktuelles/messe-beitrag.json
     node scripts/aktuelles.js import $J
     node scripts/aktuelles.js liste
 
@@ -61,12 +61,12 @@ steht danach im Portal und wird dort weiter gepflegt.
 
 ## 4. Website, Durchgang 2 (Footer-Link, Messe-Rückbau)
 
-    cd /home/kpssh/randl-website/tools/aktuelles
+    cd /root/randl-website/tools/aktuelles
     python3 deploy.py
     BACKUP_ROOT=/home/kpssh/backups python3 deploy.py --apply
     cd /home/radmin/web/randlweb.de/public_html/portal
     node scripts/aktuelles.js bauen
-    cd /home/kpssh/randl-website/tools/aktuelles && python3 deploy.py
+    cd /root/randl-website/tools/aktuelles && python3 deploy.py
 
 Erwartung: 12 Seiten `PATCH` (footer-link=todo), index.html dazu
 messe-rueckbau=todo mit rund 330 Zeilen weniger. `bauen` füllt den
@@ -76,7 +76,7 @@ neuen Marker für die Kachel oben. Letzter Lauf: „Nichts zu tun.“
     grep -c 'MESSE-2026\|data-messe\|id="messe' $P/index.html
     grep -c 'h-tile--akt\|class="akt-card"' $P/index.html
 
-Erwartung: 0 und 2. Rückgängig (Ordnername steht in der Ausgabe von
+Erwartung: 0 und 6 (Kachel, Karte, vier CSS-Zeilen). Rückgängig (Ordnername steht in der Ausgabe von
 `--apply`, Zeile „Rueckgaengig:“, den ganzen Befehl von dort kopieren).
 
 ## 5. Prüfen
@@ -93,46 +93,32 @@ Erwartung: 403 oder 404, 403 oder 404, 200, 1, 2. Liefert eine der
 ersten beiden Zeilen 200, sind Punkt-Dateien unter /news/ NICHT
 gesperrt: dann sofort melden, bevor Entwürfe angelegt werden.
 
-## 6. nginx: 301 für deaktivierte Beiträge, Caching
+## 6. nginx: 301 für deaktivierte Beiträge, Punkt-Dateien sperren
 
-Erst ansehen, nicht blind ändern. Die Ausgabe bitte an Claude geben,
-der Block unten wird dann an die vorhandene Konfiguration angepasst:
+Die Regeln stehen in `tools/aktuelles/nginx-aktuelles.conf` und kommen
+als eigene Datei neben die vorhandenen Includes (nichts Bestehendes
+wird geändert, rückgängig = Datei löschen):
 
     D=/home/radmin/conf/web/randl.group
-    cat $D/nginx.ssl.conf_imgcache
-    grep -n 'root\|proxy_pass\|error_page' $D/nginx.ssl.conf
-    curl -sI https://randl.group/news/gibtsnicht/ | head -5
+    grep -n 'include' $D/nginx.ssl.conf $D/nginx.conf
+    S=/root/randl-website/tools/aktuelles/nginx-aktuelles.conf
+    cp $S $D/nginx.ssl.conf_aktuelles
+    cp $S $D/nginx.conf_aktuelles
+    nginx -t && systemctl reload nginx
 
-Stand 24.11.2026: Eine nicht vorhandene Adresse liefert 302 auf die
-Startseite. Gewünscht ist 301 auf /news/. Vorschlag (gilt nur, wenn
-nginx die HTML-Dateien selbst ausliefert, also kein `proxy_pass` für
-Seiten; sonst kommt die Regel in die Apache-Konfiguration):
+Wichtig: Includes laufen über `nginx.ssl.conf_*`. Sicherungen von
+nginx-Dateien deshalb nie als `*.bak-…` in diesen Ordner legen,
+sie würden mitgeladen. Prüfen:
 
-    location ~ ^/news/[a-z0-9-]+/?$ {
-        root /home/radmin/web/randl.group/public_html;
-        try_files $uri $uri/index.html @news_archiv;
-    }
-    location @news_archiv {
-        return 301 /news/;
-    }
-    location /news/img/ {
-        expires 30d;
-    }
-    location = /news/news.json {
-        add_header Cache-Control "public, max-age=300";
-    }
+    U=https://randl.group
+    curl -sI $U/news/gibtsnicht/ | grep -i '^HTTP\|^location'
+    curl -s -o /dev/null -w '%{http_code}\n' $U/news/.vorlage.html
+    curl -s -o /dev/null -w '%{http_code}\n' $U/news/.beitraege.json
+    B=$U/news/hochzeitsmesse-rosenheim-2026/
+    curl -sI $B | grep -i '^HTTP\|cache-control'
 
-Die Regel gilt für jede nicht vorhandene Adresse /news/<name>/, also
-auch für deaktivierte und gelöschte Beiträge, Entwürfe und Tippfehler.
-Bilder unter /news/img/ ändern ihren Namen bei neuem Inhalt (Hash).
-Beide Dateien anpassen (`nginx.conf_imgcache` und
-`nginx.ssl.conf_imgcache`), vorher je eine Kopie `*.bak-20261124`.
-Danach `nginx -t`, `systemctl reload nginx` und prüfen:
-
-    curl -sI https://randl.group/news/gibtsnicht/ | head -5
-    curl -sI https://randl.group/news/ | head -3
-
-Erwartung: 301 mit `location: https://randl.group/news/`, dann 200.
+Erwartung: 301 mit `location: https://randl.group/news/`, zweimal
+404 (oder 302 auf die Startseite), 200 mit `no-cache`.
 
 ## 7. Cron: abgelaufene Teaser stündlich aus dem HTML nehmen
 
@@ -185,7 +171,7 @@ Bilder-Tab „Messe“.
 
 ## 11. Sync nach GitHub
 
-    cd /home/kpssh/randl-website && git pull -q
+    cd /root/randl-website && git pull -q
     GIT_USER= ./tools/sync-to-github.sh
     GIT_USER= ./tools/sync-to-github.sh --apply
 
