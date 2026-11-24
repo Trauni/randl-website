@@ -13,10 +13,16 @@ Vorlage news/.vorlage.html): nur Textersetzung mit eindeutigen Ankern.
 Zwei Durchgaenge, weil die Seiten unter /news/ erst das Portal erzeugt:
   1. Vorlage, Teaser-CSS und Teaser-Marker (Startseite, /zelt/, /metall/,
      /gas/). Danach im Portal-Ordner: node scripts/aktuelles.js import ...
-  2. Footer-Link "Aktuelles" (wartet auf news/index.html) und der Rueckbau
-     der Messe-Bausteine MESSE-2026-v1 auf der Startseite (wartet auf den
-     Messe-Beitrag; OpenProject 581). An die Stelle der Messe-Kachel kommt
-     der Marker fuer die Hero-Kachel. Danach: node scripts/aktuelles.js bauen
+  2. Footer-Link "Aktuelles" (wartet auf news/index.html). Danach:
+     node scripts/aktuelles.js bauen
+
+Messe-Bausteine MESSE-2026-v1 auf der Startseite (OpenProject 581):
+  Bis 29.11.2026 18:00 bleibt die Sektion #messe stehen (CSS, Lightbox-JS
+  und Ausblendung per data-messe-bis inklusive); fehlt sie, setzt dieses
+  Skript sie aus messe-sektion.* wieder ein. Die Messe-Kachel oben und die
+  FAQ-Frage ersetzt der Beitrag (Kachel-Marker, Text im Beitrag).
+  Ab 29.11.2026 18:00 entfernt ein Lauf alle Reste (Rueckbau).
+  JETZT=<unix-zeit> ueberschreibt die Uhrzeit (nur zum Testen).
 """
 import difflib
 import json
@@ -34,6 +40,8 @@ BACKUP_ROOT = os.environ.get(
     "BACKUP_ROOT", os.path.join(os.path.expanduser("~"), "backups"))
 M = "AKTUELLES-v1"
 MESSE_SLUG = "hochzeitsmesse-rosenheim-2026"
+MESSE_ENDE = 1795971600  # 2026-11-29T18:00:00+01:00
+JETZT = float(os.environ.get("JETZT") or time.time())
 
 FOOTER_PAGES = [
     "index.html", "zelt/index.html", "gas/index.html", "metall/index.html",
@@ -61,6 +69,7 @@ STYLE_END = "</style>\n"
 FOOTER_OLD = '    <a href="/kontakt">Kontakt</a>\n'
 FOOTER_NEW = '    <a href="/news/">Aktuelles</a>\n' + FOOTER_OLD
 MM = "MESSE-2026-v1"
+KACHEL_START = '<!-- AKTUELLES:START sparte="alle" layout="kachel"'
 KACHEL = ('<!-- AKTUELLES:START sparte="alle" layout="kachel" max="1" -->\n'
           '    <!-- AKTUELLES:END -->')
 
@@ -123,7 +132,10 @@ def step_footer(text):
 
 
 def cut(text, begin, end, name, repl=""):
-    """Ersetzt den Bereich begin..end (einschliesslich) samt Zeilenende."""
+    """Ersetzt den Bereich begin..end (einschliesslich) samt Zeilenende.
+    Fehlt begin, bleibt der Text unveraendert."""
+    if begin not in text:
+        return text
     once(text, begin, name)
     a = text.index(begin)
     b = text.find(end, a)
@@ -137,25 +149,52 @@ def cut(text, begin, end, name, repl=""):
     return text[:a] + repl + text[b:]
 
 
+SEC_BEGIN = "<!-- %s section begin -->" % MM
+CSS_ANKER = "/* %s begin */" % M
+JS_ANKER = '<script src="/theme-toggle.js"></script>'
+
+
+def messe_zurueck(text):
+    """Sektion #messe samt CSS und Lightbox-JS wieder einsetzen."""
+    n = "messe-sektion"
+    sep = '<div class="sep" id="sep1">'
+    once(text, sep, n)
+    a = text.rfind("<!-- SEPARATOR", 0, text.index(sep))
+    if a < 0 or text.index(sep) - a > 200:
+        raise Abort(n + ": Anker <!-- SEPARATOR vor #sep1 fehlt")
+    t = text[:a] + frag("messe-sektion.html") + "\n" + text[a:]
+    if "/* %s begin */" % MM not in t:
+        once(t, CSS_ANKER, n)
+        t = t.replace(CSS_ANKER, frag("messe-sektion.css") + CSS_ANKER, 1)
+    if "<script>\n/* %s " % MM not in t:
+        once(t, JS_ANKER, n)
+        t = t.replace(JS_ANKER, frag("messe-sektion.js") + JS_ANKER, 1)
+    return t
+
+
 def step_messe(text):
-    """Rueckbau MESSE-2026-v1 (581): Kachel -> Marker fuer die Hero-Kachel,
-    Sektion, FAQ-Frage, CSS und Lightbox-JS entfallen."""
+    """Bis zum Messe-Ende: Sektion #messe sicherstellen. Danach: Rueckbau
+    aller MESSE-2026-v1-Reste (Kachel, Sektion, FAQ, CSS, JS)."""
+    if JETZT < MESSE_ENDE:
+        if SEC_BEGIN in text or KACHEL_START not in text:
+            return text, "done"
+        return messe_zurueck(text), "todo"
     if MM not in text and "data-messe-bis" not in text:
-        return text, ("done" if KACHEL in text else "entfaellt")
+        return text, ("done" if KACHEL_START in text else "entfaellt")
     post = os.path.join(WEBROOT, "news", MESSE_SLUG, "index.html")
     if not os.path.isfile(post):
         return text, "wartet"
     n = "messe-rueckbau"
-    t = cut(text, "<!-- %s tile begin -->" % MM,
-            "<!-- %s tile end -->" % MM, n, KACHEL)
-    t = cut(t, "<!-- %s section begin -->" % MM,
-            "<!-- %s section end -->" % MM, n)
+    t = text
+    if KACHEL_START not in t:
+        t = cut(t, "<!-- %s tile begin -->" % MM,
+                "<!-- %s tile end -->" % MM, n, KACHEL)
+    t = cut(t, SEC_BEGIN, "<!-- %s section end -->" % MM, n)
     t = cut(t, "<!-- %s faq begin -->" % MM, "<!-- %s faq end -->" % MM, n)
     t = cut(t, "/* %s begin */" % MM, "/* %s end */" % MM, n)
-    js = "<script>\n/* %s " % MM
-    t = cut(t, js, "</script>", n)
-    once(t, "/* %s */" % MM, n)
-    t = t.replace("/* %s */" % MM, "/* %s */" % M, 1)
+    t = cut(t, "<script>\n/* %s " % MM, "</script>", n)
+    if "/* %s */" % MM in t:
+        t = t.replace("/* %s */" % MM, "/* %s */" % M, 1)
     if MM in t or "data-messe-bis" in t or 'id="messe' in t:
         raise Abort("%s: Reste von %s gefunden" % (n, MM))
     return t, "todo"
@@ -210,7 +249,7 @@ def plan():
                 notes.append(("teaser-marker", s))
             if rel == "index.html":
                 new, s = step_messe(new)
-                notes.append(("messe-rueckbau", s))
+                notes.append(("messe-sektion" if JETZT < MESSE_ENDE else "messe-rueckbau", s))
             new, s = step_footer(new)
             notes.append(("footer-link", s))
             if new != old and balance(old) != balance(new):
