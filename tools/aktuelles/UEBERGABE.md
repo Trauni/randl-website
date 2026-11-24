@@ -76,7 +76,8 @@ neuen Marker für die Kachel oben. Letzter Lauf: „Nichts zu tun.“
     grep -c 'MESSE-2026\|data-messe\|id="messe' $P/index.html
     grep -c 'h-tile--akt\|class="akt-card"' $P/index.html
 
-Erwartung: 0 und 6 (Kachel, Karte, vier CSS-Zeilen). Rückgängig (Ordnername steht in der Ausgabe von
+Erwartung: 0 und 6 (Kachel, Karte, vier CSS-Zeilen).
+Rückgängig (Ordnername steht in der Ausgabe von
 `--apply`, Zeile „Rueckgaengig:“, den ganzen Befehl von dort kopieren).
 
 ## 5. Prüfen
