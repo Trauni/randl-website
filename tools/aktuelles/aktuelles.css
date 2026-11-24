@@ -1,0 +1,25 @@
+/* AKTUELLES-v1 begin */
+.akt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 1.25rem; margin-top: 1.75rem; }
+.akt-card { display: flex; flex-direction: column; overflow: hidden; background: var(--panel); border: 1px solid var(--panel-border); border-radius: 16px; color: inherit; text-decoration: none; transition: border-color .2s, transform .2s, box-shadow .2s; }
+.akt-card:hover { border-color: rgba(180,40,30,.35); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,.08); }
+.akt-card:focus-visible { outline: 2px solid var(--spark); outline-offset: 2px; }
+.akt-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--panel-light); }
+.akt-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.akt-body { display: flex; flex-direction: column; flex: 1; gap: .45rem; padding: 1.1rem 1.25rem 1.25rem; text-align: left; }
+.akt-sparte { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--spark-light); }
+.akt-title { margin: 0; font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 800; line-height: 1.1; text-transform: uppercase; color: var(--text-1); }
+.akt-text { margin: 0; font-size: .88rem; line-height: 1.55; color: var(--text-2); }
+.akt-more { margin-top: auto; padding-top: .4rem; font-size: .82rem; font-weight: 600; color: var(--spark-light); }
+.akt-all { margin-top: 1.5rem; font-size: .9rem; }
+.akt-all a { font-weight: 600; color: var(--spark-light); text-decoration: underline; text-underline-offset: 3px; }
+.akt[hidden], [data-bis][hidden] { display: none !important; }
+/* Hero-Kachel der Startseite (neuester Beitrag "Auf Startseite") */
+.h-tile--akt { justify-content: flex-start; gap: .8rem; padding: .7rem .9rem .7rem .7rem; }
+.h-tile-akt-img { width: 118px; height: 76px; flex-shrink: 0; object-fit: cover; border-radius: 6px; border: 1px solid var(--panel-border); }
+.h-tile-akt-text { display: block; min-width: 0; flex: 1; }
+.h-tile-akt-badge { display: inline-block; margin-bottom: .25rem; padding: .05rem .5rem; border-radius: 999px; background: var(--spark); color: white; font-family: 'Barlow Condensed', sans-serif; font-size: .6rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.h-tile--akt .h-tile-title { font-size: 1.05rem; }
+.h-tile--akt .h-tile-sub { font-size: .68rem; margin-top: .2rem; }
+@media (max-width: 900px) { .h-tile--akt { flex: 1 1 100%; } }
+@media (prefers-reduced-motion: reduce) { .akt-card { transition: none; } .akt-card:hover { transform: none; } }
+/* AKTUELLES-v1 end */

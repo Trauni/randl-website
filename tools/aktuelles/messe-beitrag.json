@@ -1,0 +1,35 @@
+{
+ "bilder": {
+  "messe/banner.webp": { "alt": "Banner der Rosenheimer Hochzeitsmesse 2026", "nachweis": "Banner: Agentur für Messen & Events Jutta Christ" },
+  "messe/galerie-01.webp": { "alt": "Gedeckte runde Hochzeitstafel am Randl-Messestand" },
+  "messe/galerie-02.webp": { "alt": "Traubogen mit Blumen auf der Messebühne" },
+  "messe/galerie-03.webp": { "alt": "Tischdeko mit Trockenblumen und Leinenserviette" },
+  "messe/galerie-04.webp": { "alt": "Sekt und Gläser am Stand" },
+  "messe/galerie-05.webp": { "alt": "Brautmodenschau auf der Messebühne" },
+  "messe/galerie-06.webp": { "alt": "Stehtisch mit Katalog und Infomaterial" },
+  "messe/galerie-07.webp": { "alt": "Trauungs-Szene mit Blumenbogen auf der Messebühne" }
+ },
+ "beitrag": {
+  "titel": "Hochzeitsmesse Rosenheim 2026",
+  "slug": "hochzeitsmesse-rosenheim-2026",
+  "datum": "2026-11-24",
+  "sparte": "zelt",
+  "status": "veroeffentlicht",
+  "startseite": true,
+  "startseiteBis": "2026-11-29T18:00",
+  "teaser": "Am 28. und 29. November 2026 sind wir auf der Rosenheimer Hochzeitsmesse im KU'KO: Hochzeitszelte, gedeckte Tafel, Fotobox und Messerabatt für 2027.",
+  "titelbild": "messe/galerie-01.webp",
+  "galerie": ["messe/galerie-02.webp", "messe/galerie-03.webp", "messe/galerie-04.webp", "messe/galerie-05.webp", "messe/galerie-06.webp", "messe/galerie-07.webp"],
+  "veranstaltung": {
+   "start": "2026-11-28T10:00",
+   "ende": "2026-11-29T17:00",
+   "zeiten": "Täglich 10–17 Uhr",
+   "ort": "KU'KO Rosenheim",
+   "strasse": "Kufsteiner Str. 4",
+   "plz": "83022",
+   "stadt": "Rosenheim",
+   "url": "https://hochzeitsmesse-rosenheim.de/"
+  },
+  "text": "Sie planen Ihre Hochzeit und überlegen, ob ein eigenes Zelt dazu passt? Am letzten Novemberwochenende können Sie sich das in Ruhe ansehen. Wir sind mit unserem Zeltverleih auf der Rosenheimer Hochzeitsmesse im KU'KO und zeigen an unserem Stand, wie eine Feier im Zelt aussieht: mit gedeckter Tafel, Licht und Fotobox.\n\n## Wann und wo\n\n- **Samstag und Sonntag, 28. und 29. November 2026**\n- **Täglich von 10 bis 17 Uhr**\n- **KU'KO Rosenheim**, Kufsteiner Str. 4, 83022 Rosenheim\n\n![Banner der Rosenheimer Hochzeitsmesse 2026](bild:messe/banner.webp)\n\nTickets gibt es online für 14 € und auch vor Ort. Tickets und weitere Infos zur Messe finden Sie auf der [Webseite der Hochzeitsmesse](https://hochzeitsmesse-rosenheim.de/).\n\n## Das erwartet Sie an unserem Stand\n\n### Hochzeitszelte\n\nOb im Garten, auf dem Hof oder an Ihrer Wunsch-Location: Wir haben Festzelte in der passenden Größe. Am Stand besprechen wir mit Ihnen, welches Zelt zu Ihrer Gästezahl und zu Ihrem Platz passt.\n\n### Tische und Ausstattung\n\nRunde Tafeln, Stehtische, Bänke und Beleuchtung sehen Sie bei uns so, wie sie später auf Ihrer Feier stehen: fertig gedeckt. So bekommen Sie ein Gefühl dafür, wie viel Platz eine Tafel braucht und wie das Licht im Zelt wirkt.\n\n### Fotobox\n\nUnsere Fotobox verleihen wir auch zur Hochzeit. Fragen Sie uns am Stand danach oder sehen Sie sich vorab die Seite zur [Fotobox](/fotobox/) an.\n\n### Messerabatt für 2027\n\nWer uns am Stand besucht, sichert sich den Messerabatt für die eigene Feier im Jahr 2027.\n\n## Beratung direkt vor Ort\n\nBringen Sie gern Ihre Eckdaten mit: Termin, ungefähre Gästezahl und den Ort, an dem Sie feiern möchten. Dann planen wir direkt am Stand mit Ihnen. Wenn Sie vorab einen Gesprächstermin auf der Messe möchten, [schreiben Sie uns über das Anfrageformular](/zelt/formular/).\n\n## Wo finde ich Sie auf der Messe?\n\nAm 28. und 29. November 2026 im KU'KO Rosenheim (Kufsteiner Str. 4), täglich von 10 bis 17 Uhr. Sie möchten sicher Zeit mit uns haben? Dann fragen Sie vorab einen Beratungstermin an.\n\n## Rückblick: unser Stand 2025\n\nWir waren schon im vergangenen Jahr dabei. Die Bilder unten zeigen unseren Stand von 2025 mit der gedeckten runden Hochzeitstafel und der Tischdekoration, dazu Eindrücke von der Messebühne mit Traubogen und Brautmodenschau.\n\nMehr Bilder von echten Aufbauten finden Sie in unserer [Galerie](/zelt/galerie/), alle Zelte und Pakete auf der Seite [Zeltverleih](/zelt/)."
+ }
+}
