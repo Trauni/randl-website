@@ -42,7 +42,9 @@ RSYNC_OPTS=(-rlp --checksum --delete --itemize-changes
   --exclude='.env' --exclude='*.env' --exclude='*.bak' --exclude='*.bak.*' --exclude='*.bak-*'
   --exclude='*.old' --exclude='*.orig' --exclude='*.bk' --exclude='*~' --exclude='.DS_Store'
   --exclude='/README.md' --exclude='/.gitignore' --exclude='/tools/'
-  --exclude='/zelt/galerie/img/')
+  --exclude='/zelt/galerie/img/'
+  # Aktuelles: Datendatei enthält Entwürfe und Benutzernamen (Repo ist öffentlich)
+  --exclude='/news/.beitraege.json')
 
 echo "== Änderungen Server -> Repo:"
 CHANGES="$(rsync "${RSYNC_OPTS[@]}" --dry-run "$SRC"/ "$REPO"/ | grep -v '^\.' || true)"
