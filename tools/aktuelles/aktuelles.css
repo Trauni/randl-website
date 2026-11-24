@@ -12,5 +12,14 @@
 .akt-more { margin-top: auto; padding-top: .4rem; font-size: .82rem; font-weight: 600; color: var(--spark-light); }
 .akt-all { margin-top: 1.5rem; font-size: .9rem; }
 .akt-all a { font-weight: 600; color: var(--spark-light); text-decoration: underline; text-underline-offset: 3px; }
+.akt[hidden], [data-bis][hidden] { display: none !important; }
+/* Hero-Kachel der Startseite (neuester Beitrag "Auf Startseite") */
+.h-tile--akt { justify-content: flex-start; gap: .8rem; padding: .7rem .9rem .7rem .7rem; }
+.h-tile-akt-img { width: 118px; height: 76px; flex-shrink: 0; object-fit: cover; border-radius: 6px; border: 1px solid var(--panel-border); }
+.h-tile-akt-text { display: block; min-width: 0; flex: 1; }
+.h-tile-akt-badge { display: inline-block; margin-bottom: .25rem; padding: .05rem .5rem; border-radius: 999px; background: var(--spark); color: white; font-family: 'Barlow Condensed', sans-serif; font-size: .6rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.h-tile--akt .h-tile-title { font-size: 1.05rem; }
+.h-tile--akt .h-tile-sub { font-size: .68rem; margin-top: .2rem; }
+@media (max-width: 900px) { .h-tile--akt { flex: 1 1 100%; } }
 @media (prefers-reduced-motion: reduce) { .akt-card { transition: none; } .akt-card:hover { transform: none; } }
 /* AKTUELLES-v1 end */

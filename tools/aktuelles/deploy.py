@@ -13,8 +13,10 @@ Vorlage news/.vorlage.html): nur Textersetzung mit eindeutigen Ankern.
 Zwei Durchgaenge, weil die Seiten unter /news/ erst das Portal erzeugt:
   1. Vorlage, Teaser-CSS und Teaser-Marker (Startseite, /zelt/, /metall/,
      /gas/). Danach im Portal-Ordner: node scripts/aktuelles.js import ...
-  2. Footer-Link "Aktuelles" (wartet auf news/index.html) und die
-     Messe-Kurzfassung auf der Startseite (wartet auf den Messe-Beitrag).
+  2. Footer-Link "Aktuelles" (wartet auf news/index.html) und der Rueckbau
+     der Messe-Bausteine MESSE-2026-v1 auf der Startseite (wartet auf den
+     Messe-Beitrag; OpenProject 581). An die Stelle der Messe-Kachel kommt
+     der Marker fuer die Hero-Kachel. Danach: node scripts/aktuelles.js bauen
 """
 import difflib
 import json
@@ -58,8 +60,9 @@ TEASER = {
 STYLE_END = "</style>\n"
 FOOTER_OLD = '    <a href="/kontakt">Kontakt</a>\n'
 FOOTER_NEW = '    <a href="/news/">Aktuelles</a>\n' + FOOTER_OLD
-MESSE_BEGIN = "<!-- MESSE-2026-v1 section begin -->"
-MESSE_END = "<!-- MESSE-2026-v1 section end -->"
+MM = "MESSE-2026-v1"
+KACHEL = ('<!-- AKTUELLES:START sparte="alle" layout="kachel" max="1" -->\n'
+          '    <!-- AKTUELLES:END -->')
 
 
 class Abort(Exception):
@@ -100,10 +103,11 @@ def step_css(text):
 def step_marker(text, rel):
     anchor, attrs = TEASER[rel]
     start = "<!-- AKTUELLES:START %s -->" % attrs
-    if "<!-- AKTUELLES:START" in text:
-        if start not in text:
-            raise Abort("teaser-marker: Marker mit anderen Attributen")
+    if start in text:
         return text, "done"
+    if '<!-- AKTUELLES:START' in text and 'layout="%s"' % (
+            "start" if rel == "index.html" else "sparte") in text:
+        raise Abort("teaser-marker: Marker mit anderen Attributen")
     once(text, anchor, "teaser-marker")
     block = start + "\n<!-- AKTUELLES:END -->\n\n"
     return text.replace(anchor, block + anchor, 1), "todo"
@@ -118,23 +122,43 @@ def step_footer(text):
     return text.replace(FOOTER_OLD, FOOTER_NEW, 1), "todo"
 
 
+def cut(text, begin, end, name, repl=""):
+    """Ersetzt den Bereich begin..end (einschliesslich) samt Zeilenende."""
+    once(text, begin, name)
+    a = text.index(begin)
+    b = text.find(end, a)
+    if b < 0:
+        raise Abort("%s: Ende-Marker fehlt" % name)
+    b += len(end)
+    if not repl:
+        a = text.rfind("\n", 0, a) + 1          # Einrueckung mitnehmen
+        while text[b:b + 1] == "\n":            # Leerzeilen danach auch
+            b += 1
+    return text[:a] + repl + text[b:]
+
+
 def step_messe(text):
-    """Volltext-Sektion #messe -> Kurzfassung mit Link auf den Beitrag."""
-    neu = frag("messe-teaser.html").strip("\n")
-    if neu in text:
-        return text, "done"
-    if MESSE_BEGIN not in text:
-        return text, "entfaellt"       # Rueckbau 581 ist schon gelaufen
-    once(text, MESSE_BEGIN, "messe-kurzfassung")
-    once(text, MESSE_END, "messe-kurzfassung")
-    a = text.index(MESSE_BEGIN)
-    b = text.index(MESSE_END) + len(MESSE_END)
-    if 'id="messe"' not in text[a:b]:
-        raise Abort("messe-kurzfassung: id=\"messe\" nicht im Block")
+    """Rueckbau MESSE-2026-v1 (581): Kachel -> Marker fuer die Hero-Kachel,
+    Sektion, FAQ-Frage, CSS und Lightbox-JS entfallen."""
+    if MM not in text and "data-messe-bis" not in text:
+        return text, ("done" if KACHEL in text else "entfaellt")
     post = os.path.join(WEBROOT, "news", MESSE_SLUG, "index.html")
     if not os.path.isfile(post):
         return text, "wartet"
-    return text[:a] + neu + text[b:], "todo"
+    n = "messe-rueckbau"
+    t = cut(text, "<!-- %s tile begin -->" % MM,
+            "<!-- %s tile end -->" % MM, n, KACHEL)
+    t = cut(t, "<!-- %s section begin -->" % MM,
+            "<!-- %s section end -->" % MM, n)
+    t = cut(t, "<!-- %s faq begin -->" % MM, "<!-- %s faq end -->" % MM, n)
+    t = cut(t, "/* %s begin */" % MM, "/* %s end */" % MM, n)
+    js = "<script>\n/* %s " % MM
+    t = cut(t, js, "</script>", n)
+    once(t, "/* %s */" % MM, n)
+    t = t.replace("/* %s */" % MM, "/* %s */" % M, 1)
+    if MM in t or "data-messe-bis" in t or 'id="messe' in t:
+        raise Abort("%s: Reste von %s gefunden" % (n, MM))
+    return t, "todo"
 
 
 # ------------------------------------------------------------ Verifikation
@@ -171,10 +195,6 @@ def balance(text):
 def plan():
     """Berechnet alles, schreibt nichts. Gibt (items, fehler) zurueck."""
     items, errors = [], []
-    for name in ("messe-teaser.html",):
-        b = balance(frag(name))
-        if b:
-            errors.append("Baustein %s unbalanciert: %s" % (name, b))
     for rel in FOOTER_PAGES:
         path = os.path.join(WEBROOT, rel)
         if not os.path.isfile(path):
@@ -190,7 +210,7 @@ def plan():
                 notes.append(("teaser-marker", s))
             if rel == "index.html":
                 new, s = step_messe(new)
-                notes.append(("messe-kurzfassung", s))
+                notes.append(("messe-rueckbau", s))
             new, s = step_footer(new)
             notes.append(("footer-link", s))
             if new != old and balance(old) != balance(new):
@@ -323,11 +343,13 @@ def verify():
                                 + os.path.join(dp, fn))
     for rel in TEASER:
         t = read(os.path.join(WEBROOT, rel))
-        for needle in ("<!-- AKTUELLES:START", "<!-- AKTUELLES:END -->",
-                       "/* %s begin */" % M, "/* %s end */" % M):
+        for needle in ("/* %s begin */" % M, "/* %s end */" % M):
             if t.count(needle) != 1:
                 problems.append("%s: %r %dx (erwartet 1x)"
                                 % (rel, needle, t.count(needle)))
+        if t.count("<!-- AKTUELLES:START") != t.count(
+                "<!-- AKTUELLES:END -->") or "<!-- AKTUELLES:START" not in t:
+            problems.append("%s: Marker AKTUELLES:START/END unpaarig" % rel)
     if not os.path.isfile(os.path.join(WEBROOT, "news", ".vorlage.html")):
         problems.append("fehlt: news/.vorlage.html")
     return problems
@@ -377,6 +399,8 @@ def main(argv):
     todo = [it for it in items if changed(it)]
     hint = ("\nNoch offen (wartet): erst im Portal-Ordner den Beitrag "
             "importieren bzw. bauen, dann deploy.py erneut ausfuehren.")
+    after = ("\nJetzt im Portal-Ordner: node scripts/aktuelles.js bauen "
+             "(fuellt die neuen Marker).")
     if not todo:
         print("\nNichts zu tun." + (hint if waiting(items) else ""))
         return 0
@@ -393,6 +417,7 @@ def main(argv):
         print("Rueckgaengig: python3 deploy.py --rollback " + bdir)
         return 1
     print("\nFertig. Rueckgaengig: python3 deploy.py --rollback " + bdir)
+    print(after)
     items, _ = plan()
     if waiting(items):
         print(hint)
